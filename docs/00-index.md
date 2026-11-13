@@ -2,7 +2,7 @@
 
 **Werknaam:** Vrijzaak  
 **URL:** https://vrijzaak.nl  
-**Vault:** deze map als Obsidian-folder openen.
+**Repo:** `docs/` + `frontend/`. Open root of `docs/` in Obsidian.
 
 Start ook via [[00-projectbrief]].
 

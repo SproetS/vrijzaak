@@ -13,24 +13,15 @@ Overzicht van mappen, vault en beoogde bouwstructuur. Voor mensen én agents.
 ## Schijf (deze Mac)
 
 ```
-Documents/sproets/tycho/Vrijzaak/
-├── 01 - Werkbestanden/
-│   ├── Vrijzaak-ontwerp1.ai          ← visueel ontwerp (Illustrator)
-│   └── Vrijzaak draadmodel/          ← DEZE Obsidian-vault (UX + docs)
-│       ├── AGENTS.md
-│       ├── README.md
-│       ├── 00-*.md                   ← brief, index, tokens, tech, nav, projectmap
-│       ├── 01-…08-*.md               ← checkout-draadmodellen
-│       ├── assets/                   ← screenshots, exports (leeg ok)
-│       └── .obsidian/                ← vault-config
-├── (latere mappen naar wens)
-│   ├── 02 - Content/                 ← teksten, productfoto’s van winkelier
-│   └── 03 - Bouw/                    ← git repos Svelte + Directus (later)
+Vrijzaak/01 - Werkbestanden/Vrijzaak draadmodel/   ← repo SproetS/vrijzaak
+├── AGENTS.md
+├── README.md
+├── docs/           ← Markdown
+└── frontend/       ← CSS, fonts, logos, svg, Svelte later
 ```
 
-Pas `02` / `03` aan als jullie andere mapnamen gebruiken; het idee is: **ontwerpvault scheiden van code en ruwe content**.
-
-## Deze vault — inhoudelijke kaart
+## Deze vault / repo
+ — inhoudelijke kaart
 
 ### Start
 - [[README]] — openen van de vault

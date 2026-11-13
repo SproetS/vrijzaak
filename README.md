@@ -1,7 +1,22 @@
-# Vrijzaak draadmodel (Markdown vault)
+# Vrijzaak
 
-Open deze map in **Obsidian** (*Open folder as vault*) of lees de `.md`-files in elke editor.
+Werknaam **Vrijzaak** · https://vrijzaak.nl  
+GitHub: https://github.com/SproetS/vrijzaak
 
-- Start: [00-index.md](./00-index.md)
-- Brief: [00-projectbrief.md](./00-projectbrief.md)
-- Site: https://vrijzaak.nl (werknaam Vrijzaak)
+## Structuur
+
+```
+.
+├── README.md
+├── AGENTS.md
+├── docs/          ← projectbeschrijving & draadmodellen (Markdown)
+└── frontend/      ← CSS tokens, fonts, logo's, SVG, later SvelteKit
+```
+
+## Starten
+
+- Mens: [docs/00-index.md](./docs/00-index.md)
+- Agent: **AGENTS.md**, daarna docs
+- Plan: [docs/00-projectbeschrijving-en-stappenplan.md](./docs/00-projectbeschrijving-en-stappenplan.md)
+
+Fase: Markdown-ontwerp. Nog geen live shop.

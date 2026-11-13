@@ -4,6 +4,14 @@
 .obsidian/workspace-mobile.json
 .obsidian/graph.json
 .obsidian/cache
+.obsidian/plugins/
+.obsidian/themes/
 .trash/
 *.tmp
 *~
+frontend/fonts/*
+!frontend/fonts/README.md
+node_modules/
+frontend/node_modules/
+.env
+.env.*

@@ -1,0 +1,38 @@
+/**
+ * Vrijzaak design tokens (voorlopig)
+ * Bron: docs/00-design-tokens.md
+ */
+:root {
+  --font-sans: "GAP Zuid VG", system-ui, sans-serif;
+  --font-mono: "GAP Code", ui-monospace, monospace;
+
+  --gray-0: #fafafa;
+  --gray-50: #f5f5f5;
+  --gray-100: #eeeeee;
+  --gray-300: #d4d4d4;
+  --gray-500: #737373;
+  --gray-800: #262626;
+  --gray-900: #171717;
+
+  --bg-primary: var(--gray-0);
+  --bg-secondary: var(--gray-50);
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-500);
+  --border: var(--gray-300);
+
+  --accent-soft-red: #e8a0a0;
+  --accent-soft-yellow: #f0e6a8;
+  --accent-soft-blue: #a8c5e8;
+  --cta-bg: var(--gray-900);
+  --cta-text: #ffffff;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}

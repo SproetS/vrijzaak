@@ -12,7 +12,8 @@ Start ook via [[00-projectbrief]].
 
 - [[00-projectbrief]] — opdracht, rollen, wat “klaar” is voor deze fase
 - [[00-projectmap]] — mappen, vault, bouwbeeld
-- [[AGENTS]] — regels voor AI-agents  
+- [[AGENTS]] — regels voor AI-agents
+- [[00-git-en-github]] — repo + GitHub-koppeling  
 - [[00-navigatie-omgevingen]] — winkel vs kassa vs voet  
 - [[00-design-tokens]] — GAP Zuid VG, GAP Code, greyscale + zachte accenten  
 - [[00-tech-traject-svelte-directus]] — Svelte/CSS → Directus → Mollie (voor collega-winkelier)

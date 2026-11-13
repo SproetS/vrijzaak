@@ -13,7 +13,7 @@ Dit is de Obsidian-vault:
 Niet verwarren met latere code-repos. Hier hoort **geen** applicatiecode tenzij de gebruiker dat expliciet vraagt.
 
 ## Bron van waarheid
-1. Lees eerst [[00-index]] en [[00-projectbrief]].
+1. Lees eerst [[00-index]], [[00-projectbrief]] en [[00-projectbeschrijving-en-stappenplan]].
 2. Navigatie: [[00-navigatie-omgevingen]] (winkel ≠ kassa ≠ voet).
 3. Tokens: [[00-design-tokens]] (GAP Zuid VG, GAP Code; greyscale + zachte accenten).
 4. Tech-rapportage: [[00-tech-traject-svelte-directus]].

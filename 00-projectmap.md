@@ -37,6 +37,7 @@ Pas `02` / `03` aan als jullie andere mapnamen gebruiken; het idee is: **ontwerp
 - [[AGENTS]] — regels voor AI-agents die hier werken
 - [[00-index]] — hub
 - [[00-projectbrief]] — opdracht en rollen
+- [[00-projectbeschrijving-en-stappenplan]] — beschrijving + stappenplan
 - [[00-projectmap]] — dit document
 
 ### Ontwerpkeuzes

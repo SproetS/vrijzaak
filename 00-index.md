@@ -11,6 +11,7 @@ Start ook via [[00-projectbrief]].
 ## Kern
 
 - [[00-projectbrief]] — opdracht, rollen, wat “klaar” is voor deze fase
+- [[00-projectbeschrijving-en-stappenplan]] — beschrijving + fasen (mens/agent)
 - [[00-projectmap]] — mappen, vault, bouwbeeld
 - [[AGENTS]] — regels voor AI-agents
 - [[00-git-en-github]] — repo + GitHub-koppeling  
@@ -56,6 +57,9 @@ Start ook via [[00-projectbrief]].
 ---
 
 ## Volgende stap (winkel vangen)
+
+Volledig fasenplan: [[00-projectbeschrijving-en-stappenplan]].
+
 
 1. [[09-sitemap-ia]] — URL’s + menu’s *(nog te schrijven)*  
 2. [[10-productmodel]] — velden voor Directus *(nog te schrijven)*  

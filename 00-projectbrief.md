@@ -50,3 +50,5 @@ Zie ook [[00-tech-traject-svelte-directus]].
 3. Alles is plain Markdown: ook te lezen in VS Code, Git, Warp, etc.
 
 Zie ook [[00-projectmap]] en [[AGENTS]].
+
+Uitgewerkt plan: [[00-projectbeschrijving-en-stappenplan]].

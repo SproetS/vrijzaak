@@ -1,6 +1,6 @@
 # FigCraft → CSS rapport
 
-Gegenereerd: 2026-11-17 19:00 UTC  
+Gegenereerd: 2026-11-17 19:01 UTC  
 Bron: `frontend/design/figcraft/vrijzaak-storefront.figcraft`  
 Tool: `frontend/design/figcraft/scripts/figcraft_to_css.py`
 
@@ -19,27 +19,27 @@ Tool: `frontend/design/figcraft/scripts/figcraft_to_css.py`
 
 | Name | Light | Dark | CSS light nu | Actie |
 |------|-------|------|--------------|-------|
-| `paper` | `None` | `None` | `#f5f2e9` | ok |
-| `surface` | `None` | `None` | `#fffdf7` | ok |
-| `ink` | `None` | `None` | `#202c27` | ok |
-| `muted` | `None` | `None` | `#58645d` | ok |
-| `accent` | `None` | `None` | `#245c43` | ok |
-| `line` | `None` | `None` | `#b7c2b5` | ok |
-| `danger` | `None` | `None` | `#8f4a4a` | ok |
-| `success` | `None` | `None` | `#2f6b4f` | ok |
-| `ctaText` | `None` | `None` | `#fffdf7` | ok |
+| `paper` | `#f5f2e9` | `#121a17` | `#f5f2e9` | ok |
+| `surface` | `#fffdf7` | `#1a2420` | `#fffdf7` | ok |
+| `ink` | `#202c27` | `#e8efe9` | `#202c27` | ok |
+| `muted` | `#58645d` | `#9aaba2` | `#58645d` | ok |
+| `accent` | `#245c43` | `#3d9a6c` | `#245c43` | ok |
+| `line` | `#b7c2b5` | `#2f3d36` | `#b7c2b5` | ok |
+| `danger` | `#8f4a4a` | `#e09090` | `#8f4a4a` | ok |
+| `success` | `#2f6b4f` | `#6bc49a` | `#2f6b4f` | ok |
+| `ctaText` | `#fffdf7` | `#0e1512` | `#fffdf7` | ok |
 
 ## Text styles
 
 | Style | font | size | leading | fill | vs tokens |
 |-------|------|------|---------|------|-----------|
-| `Type/H1` | None | None | None | None | wijkt af van type.css (verwacht 40/40) |
-| `Type/H2` | None | None | None | None | wijkt af van type.css (verwacht 32/40) |
-| `Type/H3` | None | None | None | None | wijkt af van type.css (verwacht 24/40) |
-| `Type/H4` | None | None | None | None | wijkt af van type.css (verwacht 20/40) |
-| `Type/H5` | None | None | None | None | wijkt af van type.css (verwacht 18/20) |
-| `Type/H6` | None | None | None | None | wijkt af van type.css (verwacht 16/20) |
-| `Type/Body` | None | None | None | None | wijkt af van type.css (verwacht 16/20) |
+| `Type/H1` | GAP Code | 40.0 | 40.0 | None | ok (verwacht 40/40) |
+| `Type/H2` | GAP Code | 32.0 | 40.0 | None | ok (verwacht 32/40) |
+| `Type/H3` | GAP Code | 24.0 | 40.0 | None | ok (verwacht 24/40) |
+| `Type/H4` | GAP Code | 20.0 | 40.0 | None | ok (verwacht 20/40) |
+| `Type/H5` | GAP Code | 18.0 | 20.0 | None | ok (verwacht 18/20) |
+| `Type/H6` | GAP Code | 16.0 | 20.0 | None | ok (verwacht 16/20) |
+| `Type/Body` | GAP Code | 16.0 | 20.0 | None | ok (verwacht 16/20) |
 
 ## Overige styles
 

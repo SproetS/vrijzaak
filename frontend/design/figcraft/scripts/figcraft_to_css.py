@@ -93,6 +93,8 @@ def color_to_hex(val) -> str | None:
             return val.lower() if len(val) in (4, 7, 9) else val
         return val
     if isinstance(val, dict):
+        if val.get("type") == "color" and "value" in val:
+            return color_to_hex(val["value"])
         if "color" in val and isinstance(val["color"], str):
             return color_to_hex(val["color"])
         if "color" in val and isinstance(val["color"], dict):
@@ -103,6 +105,8 @@ def color_to_hex(val) -> str | None:
         if all(k in val for k in ("r", "g", "b")):
             r, g, b = (int(round(float(val[k]) * 255)) for k in ("r", "g", "b"))
             return f"#{r:02x}{g:02x}{b:02x}"
+        if "value" in val:
+            return color_to_hex(val["value"])
     return None
 
 
@@ -144,13 +148,13 @@ def css_get_prop(css: str, prop: str) -> str | None:
 
 def extract_text_metrics(style: dict) -> tuple[float | None, float | None, str | None, str | None]:
     """Return fontSize, lineHeight_px, fontFamily, fill_hex from style blob."""
-    # shape varies: style.style or style.value
     blob = style.get("style") or style.get("value") or style
     if isinstance(blob, str):
         return None, None, None, None
-    fs = blob.get("fontSize")
-    ff = blob.get("fontFamily")
-    lh = blob.get("lineHeight")
+    # FigCraft uses snake_case in style.list export
+    fs = blob.get("fontSize", blob.get("font_size"))
+    ff = blob.get("fontFamily", blob.get("font_family"))
+    lh = blob.get("lineHeight", blob.get("line_height"))
     lh_px = None
     if isinstance(lh, dict):
         unit = (lh.get("unit") or "").lower()
@@ -161,7 +165,7 @@ def extract_text_metrics(style: dict) -> tuple[float | None, float | None, str |
             lh_px = float(fs) * float(val) / 100.0
     elif isinstance(lh, (int, float)):
         lh_px = float(lh)
-    fill = blob.get("fill") or blob.get("fills")
+    fill = blob.get("fill") or blob.get("fills") or blob.get("textFills")
     fill_hex = None
     if isinstance(fill, list) and fill:
         fill_hex = color_to_hex(fill[0])
@@ -209,19 +213,25 @@ def build_report(styles: dict, variables: dict, tokens_css: str) -> str:
             lines.append(f"| `{name}` | — | — | `{css_prop}` | ontbreekt in FigCraft |")
             continue
         values = v.get("values") or {}
-        # values may be {Light: ..., Dark: ...} or list
         light = dark = None
         if isinstance(values, dict):
             light = color_to_hex(values.get("Light") or values.get("light"))
             dark = color_to_hex(values.get("Dark") or values.get("dark"))
-            # sometimes mode id keys
-            if light is None:
-                for k, val in values.items():
-                    hx = color_to_hex(val)
-                    if hx and light is None:
-                        light = hx
-                    elif hx:
-                        dark = hx
+            # mode keys like VariableCollectionId:1/mode1
+            ordered = []
+            for k, val in values.items():
+                hx = color_to_hex(val) or color_to_hex(
+                    val.get("value") if isinstance(val, dict) else None
+                )
+                if hx:
+                    ordered.append((str(k), hx))
+            ordered.sort(key=lambda x: x[0])
+            if light is None and ordered:
+                light = ordered[0][1]
+            if dark is None and len(ordered) > 1:
+                dark = ordered[1][1]
+            elif dark is None and ordered:
+                dark = ordered[0][1]
         css_now = css_get_prop(tokens_css, css_prop)
         # tokens may use nested without direct --vz-cta-text on light root only
         act = "ok"

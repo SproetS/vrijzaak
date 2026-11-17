@@ -11,6 +11,7 @@ Entry: **`main.css`** (importeert alles in volgorde).
 
 | Bestand | Laag | Inhoud |
 |---------|------|--------|
+| `fonts.css` | fonts | `@font-face` GAP Code (lokale woff2, gitignored files) |
 | `tokens.css` | tokens | Kleur, thema, type-scale, V/H-space |
 | `type.css` | type | body, h1–h6, baseline debug |
 | `base.css` | base | box-sizing, links, `.vz-stack` / `.vz-row` |

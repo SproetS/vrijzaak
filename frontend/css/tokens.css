@@ -16,6 +16,7 @@
   color-scheme: light;
 
   /* Typografie — ontwerp voorlopig GAP Code; bouw kan nog GAP Mono hebben */
+  /* Familie-naam moet matchen met fonts.css @font-face */
   --vz-font-ui: "GAP Code", ui-monospace, "Courier New", monospace;
   --vz-font-email-fallback: "Courier New", monospace;
   --vz-measure: 76rem;

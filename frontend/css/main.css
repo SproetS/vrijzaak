@@ -9,6 +9,7 @@
  * Zie docs/00-ui-moleculen.md · docs/00-design-tokens.md
  */
 
+@import url("./fonts.css"); /* @font-face GAP Code — vóór type */
 @import url("./tokens.css");
 @import url("./type.css");
 @import url("./base.css");

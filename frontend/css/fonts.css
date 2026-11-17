@@ -1,0 +1,49 @@
+/**
+ * Lokale webfonts voor ontwerp-preview (niet de Nuxt-productiebuild).
+ *
+ * Bestanden: frontend/fonts/GAP Code/*.woff2 (gitignored — lokaal houden).
+ * Productie later: programmeur → public/fonts/ + licentie.
+ *
+ * Open preview via: frontend/css/preview.html (relatieve paden).
+ * Of: npx serve frontend  → http://localhost:…/css/preview.html
+ */
+
+@font-face {
+  font-family: "GAP Code";
+  src:
+    url("../fonts/GAP%20Code/GAPCode-Regular.woff2") format("woff2"),
+    url("../fonts/GAP%20Code/GAPCode-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GAP Code";
+  src:
+    url("../fonts/GAP%20Code/GAPCode-Italic.woff2") format("woff2"),
+    url("../fonts/GAP%20Code/GAPCode-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GAP Code";
+  src:
+    url("../fonts/GAP%20Code/GAPCode-Bold.woff2") format("woff2"),
+    url("../fonts/GAP%20Code/GAPCode-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GAP Code";
+  src:
+    url("../fonts/GAP%20Code/GAPCode-BoldItalic.woff2") format("woff2"),
+    url("../fonts/GAP%20Code/GAPCode-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}

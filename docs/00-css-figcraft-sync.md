@@ -85,3 +85,8 @@ Obsidian mag Zuid VG lezen; **product-UI** = GAP Code (afspraak).
 - [00-design-tokens.md](./00-design-tokens.md)  
 - [00-figcraft-samenwerking.md](./00-figcraft-samenwerking.md)  
 - [frontend/css/README.md](../frontend/css/README.md)  
+
+## Omgekeerd (FigCraft → CSS)
+
+Checklist: [00-figcraft-naar-css-checklist.md](./00-figcraft-naar-css-checklist.md)  
+Tool: `frontend/design/figcraft/scripts/figcraft_to_css.py` → `frontend/design/exports/figcraft-to-css-report.md`

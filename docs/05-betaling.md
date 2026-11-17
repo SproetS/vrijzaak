@@ -35,28 +35,29 @@ Laatste check, akkoord, door naar Mollie (iDEAL). Geen kaartgegevens op Vrijzaak
 
 ## Na klikken op betalen
 
-1. Order in systeem: status `pending_payment` (conceptnaam).
-2. Redirect naar Mollie checkout.
-3. Return URLs:
-   - succes → bevestigingspagina
-   - annuleren → terug naar stap 3 met melding
-   - mislukt → zelf + “Probeer opnieuw”
-   - webhook bevestigt definitief `paid` (zoals bekend uit andere shops)
+1. Server: order + reservering + payment_request (pending); daarna redirect Mollie hosted.
+2. **Browser-return is geen betaalbewijs** (bouw payments). UI mag geen “betaald” tonen op return alleen.
+3. Definitief paid via worker/webhook + serververificatie; daarna bevestigingsmail (`orders.confirmation`).
+4. Return-paden:
+   - open attempt + actieve hold → pending-UI + optioneel opnieuw Mollie-checkoutlink
+   - geannuleerd / mislukt / verlopen → melding + opnieuw proberen
+   - server-paid → happy bevestiging ([06-bevestiging.md](./06-bevestiging.md))
 
-## Staten op terugkeer (vóór bevestigingspagina)
+## Staten op terugkeer (vóór “bedankt, betaald”)
 
-**Nog bezig / pending**
+**Nog bezig / pending** (standaard na return)
 ```
 | We wachten op bevestiging van je betaling…         |
 | Dit duurt meestal maar een moment.                 |
 | [Pagina vernieuwen]                                |
 ```
+Geen belofte “het is gelukt” tot serverstatus paid.
 
 **Geannuleerd**
 ```
 | Je hebt de betaling afgebroken.                    |
 | Je bestelling is nog niet betaald.                 |
-| [Opnieuw betalen]  [Terug naar winkelwagen]        |
+| [Opnieuw betalen]  [Terug naar winkelmand]        |
 ```
 
 **Mislukt**
@@ -78,4 +79,4 @@ Laatste check, akkoord, door naar Mollie (iDEAL). Geen kaartgegevens op Vrijzaak
 - Split payments naar makers in de UI van de klant (kan wél intern via Mollie Connect later)
 
 ---
-Vrijzaak · https://vrijzaak.nl · [[00-index]]
+Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

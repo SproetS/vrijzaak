@@ -1,103 +1,99 @@
-# Design tokens (voorlopig) — Vrijzaak
+# Design tokens — Vrijzaak
 
 Werknaam / site: **Vrijzaak** · https://vrijzaak.nl
 
-Dit zijn **ontwerpafspraken in Markdown**, nog geen gebouwde CSS. Bij implementatie mappen naar CSS variables / Svelte theme.
+**Ontwerpafspraken in Markdown**, plus spiegel van wat de **bouwrepo nu** gebruikt. Bij implementatie: één set CSS-variabelen in Nuxt (`shared/design/tokens.ts` → `--akws-*`), geen losse componentkleuren.
 
-## Typografie
+Zie [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md) §7.
+
+---
+
+## A. Bouw (feitelijk in code)
+
+Bron: webshop `shared/design/tokens.ts` en `docs/design.md`.
+
+| Rol | Waarde |
+|-----|--------|
+| paper | `#f5f2e9` |
+| surface | `#fffdf7` |
+| ink | `#202c27` |
+| muted | `#58645d` |
+| accent | `#245c43` |
+| line | `#b7c2b5` |
+| font | `"GAP Mono", "Courier New", monospace` |
+| emailFont | `"Courier New", monospace` |
+| measure | `76rem` |
+
+- WOFF self-hosted in bouw `public/fonts/`.
+- Rollen: paper / surface / ink / muted / accent / line — geen ad-hoc hex in componenten.
+- Mail: zelfde semantiek, geen verplicht GAP-webfont.
+
+---
+
+## B. Ontwerpverkenning (deze vault)
+
+Richting die UX mag blijven verkennen tot er een **gezamenlijk fontbesluit** is.
+
+### Typografie
 
 | Rol | Familie | Gebruik |
 |-----|---------|---------|
-| Primair (UI, lopende tekst, navigatie) | **GAP Zuid VG** | body, knoppen, menu, producttitels |
-| Secundair / mono / data | **GAP Code** | prijzen?, labels, ordernummers, technische accenten |
+| **Voorlopig productierichting (ontwerp 2026-11-17)** | **GAP Code** | UI, body, navigatie, prijzen, labels |
+| Alternatief / later | GAP Zuid VG | alleen na herziening |
+| Bouwcode nu | GAP Mono in `tokens.ts` | nog niet gelijkgetrokken — programmeur |
 
-### Beschikbaar op deze Mac
-Bronmap: `/Users/sjoerd/Desktop/GAP Fonts/`
-
-**GAP Zuid VG (OTF):** Regular, Italic, Bold, Bold Italic  
-`…/OTF/Gap Zuid VG/`
-
-**GAP Code (OTF):** Regular, Italic, Bold, Bold Italic  
-`…/OTF/GAP Code/`
-
-Ook **Web**-varianten onder `…/GAP Fonts/Web/` (voor latere Svelte-build).
-
-### Schaal (voorstel, nog open)
+Lokaal op deze Mac: `/Users/sjoerd/Desktop/GAP Fonts/` (OTF + Web).  
+In `frontend/fonts/` van deze repo: placeholder; licentie vóór commit van webfonts.
 
 ```
---font-sans: "GAP Zuid VG", system-ui, sans-serif;
---font-mono: "GAP Code", ui-monospace, monospace;
-
---text-xs / sm / base / lg / xl / 2xl
+/* voorlopig ontwerpbesluit */
+--font-ui: "GAP Code", ui-monospace, monospace;
+/* bouw tokens.ts heeft nog font: GAP Mono — sync via programmeur */
 ```
 
-- Koppen: Zuid VG Bold
-- Body: Zuid VG Regular
-- Prijzen / ordernr: Code Regular of Bold (keuze in UI-kit vastleggen)
-
-## Kleur (voorlopig)
-
-**Basis: greyscale** — rust, anti-schreeuw, past vrijplaats-sfeer.
+### Kleur (vault-voorstel boven greyscale)
 
 ```
---gray-0     bijna wit (pagina-achtergrond)
---gray-50    zachte vlakken
---gray-100   randen licht
---gray-300   randen / dividers
---gray-500   secondary tekst
---gray-800   primary tekst
---gray-900   bijna zwart (logo/tekst strong)
---white / --black
+--gray-0 … --gray-900   pagina, vlakken, randen, tekst
+--accent-soft-red / yellow / blue   spaarzaam CTA/tags
 ```
 
-**Accenten:** zachte, heldere tinten van **primaire kleuren** (rood / geel / blauw — exacte hex later prikken uit ontwerp of vrijplaats-identiteiten).
+Semantisch (align met bouw-namen waar mogelijk):
 
 ```
---accent-soft-red
---accent-soft-yellow
---accent-soft-blue
+--bg-primary ≈ paper/surface
+--text-primary ≈ ink
+--text-secondary ≈ muted
+--border ≈ line
+--cta ≈ accent
+--danger / --success   mild (Mollie fail/success)
 ```
 
-Gebruik accent spaarzaam:
-- primaire CTA (één duidelijke actie)
-- focus-ringen / links hover
-- optioneel: vrijplaats- of maker-tag
-
-**Niet:** regenboog-UI of harde neon; wel warmte en leesbaarheid.
-
-### Semantisch
-
-```
---bg-primary / --bg-secondary
---text-primary / --text-secondary
---border
---cta-bg / --cta-text
---danger / --success (Mollie fail/success — mild, niet alarmistisch)
-```
-
-## Ruimte & radius
+### Ruimte
 
 ```
 --space-1 … --space-8
 --radius-sm / md / lg
---shadow-soft (optioneel, subtiel — vertrouwen zonder “webshop-gloss”)
+tap targets ≥ 44px (bouw design.md)
 ```
+
+---
+
+## C. Besluit nodig
+
+| Vraag | Opties |
+|-------|--------|
+| Productie-font | **GAP Code (voorlopig vast in ontwerp)** · bouw nog Mono tot PR |
+| Accent | Huidig groen `#245c43` vast · of zachte multi-accent uit AI-ontwerp |
+| Papierwit | Bouw paper/surface overnemen als default in vault-UI-kit |
+
+Tot besluit: **wireframes beschrijven hiërarchie en rust**; screenshots/CSS-proeven labelen “vault” vs “bouw”.
+
+---
 
 ## Toon in UI
 
-- Veel witruimte / gray-0
-- Dunne gray randen i.p.v. zware shadows
-- Kassa: nóg rustiger (minder nav, meer focus op totalen en CTA)
-- Vertrouwen: heldere totalen, GAP Code voor bedragen, rustige Mollie-stap
-
-## Koppeling bouw
-
-Later in Svelte:
-
-```css
-:root {
-  /* tokens hier */
-}
-```
-
-Fonts laden via `@font-face` uit self-hosted bestanden (licentie respecteren; niet zomaar publiek CDN zonder afspraak).
+- Veel papier/witruimte, dunne randen  
+- Kassa nóg rustiger (minder nav)  
+- Bedragen uit server-DTO; geen dummy-prijzen in “echte” componenten  
+- Self-host fonts; licentie checken vóór publieke launch  

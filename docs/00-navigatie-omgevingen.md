@@ -63,9 +63,10 @@ Mobiel
 **Niet tonen in kassa:** Collectie | Makers | Vrijplaatsen (voorkomt afhaken met volle mand elders).  
 Wel één escape: “Verder winkelen” / “Terug naar de winkel”.
 
-**Winkelwagen:** mag kassa-header gebruiken zodra de intent “ik ga afrekenen” is, of hybride: nog winkel-header op `/winkelwagen` en kassa-header vanaf `/afrekenen`. **Voorstel draadmodel:**  
-- `/winkelwagen` = nog **winkel-header** + mand-focus  
-- `/afrekenen…` = **kassa-header**
+**Mand:** mag kassa-header gebruiken zodra de intent “ik ga afrekenen” is, of hybride: nog winkel-header op `/mand` en kassa-header vanaf `/afrekenen`. **Voorstel draadmodel (bouwroutes):**  
+- `/mand` = nog **winkel-header** + mand-focus  
+- `/afrekenen…` = **kassa-header**  
+- `/bestellingen/:id` = light status/bedankt-chrome (privé)
 
 ---
 
@@ -101,8 +102,8 @@ Wel één escape: “Verder winkelen” / “Terug naar de winkel”.
 | Pagina | Hoofdmenu winkel | Kassamenu | Voet winkelmenu |
 |--------|------------------|-----------|-----------------|
 | Home / collectie / product | ja | nee | ja |
-| Winkelwagen | ja | nee (voorstel) | ja |
-| Afrekenen stappen | nee | ja | nee / minimaal |
+| Mand `/mand` | ja | nee (voorstel) | ja |
+| Afrekenen `/afrekenen` | nee | ja | nee / minimaal |
 | Mollie pending/fail return | nee | ja | nee |
 | Bevestiging (betaald) | nee of light | light kassa of bedankt-chrome | ja (kort) |
 
@@ -113,3 +114,6 @@ Wel één escape: “Verder winkelen” / “Terug naar de winkel”.
 - “Kassa” i.p.v. alleen “Checkout” (NL-first, past bij Vrijzaak).
 - “Winkelmand” consistent (niet mixen met cart/bag).
 - Escape uit kassa: “Terug naar de winkel” — vriendelijk, niet “Annuleer order” tenzij betaling mislukt.
+
+---
+Routes en server-invarianten: [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).

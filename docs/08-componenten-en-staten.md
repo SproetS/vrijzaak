@@ -5,7 +5,7 @@
 1. **OrderSummary** — regels, korting, verzending, totaal, btw-regel, optioneel verdeling
 2. **StepHeader** — stap x van 3 + titel
 3. **Field** — label, input, hint, fout
-4. **Price** — altijd “EUR x,xx” + “incl. btw” in context
+4. **Price** — altijd “EUR x,xx” + “incl. btw” in context (server-DTO)
 5. **TrustLine** — Mollie / iDEAL
 6. **SplitExplainer** — inklapbare opbrengstverdeling
 7. **NavWinkel** — hoofdmenu Collectie | …
@@ -14,33 +14,41 @@
 
 ## Globale staten
 
+Bouw vraagt expliciet: laden, leeg, fout, niet beschikbaar, form valid/invalid, busy, succes (`docs/design.md` in webshop).
+
 | Staat | Waar | Gedrag |
 |-------|------|--------|
-| Lege mand | Wagen | CTA naar winkel |
-| Ongeldige korting | Wagen / checkout | Fout onder veld |
+| Lege mand | `/mand` | CTA naar `/collectie` |
+| Laden / busy | mand, checkout, return | Geen dubbele submit; bevries onzekere poging |
+| Ongeldige korting | mand / checkout | Fout onder veld (server) |
+| Quote verlopen / prijs gewijzigd | checkout | Nieuw voorstel + bevestiging |
 | Geen verzendoptie | Verzending | Blokkeer verder + uitleg |
-| Mollie cancel/fail | Betalen | Opnieuw proberen |
-| Mollie pending | Return | Wachten / refresh |
-| Betaald | Bevestiging | Happy path |
-| Uitverkocht tijdens checkout | Betalen / server | “Dit product is net niet meer beschikbaar” + terug mand |
+| Mollie cancel/fail/expired | return | Opnieuw proberen |
+| Mollie pending | return | Wachten / refresh — geen “betaald” |
+| Betaald (server) | bevestiging | Happy path + mail confirmation |
+| Voorraadtekort | submit / paid-late | Duidelijke fout; geen halve order als succes |
+| Lege zoek/collectie | listing | Eerlijke lege staat, geen nepproducten |
 
 ## Desktop breakpoints (indicatief)
 
-- Mobiel: < 768px — stacked, sticky CTA
+- Mobiel: < 768px — stacked, sticky CTA, ≥44px targets
 - Desktop: summary vaste kolom rechts ca. 360px
 
 ## Toegankelijkheid
 
-- Focusvolgorde logisch
+- Focusvolgorde logisch; zichtbare focus; skiplink
 - Fouten met tekst, niet alleen kleur
-- Knoppen met duidelijke namen
+- Knoppen met duidelijke namen; geen nepknoppen
 - Voldoende tap targets op mobiel
 
-## Koppeling met latere bouw
+## Koppeling met bouw
 
-- SvelteKit (of andere) front + backend orders
-- Mollie payments + webhooks
-- Catalogus: product, btw-tarief, maker, vrijplaats, verzendklasse, verdeel-% 
+- Nuxt `app/` + `shared/design/tokens.ts`
+- Routes: catalogue + `/mand` + `/afrekenen` + `/bestellingen/:id`
+- Mollie worker/webhooks; return ≠ paid
+- Catalogus: variant, prijsrevisie, btw-code, partijen, media
+
+Zie [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).
 
 ---
-Vrijzaak · https://vrijzaak.nl · [[00-index]]
+Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

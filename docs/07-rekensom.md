@@ -74,9 +74,10 @@ Doel: anti-commerciële eerlijkheid, geen Excel-shock.
 
 ### Intern (niet op checkout-scherm)
 
-- Per orderregel: `artist_share`, `place_share`, `shop_share`, `vat_amount`, `vat_rate`
-- Sommatie voor uitbetaling later (buiten Mollie-klantflow nu)
-- Mollie ontvangt **één** charge van totaal T
+- Bouw: aandelen in **basispunten** (som 10 000) op immutable orderregels; geen float; oude 70/30-vuistregels gelden niet.
+- Btw/korting/verzend via checkout-policy + line snapshots; UI rekent niet “na”.
+- Uitbetaling/partnerbatches buiten kassa-UI.
+- Mollie ontvangt **één** charge van totaal T (centen, EUR).
 
 ## Voorbeeld (fictief)
 
@@ -106,4 +107,4 @@ waarvan btw                … (herberekend)
 - Gemengde verzendklassen: verzending som van deelzendingen
 
 ---
-Vrijzaak · https://vrijzaak.nl · [[00-index]]
+Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

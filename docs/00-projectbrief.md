@@ -1,54 +1,59 @@
 # Projectbrief Vrijzaak
 
 ## Wat is dit?
-Verkenning / ontwerpverslag in **Markdown** (Obsidian of gelijk) voor webwinkel **Vrijzaak**.
+
+Ontwerpverslag in **Markdown** voor webwinkel **Vrijzaak**. Geen Obsidian-vereiste: bestanden zijn gewoon te openen in GitHub of een editor.
 
 | | |
 |--|--|
 | **Werknaam** | Vrijzaak |
 | **URL** | https://vrijzaak.nl |
-| **Map** | `Vrijzaak draadmodel` (deze vault) |
+| **Ontwerp** | deze repo (`SproetS/vrijzaak`) |
+| **Bouw** | collega monorepo Nuxt/Directus (helling) |
 
-## Opdracht en rollen
-- **Jij / UX-design:** super lekkere UX, vertrouwenwekkende vormgeving, fijne kassa-ervaring.
-- **Collega (winkelier):** producten, klanten, operationele winkel — jij rapporteert richting hem.
-- **Product van déze verkenning:** geen productiecode per se, maar een **ontwerpverslag + draadmodellen** dat de winkel vangt én een helder traject naar bouw.
+## Opdracht en rollen (met z’n drieën)
 
-## Technisch traject (achterhoofd → rapportage)
-Richting die we aanhouden:
+| Rol | Wie / focus |
+|-----|-------------|
+| **Ontwerper / UX** | Jij — flows, vormgeving, kassa-ervaring; vastleggen in deze repo |
+| **Zakelijk leider / winkelier** | Producten, klanten, beleid, operationeel |
+| **Programmeur** | Nuxt/Directus-monorepo (helling), implementatie |
+
+- **Source of truth techniek** (routes, checkout, API, code-tokens): **bouwrepo / programmeur**.  
+- **Source of truth ontwerpintentie** (wireframes, copy, GAP Code voorlopig): **deze repo**.  
+- Product van deze fase: ontwerpverslag + draadmodellen, geen app-code hier.
+
+## Technisch traject
 
 ```
-Vormgeving (Markdown / tokens / wireframes)
+Vormgeving (Markdown / tokens / wireframes)   ← deze repo
+        ↓ afstemming
+Nuxt 4 storefront + shared design tokens      ← bouwrepo
         ↓
-Svelte(Kit) frontend  +  CSS (design tokens, GAP-fonts)
+Directus 12 + PostgreSQL
         ↓
-Directus (catalogus, content, orders-config, media)
-        ↓
-Mollie (iDEAL e.d.) voor betalen
+Mollie (iDEAL …) + Resend (mail)
 ```
 
-- **Svelte/SvelteKit + CSS:** UI, checkout-flow, vertrouwen, performance.
-- **Directus:** winkelier-vriendelijk beheer (producten, makers, vrijplaatsen, content) — past bij “collega is de winkelier”.
-- **Niet nu:** volledige implementatie; wél keuzes documenteren zodat bouw geen verrassing is.
+Details: [00-tech-traject.md](./00-tech-traject.md) · [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).
 
-Zie ook [[00-tech-traject-svelte-directus]].
+## Merk en product
 
-## Merk & product
 - Platform voor **vrijplaatsen** (Ruigoord, ADM, OT301, …) en makers.
 - Fysieke producten: T-shirts, boekjes, schilderijen, kunstwerken.
-- B2C, sfeer: anti-commercieel / eerlijk, wél betrouwbare kassa.
-- Opbrengstverdeling: maker + vrijplaats + winkel (+ btw).
+- B2C, anti-commercieel eerlijk, wél betrouwbare kassa.
+- Opbrengstverdeling: maker + vrijplaats + winkel (+ btw), server-side basispunten.
 
 ## Designrichting (voorlopig)
-- **Fonts:** GAP Zuid VG (tekst/UI), GAP Code (accent/mono/tech) — lokaal op deze Mac, zie [[00-design-tokens]].
-- **Kleur:** greyscale basis + zachte, heldere accenten van primaire kleuren (niet schreeuwerig).
-- **Checkout:** gescheiden navigatie winkel vs kassa — [[00-navigatie-omgevingen]].
 
-## Hoe deze map te openen
-1. Obsidian → *Open folder as vault* → deze map `Vrijzaak draadmodel`.
-2. Start bij [[00-index]].
-3. Alles is plain Markdown: ook te lezen in VS Code, Git, Warp, etc.
+- **Font (voorlopig):** **GAP Code** — [00-design-tokens.md](./00-design-tokens.md).
+- **Bouwcode nu:** kan nog GAP Mono in `tokens.ts` hebben; sync via programmeur. Kleuren: paper/ink/accent-groen als start.
+- **Checkout-nav:** winkel vs kassa vs voet — [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md).
 
-Zie ook [[00-projectmap]] en [[AGENTS]].
+## Hoe te lezen
 
-Uitgewerkt plan: [[00-projectbeschrijving-en-stappenplan]].
+1. [00-index.md](./00-index.md)  
+2. [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md) als je met de code-collega praat  
+3. Checkout 01–08 voor kassa-UX  
+
+Plan: [00-projectbeschrijving-en-stappenplan.md](./00-projectbeschrijving-en-stappenplan.md).

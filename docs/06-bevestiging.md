@@ -1,11 +1,12 @@
 # 06 — Bevestiging (na geslaagde betaling)
 
-URL-voorstel: `/afrekenen/gelukt?order=…` (of order-token, geen zomaar opeenvolgende id in plain text)
+URL (bouw-richting): privé orderstatus **`/bestellingen/:id`** (scoped bewijs; noindex).  
+“Gelukt”-chrome mag dezelfde route zijn zodra server **paid** (of equivalent confirmed na paid-effect) is — niet alleen Mollie-return.
 
 ## Navigatie-omgeving
 
 Lichte **bedankt-chrome**: logo + eventueel Account; winkel-voetmenu mag kort terug (Contact, AV).  
-Geen vol Collectie-menu verplicht — wel duidelijke CTA “Verder rondkijken in de winkel”.
+Geen vol Collectie-menu verplicht — wel CTA “Verder rondkijken” → `/collectie`.
 
 ## Doel
 
@@ -43,7 +44,7 @@ Klant voelt: het is gelukt, ik word gezien, ik weet wat er nu gebeurt. “Happy�
 |  +------------------------------------------------------------+  |
 |  | [optioneel open] Hoe de opbrengst landt                    |  |
 |  | Eerlijk beeld: maker / vrijplaats / Vrijzaak / btw         |  |
-|  | (eenvoudige balk of percentages — zie 07-rekensom)         |  |
+|  | (server-aandelen; zie 07-rekensom)                         |  |
 |  +------------------------------------------------------------+  |
 |                                                                  |
 |  [ Verder rondkijken in de winkel ]                              |
@@ -57,20 +58,22 @@ Klant voelt: het is gelukt, ik word gezien, ik weet wat er nu gebeurt. “Happy�
 ## Happy-makers (inhoud, geen opsmuk)
 
 - Persoonlijke aanspreekvorm met naam indien bekend
-- Duidelijk ordernummer (ook in mail hetzelfde)
-- Concrete next steps, geen vaag “we verwerken het”
-- Geen upsell-druk; hoogstens “meer van deze maker” als zachte link
+- Duidelijk ordernummer (ook in mail hetzelfde) — ordernummer is **geen** toegangsbewijs
+- Concrete next steps
+- Geen upsell-druk; hoogstens zachte maker-link
 - Toegankelijke contactroute
 
-## Technische states
+## Technische states (bouw)
 
-- Pagina alleen zinvol als order `paid` (of short pending met auto-refresh)
-- Bij direct openen zonder betaling → nette fout of redirect wagen
-- Mail: orderbevestiging parallel (niet wachten op mail om pagina te tonen)
+- “Betaald / bedankt”-inhoud alleen bij **server-paid** (na stock-effect waar van toepassing)
+- Return van Mollie zonder paid → pending-UI ([05-betaling.md](./05-betaling.md)), geen confetti
+- Bevestigingsmail: job `orders.confirmation` na paid — pagina niet blokkeren op mailtransport
+- Gast: later claimen via bewijs + verified account, niet stil op e-mailmatch
+- Openen zonder bewijs → nette weigering, geen lek via voorspelbaar id
 
 ## Mobiel
 
-Zelfde hiërarchie; CTA’s full width; confetti/animatie optioneel later — niet nodig voor draadmodel.
+Zelfde hiërarchie; CTA’s full width; animatie optioneel later — niet nodig voor draadmodel.
 
 ---
-Vrijzaak · https://vrijzaak.nl · [[00-index]]
+Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

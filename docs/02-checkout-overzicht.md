@@ -1,6 +1,7 @@
 # 02 — Checkout: overzicht flow (desktop + mobiel)
 
-URL-voorstel: `/afrekenen`
+Bouwroutes: mand `/mand` · kassa `/afrekenen` · status `/bestellingen/:id`  
+Zie [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).
 
 ## Navigatie-omgeving
 
@@ -96,9 +97,11 @@ Na inloggen: adresboek voorinvullen indien aanwezig.
 
 ## Navigatie-regels
 
-- Terug behoudt ingevulde data (session).
-- Verversen mag draft behouden (session/local).
-- Mand wijzigen tijdens checkout: terug naar wagen of inline edit later.
+- Terug behoudt ingevulde data waar de server dat toelaat.
+- Verversen: bouw bewaart o.a. commandId/quoteId in sessionStorage — geen contactgegevens als bron van waarheid in de browser.
+- Prijzen/totalen altijd van server-quote; client stuurt geen eigen bedragen.
+- Mand wijzigen tijdens checkout: terug naar `/mand` of nieuw voorstel na wijziging.
+- Bij voorraadtekort of prijs/policy-wijziging: geen stille retry — nieuwe bevestiging.
 
 ---
-Vrijzaak · https://vrijzaak.nl · [[00-index]]
+Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

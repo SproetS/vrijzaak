@@ -1,6 +1,7 @@
-# 01 — Winkelwagen
+# 01 — Winkelmand
 
-URL-voorstel: `/winkelwagen` of `/cart`
+URL (bouw): **`/mand`**  
+(Nederlands label in UI: “Winkelmand”. Oude voorstellen `/winkelwagen` of `/cart` vermijden.)
 
 ## Navigatie-omgeving
 
@@ -19,7 +20,7 @@ Klant ziet wat er in de mand ligt, past aantallen aan, gaat door naar checkout.
 | Vrijzaak   Collectie · Makers · …     [Account] [Winkelmand (n)] |
 +------------------------------------------------------------------+
 |                                                                  |
-|  Winkelwagen                                                     |
+|  Winkelmand                                                      |
 |                                                                  |
 |  +----------------------------------------------------------+  |
 |  | [img] Productnaam — Maker · Vrijplaats                    |  |
@@ -51,7 +52,7 @@ Klant ziet wat er in de mand ligt, past aantallen aan, gaat door naar checkout.
 +---------------------------+
 | Vrijzaak     [Zoek] [☰] [Mand] |
 +---------------------------+
-| Winkelwagen               |
+| Winkelmand                |
 |                           |
 | [img] Naam                |
 | Maker · Vrijplaats        |
@@ -77,18 +78,20 @@ Klant ziet wat er in de mand ligt, past aantallen aan, gaat door naar checkout.
 
 ## Regels / gedrag
 
-- Prijsregel altijd **incl. btw**.
-- Max aantal: voorraad (indien bekend); anders redelijke max.
-- Verwijderen: direct of met undo-toast (“Verwijderd — Herstel”).
-- Kortingscode: succes/foutmelding onder het veld.
-- Verzendkosten: “berekend in de volgende stap” (tenzij flat rate al bekend).
-- CTA disabled als wagen leeg.
+- Client bewaart **variant-ID + aantal**; titels/prijzen via storefront-read / server (bouw checkout).
+- Getoonde prijsregel **incl. btw** indien catalogus zo presenteert; totalen niet “hard” uit de browser vertrouwen.
+- Mand **reserveert geen voorraad**.
+- Max aantal: server/beschikbaarheid; ongeldig aantal blokkeert afrekenen tot correctie (bouw: ≥44px steppers).
+- Verwijderen: direct of undo-toast.
+- Kortingscode: succes/fout van server onder het veld.
+- Verzendkosten: “berekend in de volgende stap” tenzij policy al flat toont.
+- CTA disabled als mand leeg; primaire knop → `/afrekenen`.
 
 ## Lege staat
 
 ```
 | Je mand is leeg.                    |
-| [Naar de winkel]                    |
+| [Naar de collectie]  → /collectie   |
 ```
 
 ## Notities anti-commercieel
@@ -97,4 +100,4 @@ Klant ziet wat er in de mand ligt, past aantallen aan, gaat door naar checkout.
 - Wel: “Je steunt maker en vrijplaats” als zachte lijn onder het overzicht (optioneel).
 
 ---
-Vrijzaak · https://vrijzaak.nl · [[00-index]]
+Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

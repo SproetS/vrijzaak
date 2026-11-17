@@ -1,6 +1,6 @@
 # Projectmap Vrijzaak
 
-Overzicht van mappen, vault en beoogde bouwstructuur. Voor mensen én agents.
+Overzicht van mappen en twee repo’s. Plain Markdown; Obsidian optioneel.
 
 ## Werknaam en URL
 
@@ -8,77 +8,83 @@ Overzicht van mappen, vault en beoogde bouwstructuur. Voor mensen én agents.
 |--|--|
 | Werknaam | **Vrijzaak** |
 | Productie-URL (beoogd) | https://vrijzaak.nl |
-| Fase nu | Ontwerpverkenning (Markdown / draadmodel), nog geen live shop |
+| Fase nu | Ontwerp in Markdown; bouwrepo bestaat parallel |
 
 ## Schijf (deze Mac)
 
 ```
-Vrijzaak/01 - Werkbestanden/Vrijzaak draadmodel/   ← repo SproetS/vrijzaak
-├── AGENTS.md
-├── README.md
-├── docs/           ← Markdown
-└── frontend/       ← CSS, fonts, logos, svg, Svelte later
+Vrijzaak/
+├── 01 - Werkbestanden/Vrijzaak draadmodel/   ← ontwerp GitHub SproetS/vrijzaak
+│   ├── AGENTS.md
+│   ├── README.md
+│   ├── docs/           ← Markdown (start: 00-index.md)
+│   └── frontend/       ← tokens/CSS-proeven, logos, svg (geen Nuxt-app)
+└── 03 - Bouw/webshop/                      ← clone helling Nuxt monorepo
+    ├── docs/           ← domeincontracten (bron voor 00-bouwcontract-ontwerp)
+    ├── app/ shared/ server/ directus/ …
 ```
 
-## Deze vault / repo
- — inhoudelijke kaart
+## Docs in deze ontwerprepo
 
 ### Start
-- [[README]] — openen van de vault
-- [[AGENTS]] — regels voor AI-agents die hier werken
-- [[00-index]] — hub
-- [[00-projectbrief]] — opdracht en rollen
-- [[00-projectbeschrijving-en-stappenplan]] — beschrijving + stappenplan
-- [[00-projectmap]] — dit document
+
+- [README.md](../README.md)
+- [AGENTS.md](../AGENTS.md)
+- [00-index.md](./00-index.md)
+- [00-projectbrief.md](./00-projectbrief.md)
+- [00-projectbeschrijving-en-stappenplan.md](./00-projectbeschrijving-en-stappenplan.md)
+- [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md)
+- [00-sessie-2026-11-17-bouwdocs-in-ontwerp.md](./00-sessie-2026-11-17-bouwdocs-in-ontwerp.md)
 
 ### Ontwerpkeuzes
-- [[00-navigatie-omgevingen]] — winkel / kassa / voet
-- [[00-design-tokens]] — GAP-fonts, greyscale, accenten
-- [[00-tech-traject-svelte-directus]] — Svelte + CSS + Directus + Mollie
+
+- [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md)
+- [00-design-tokens.md](./00-design-tokens.md)
+- [00-tech-traject.md](./00-tech-traject.md)
 
 ### Checkout-draadmodellen
-- [[01-winkelwagen]] … [[08-componenten-en-staten]]
 
-### Gepland (nog niet alles geschreven)
-- [[09-sitemap-ia]] — site-structuur winkel
-- [[10-productmodel]] — Directus-velden
-- Home / listing / productdetail / maker / vrijplaats (draadmodellen)
-- Account + footer-pagina’s
+- [01-winkelwagen.md](./01-winkelwagen.md) … [08-componenten-en-staten.md](./08-componenten-en-staten.md)
 
-## Beoogde bouw (later, niet in deze vault als code)
+### Gepland
+
+- `09-sitemap-ia.md` — o.a. `/collectie`, `/producten/:slug`, …
+- `10-productmodel.md` — Directus/catalogue-velden voor UX
+- Home / listing / productdetail / maker / vrijplaats
+- Account + footer
+
+## Bouw (niet in deze vault als app-code)
 
 ```
-vrijzaak.nl (SvelteKit + CSS tokens + GAP self-hosted)
-    ↔  Directus (catalogus, makers, vrijplaatsen, content)
-    ↔  Mollie (iDEAL, …)
+vrijzaak.nl (Nuxt 4 + tokens + GAP self-hosted)
+    ↔  Directus 12 + PostgreSQL
+    ↔  Mollie, Resend workers
 ```
 
-Exacte repo-paden op VPS of lokaal: vastleggen zodra bouw start (verwijs dan hierheen).
+Remote bouw: Gitea `git.helling.pro/Vrijzaak/Vrijzaak` (spiegel GitHub Hellingajes/Vrijzaak).  
+Push alleen naar Gitea-origin volgens hun workspace-doc.
 
 ## Fonts (lokaal)
 
-- `/Users/sjoerd/Desktop/GAP Fonts/OTF/Gap Zuid VG/`
-- `/Users/sjoerd/Desktop/GAP Fonts/OTF/GAP Code/`
-- Webfonts: `/Users/sjoerd/Desktop/GAP Fonts/Web/`
-
-Zie [[00-design-tokens]].
+- `/Users/sjoerd/Desktop/GAP Fonts/…`
+- Zie [00-design-tokens.md](./00-design-tokens.md)
 
 ## Rollen
 
 | Rol | Focus |
 |-----|--------|
-| UX / vormgeving (jij) | Flows, tokens, kassa-ervaring, vault |
-| Winkelier (collega) | Producten, klanten, operationeel; leest brief + tech-traject |
-| Tech (later) | SvelteKit, Directus, Mollie, deploy |
+| UX / vormgeving | Flows, tokens, kassa-ervaring, deze repo |
+| Winkelier / bouw-collega | Producten, Nuxt/Directus, Gitea |
+| Agents | Markdown volgens AGENTS; geen secrets/deploy hier |
 
-## Wat hoort wél / niet in deze map
+## Wel / niet in ontwerprepo
 
-**Wel:** Markdown-ontwerp, ASCII-wireframes, besluiten, open vragen, lichte assets (png/svg exports).  
-**Niet:** `node_modules`, `.env`, database dumps, grote raw foto-libraries (liever `02 - Content` of cloud).
+**Wel:** Markdown, ASCII-wireframes, besluiten, open vragen, lichte png/svg.  
+**Niet:** `node_modules`, `.env`, dumps, grote raw foto’s, hele bouwmonorepo-mirror.
 
 ## Rapportage-snelle start voor collega
 
-1. [[00-projectbrief]]  
-2. [[00-tech-traject-svelte-directus]] (alinea onderaan)  
-3. [[02-checkout-overzicht]] + [[06-bevestiging]]  
-4. [[00-navigatie-omgevingen]]
+1. [00-projectbrief.md](./00-projectbrief.md)  
+2. [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md)  
+3. [02-checkout-overzicht.md](./02-checkout-overzicht.md) + [06-bevestiging.md](./06-bevestiging.md)  
+4. [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md)  

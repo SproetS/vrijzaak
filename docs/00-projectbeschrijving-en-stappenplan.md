@@ -3,9 +3,9 @@
 Voor **mensen** (UX, winkelier-collega, tech) en **agents**.  
 Werknaam: **Vrijzaak** · URL: https://vrijzaak.nl  
 GitHub: https://github.com/SproetS/vrijzaak  
-Vault: deze map.
+Ontwerprepo: deze map (GitHub SproetS/vrijzaak). Bouwrepo apart (helling Nuxt).
 
-Gerelateerd: [[00-projectbrief]] · [[00-projectmap]] · [[AGENTS]] · [[00-tech-traject-svelte-directus]] · [[00-index]]
+Gerelateerd: [00-projectbrief.md](./00-projectbrief.md) · [00-projectmap.md](./00-projectmap.md) · [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md) · [00-tech-traject.md](./00-tech-traject.md) · [00-index.md](./00-index.md) · [AGENTS.md](../AGENTS.md)
 
 ---
 
@@ -29,33 +29,34 @@ Geen live shop nog, maar een **ontwerpverslag + draadmodellen** (Markdown/Git) w
 
 | Rol | Verantwoordelijkheid |
 |-----|----------------------|
-| UX / vormgeving | Flows, navigatie, tokens, copy, vault |
-| Winkelier-collega | Producten, klanten, operationele eisen; feedback op ontwerp |
-| Tech (later) | SvelteKit, Directus, Mollie, VPS/deploy |
-| Agents | Markdown uitbreiden volgens [[AGENTS]]; geen secrets/deploy tenzij gevraagd |
+| Ontwerper / UX | Flows, navigatie, tokens (GAP Code voorlopig), copy, deze vault |
+| Zakelijk leider / winkelier | Producten, klanten, commerciële eisen; feedback op ontwerp |
+| Programmeur | Nuxt/Directus-monorepo (SoT routes/checkout/tech), Mollie, workers, VPS |
+| Agents | Markdown volgens [AGENTS.md](../AGENTS.md); geen secrets/deploy tenzij gevraagd |
 
-### 1.4 Technisch doelbeeld (bouw, niet nu)
+### 1.4 Technisch doelbeeld (bouw bestaat deels)
 
 ```
-vrijzaak.nl          SvelteKit + CSS (GAP Zuid VG, GAP Code, tokens)
+vrijzaak.nl          Nuxt 4 + shared design tokens (GAP — besluit open)
        ↕
-Directus             catalogus, makers, vrijplaatsen, content, (orders?)
+Directus 12 + PG     catalogus, identity, private order/stock commands
        ↕
-Mollie               iDEAL e.d., webhook → betaald
+Mollie + Resend      iDEAL (test), webhooks; mail na paid
 ```
 
-- **Svelte + CSS:** lekkere UX, kassa, vertrouwen.  
-- **Directus:** winkelier beheert producten/content.  
-- **Mollie:** betalen; één charge van klanttotaal.
+- **Nuxt:** storefront + HTTP-grens; kassa-UX hier ontwerpen.  
+- **Directus:** winkelier beheert catalogus/content (na licentie-acceptatie).  
+- **Mollie:** één charge; return ≠ paid tot server bevestigt.  
+- Details: [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).
 
 ### 1.5 Ontwerpkeuzes (vast tot herzien)
 
 - Gast-checkout + optioneel account  
-- Gescheiden nav: **winkel** / **kassa** / **voet** — [[00-navigatie-omgevingen]]  
-- Prijzen **incl. btw**, meerdere tarieven mogelijk — [[07-rekensom]]  
-- Verzending slim bij gemengde mand (pakket vs kunst) — [[04-verzending]]  
-- Checkout-stappen + happy bevestiging — [[02-checkout-overzicht]], [[06-bevestiging]]  
-- Visueel: greyscale + zachte accenten, GAP-fonts — [[00-design-tokens]]  
+- Gescheiden nav: **winkel** / **kassa** / **voet** — [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md)  
+- Prijzen **incl. btw**, meerdere tarieven mogelijk — [07-rekensom.md](./07-rekensom.md)  
+- Verzending slim bij gemengde mand (pakket vs kunst) — [04-verzending.md](./04-verzending.md)  
+- Checkout-stappen + happy bevestiging — [02-checkout-overzicht.md](./02-checkout-overzicht.md), [06-bevestiging.md](./06-bevestiging.md)  
+- Visueel: greyscale + zachte accenten, GAP-fonts — [00-design-tokens.md](./00-design-tokens.md)  
 - Geen nep-schaarste, geen agressieve upsell  
 
 ### 1.6 Succescriteria per fase
@@ -78,6 +79,7 @@ Legenda: **M** = mens (UX/winkelier), **A** = agent, **T** = tech.
 | # | Stap | Wie | Status |
 |---|------|-----|--------|
 | 0.1 | Projectbrief, tokens, tech-traject, navigatie | M/A | Gedaan |
+| 0.7 | Bouwdocs verwerkt in ontwerp-Markdown | A/M | Gedaan (2026-11-17) |
 | 0.2 | Checkout-draadmodellen 01–08 | M/A | Gedaan |
 | 0.3 | GitHub-repo `SproetS/vrijzaak`, lokale `main` | M | Gedaan |
 | 0.4 | AGENTS.md + projectmap | M/A | Gedaan |
@@ -101,7 +103,7 @@ Legenda: **M** = mens (UX/winkelier), **A** = agent, **T** = tech.
 
 | # | Stap | Wie | Deliverable |
 |---|------|-----|-------------|
-| 2.1 | Accent-hex en UI-kit naast `Vrijzaak-ontwerp1.ai` | M | Update [[00-design-tokens]] |
+| 2.1 | Accent-hex en UI-kit naast `Vrijzaak-ontwerp1.ai` | M | Update [00-design-tokens.md](./00-design-tokens.md) |
 | 2.2 | Optioneel: VitePress/static site uit deze md | T/A | Build-pipeline |
 | 2.3 | Optioneel: VPS `ontwerp.vrijzaak.nl` | T | nginx static |
 | 2.4 | Rapportage-moment collega (demo vault of web) | M | |
@@ -110,7 +112,7 @@ Legenda: **M** = mens (UX/winkelier), **A** = agent, **T** = tech.
 
 | # | Stap | Wie | Deliverable |
 |---|------|-----|-------------|
-| 3.1 | Repo(s) SvelteKit + Directus-schema | T | Code buiten deze vault |
+| 3.1 | Werken in bestaande Nuxt/Directus-monorepo (helling) | T | Buiten deze vault |
 | 3.2 | Design tokens → CSS; GAP self-hosted | T | |
 | 3.3 | Catalogus Directus (product, maker, vrijplaats) | T + winkelier | |
 | 3.4 | Winkel browse + productdetail | T | |
@@ -134,11 +136,11 @@ Legenda: **M** = mens (UX/winkelier), **A** = agent, **T** = tech.
 ## 3. Werkafspraken (mens + agent)
 
 1. **Bron ontwerp:** deze Git-repo / vault. Wijzigingen committen op `main` of via PR.  
-2. **Agents:** volgen [[AGENTS]]; geen productie-deploy of secrets hier.  
+2. **Agents:** volgen [AGENTS.md](../AGENTS.md); geen productie-deploy of secrets hier.  
 3. **Besluiten:** korte “Besluit”-sectie in de relevante note; open vragen blijven “Open”.  
 4. **Scope creep:** nieuwe wensen → Open punten of nieuwe note, niet stilzwijgend checkout omgooien.  
 5. **Taal UI:** Nederlands in wireframes.  
-6. **Definition of done (ontwerp-note):** gelinkt vanuit [[00-index]], backlinks, geen aannames als feiten.
+6. **Definition of done (ontwerp-note):** gelinkt vanuit [00-index.md](./00-index.md), backlinks, geen aannames als feiten.
 
 ---
 
@@ -147,9 +149,9 @@ Legenda: **M** = mens (UX/winkelier), **A** = agent, **T** = tech.
 | Risico | Mitigeratie |
 |--------|-------------|
 | Verzending te complex | Klassen + “op afspraak” voor kunst; tarieven later invullen |
-| Btw/verdeling juridisich/boekhoudkundig | Model in [[07-rekensom]]; validatie met boekhouder vóór live |
+| Btw/verdeling juridisich/boekhoudkundig | Model in [07-rekensom.md](./07-rekensom.md); validatie met boekhouder vóór live |
 | Collega kan Git niet | Static docs-site of issues; jij blijft editor |
-| Twee CMS-paden (Tina + Directus) | Docs static/wiki; shop = Directus |
+| Ontwerp-repo vs bouw-repo | Gescheiden houden; dunne links/pointers |
 | Te vroeg bouwen | Fase 1–2 af vóór fase 3 |
 
 ---
@@ -157,7 +159,7 @@ Legenda: **M** = mens (UX/winkelier), **A** = agent, **T** = tech.
 ## 5. Directe volgende acties (nu)
 
 1. **Mens:** collega uitnodigen op `SproetS/vrijzaak` (als gewenst).  
-2. **Agent/mens:** `09-sitemap-ia.md` en `10-productmodel.md` schrijven.  
+2. **Agent/mens:** `09-sitemap-ia.md` en `10-productmodel.md` o.b.v. catalogue-routes.  
 3. **Mens:** feedbackronde op checkout-draadmodellen (01–08).  
 4. **Later:** static publish of VPS zodra deelomgeving gekozen is.
 

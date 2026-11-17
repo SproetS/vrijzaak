@@ -44,6 +44,7 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 6. `docs/00-navigatie-omgevingen.md`
 6b. `docs/00-nomenclatuur-winkel.md`
 7. `docs/00-design-tokens.md`
+7b. `docs/00-merk-toon-en-principes.md` — sfeer, toon, principes
 8. `docs/00-tech-traject.md`
 9. `docs/01`–`docs/08` checkout-draadmodellen
 

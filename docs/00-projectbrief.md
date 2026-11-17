@@ -52,6 +52,10 @@ Details: [00-tech-traject.md](./00-tech-traject.md) · [00-bouwcontract-ontwerp.
 
 Zie [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md).
 
+## Toon en sfeer
+
+Zie [00-merk-toon-en-principes.md](./00-merk-toon-en-principes.md) (visueel + verbaal). Maten: [00-design-tokens.md](./00-design-tokens.md).
+
 ## Designrichting (voorlopig)
 
 - **Font (voorlopig):** **GAP Code** — [00-design-tokens.md](./00-design-tokens.md).

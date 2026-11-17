@@ -24,7 +24,8 @@ Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 | [00-tech-traject.md](./00-tech-traject.md) | Stack Nuxt + Directus + Mollie |
 | [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md) | Winkel vs kassa vs voet |
 | [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) | Zaak-labels **NL+EN**; techniek Engels; paths wachten |
-| [00-design-tokens.md](./00-design-tokens.md) | GAP-fonts, greyscale; vs bouw-tokens |
+| [00-design-tokens.md](./00-design-tokens.md) | Maten: kleur, type, V/H-grid, thema |
+| [00-merk-toon-en-principes.md](./00-merk-toon-en-principes.md) | **Toon, sfeer, copy-houding, principes** |
 | [00-git-en-github.md](./00-git-en-github.md) | Ontwerp-GitHub |
 | [00-figcraft-samenwerking.md](./00-figcraft-samenwerking.md) | FigCraft + CLI/MCP samenwerken |
 | [00-css-figcraft-sync.md](./00-css-figcraft-sync.md) | CSS-tokens → FigCraft styles/fonts |

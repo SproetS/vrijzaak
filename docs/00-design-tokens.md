@@ -4,7 +4,8 @@ Werknaam / site: **Vrijzaak** · https://vrijzaak.nl
 
 **Ontwerpafspraken in Markdown**, plus spiegel van wat de **bouwrepo nu** gebruikt. Bij implementatie: één set CSS-variabelen in Nuxt (`shared/design/tokens.ts` → `--akws-*`), geen losse componentkleuren.
 
-Zie [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md) §7.
+Zie [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md) §7.  
+**Toon / sfeer / copy-houding** (niet de hex): [00-merk-toon-en-principes.md](./00-merk-toon-en-principes.md).
 
 ---
 

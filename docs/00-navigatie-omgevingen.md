@@ -1,119 +1,113 @@
 # Navigatie-omgevingen Vrijzaak
 
-Drie gescheiden “werelden” in de UI. Doel: winkel browsen voelt anders dan afrekenen; juridisch/info hoort bij de winkelrand, niet bij de kassa-focus.
+Drie gescheiden “werelden” in de UI. Doel: browsen in de **zaak** voelt anders dan bij de **kassa**; juridisch/info hoort in de voet, niet in kassa-focus.
+
+**Winkelnamen (UI):** [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) — Etalage, Magazijn, Loods, Kassa, Winkelmand.  
+**Routes (bouw SoT):** o.a. `/`, `/collectie`, `/mand`, `/afrekenen` — labels mogen afwijken van het pad.
 
 ## 1. Hoofdmenu — Winkel (browse)
 
-**Waar:** productlijsten, productdetail, collecties, makers, vrijplaatsen, zoeken, homepage winkel.
+**Waar:** home, etalage, magazijn, loods, product (“werk”), makers, vrijplaatsen, zoeken.
 
-**Sfeer:** ontdekken, rustig, anti-commercieel browsen.
+**Sfeer:** ontdekken, rustig, alsof je door de zaak loopt — geen kassa-afleiding.
 
 ```
 Desktop
 +------------------------------------------------------------------+
-| [Logo Vrijzaak]     Collectie  |  Makers  |  Vrijplaatsen  | …   |
-|                                 zoek              [Account] [Mand]|
+| [Logo Vrijzaak]   Etalage · Magazijn · Loods · Makers · Vrijplaatsen |
+|                              zoek              [Account] [Winkelmand] |
 +------------------------------------------------------------------+
 
 Mobiel
 +----------------------------------+
 | [Logo]              [Zoek] [☰]   |
-| (☰ opent: Collectie, Makers, …,  |
-|  Account, Mand)                  |
+| (☰: Etalage, Magazijn, Loods,    |
+|  Makers, Vrijplaatsen, Account,  |
+|  Winkelmand)                     |
 +----------------------------------+
 ```
 
-**Voorbeelditems (inhoud later vullen):**
-- Collectie (of Shop / Werken)
-- Makers
-- Vrijplaatsen (Ruigoord, ADM, OT301, …)
-- Eventueel: Thema’s / Nieuw
-- Utility rechts: Account, Winkelmand (met teller)
+**Items**
 
-**Niet in hoofdmenu:** lange juridische lijsten; die horen in het winkel-voetmenu.
+| UI-label | Rol | Bouw nu |
+|----------|-----|---------|
+| **Etalage** | Aanbevolen / in de kijker | Home-secties; route later |
+| **Magazijn** | Alle artikelen | `/collectie` |
+| **Loods** | Aanbieding / uitverkoop | Nog geen route; later filter of `/loods` |
+| **Makers** | Kunstenaars | `/kunstenaars/…` |
+| **Vrijplaatsen** | Plekken | `/vrijplaatsen/…` |
+| **Winkelmand** | Meenemen naar kassa | `/mand` |
+| **Account** | Balie / eigen gegevens | `/account` |
+
+**Niet in hoofdmenu:** AV, Privacy, lange info — dat is voet.
+
+**Bouw-header vandaag:** Collectie · Winkelmand · Account · Over — streven = tabel hierboven (copy + eventueel links).
 
 ---
 
-## 2. Kassamenu — Checkout (focus)
+## 2. Kassamenu — Kassa (focus)
 
-**Waar:** winkelwagen (optioneel al kassa-modus), `/afrekenen/*`, Mollie-return “bezig/mislukt”, niet de bedanktpagina’s chaos.
+**Waar:** `/afrekenen`, Mollie-return bezig/mislukt; optioneel strakke chrome op status.
 
-**Sfeer:** rust, vertrouwen, geen afleiding naar browsen midden in betalen.
+**Sfeer:** rust, vertrouwen, geen Magazijn/Etalage/Loods in de top.
 
 ```
 Desktop
 +------------------------------------------------------------------+
-| [Logo]  Kassa                    Winkelmand · Account · [Sluiten]|
-|         Stap 2 van 3 · Verzending                                |
+| [Logo]  Kassa                 Winkelmand · Account · Terug naar winkel |
+|         (optioneel stap x/3)                                         |
 +------------------------------------------------------------------+
 
 Mobiel
 +----------------------------------+
-| [←]  Kassa              Account  |
-|      Stap 2/3                    |
+| [← Winkel]  Kassa        Account |
 +----------------------------------+
 ```
 
-**Voorbeelditems:**
-- Label/context: **Kassa** (niet het volledige Collectie-menu)
-- **Winkelmand** — terug naar inhoud van de mand
-- **Account** — inloggen/gast-status (discreet)
-- **Terug naar winkel** / sluiten — duidelijk, maar niet als primaire navigatieboom met Collectie
+**Items:** label **Kassa** · **Winkelmand** · **Account** · escape **Terug naar de winkel** (niet “annuleer” tenzij betaling mislukt).
 
-**Niet tonen in kassa:** Collectie | Makers | Vrijplaatsen (voorkomt afhaken met volle mand elders).  
-Wel één escape: “Verder winkelen” / “Terug naar de winkel”.
+**Niet tonen in kassa:** Etalage | Magazijn | Loods | Makers | Vrijplaatsen.
 
-**Mand:** mag kassa-header gebruiken zodra de intent “ik ga afrekenen” is, of hybride: nog winkel-header op `/mand` en kassa-header vanaf `/afrekenen`. **Voorstel draadmodel (bouwroutes):**  
+**Hybride (bouwroutes):**
+
 - `/mand` = nog **winkel-header** + mand-focus  
-- `/afrekenen…` = **kassa-header**  
-- `/bestellingen/:id` = light status/bedankt-chrome (privé)
+- `/afrekenen` = **kassa-header**  
+- `/bestellingen/:id` = light kassa of “bon”-chrome (privé)
 
 ---
 
 ## 3. Winkelmenu — Voet (info & juridisch)
 
-**Waar:** footer op winkelpagina’s (niet storend op kassa-stappen; op bevestiging wél kort ok).
-
-**Sfeer:** klein, secundair, betrouwbaar.
+**Waar:** footer op winkelpagina’s; op kassa minimaal of weg; op bevestiging kort ok.
 
 ```
 +------------------------------------------------------------------+
 | Vrijzaak — makers en vrijplaatsen                                |
-|                                                                  |
-| Contact  ·  Over ons  ·  Algemene voorwaarden  ·  Privacy        |
-|                                                                  |
-| … credit / vrijplaatsen …                                        |
+| Contact · Over ons · Algemene voorwaarden · Privacy              |
+| … etalage / magazijn soft links optioneel …                      |
 +------------------------------------------------------------------+
 ```
 
-**Items:**
-- Contact
-- Over ons
-- Algemene voorwaarden
-- Privacy (aanbevolen naast AV)
-- Eventueel: Verzenden & retour, Veelgestelde vragen
-
-**Kassa:** footer weglaten of tot één regel “Voorwaarden · Privacy” reduceren naast akkoord-checkbox (zie 05-betaling).
+**Kassa:** hoogstens “Voorwaarden · Privacy” bij akkoord-checkbox.
 
 ---
 
-## Matrix: welke nav waar?
+## Matrix
 
-| Pagina | Hoofdmenu winkel | Kassamenu | Voet winkelmenu |
-|--------|------------------|-----------|-----------------|
-| Home / collectie / product | ja | nee | ja |
-| Mand `/mand` | ja | nee (voorstel) | ja |
-| Afrekenen `/afrekenen` | nee | ja | nee / minimaal |
-| Mollie pending/fail return | nee | ja | nee |
-| Bevestiging (betaald) | nee of light | light kassa of bedankt-chrome | ja (kort) |
-
----
-
-## Copy-richting
-
-- “Kassa” i.p.v. alleen “Checkout” (NL-first, past bij Vrijzaak).
-- “Winkelmand” consistent (niet mixen met cart/bag).
-- Escape uit kassa: “Terug naar de winkel” — vriendelijk, niet “Annuleer order” tenzij betaling mislukt.
+| Plek | Winkelhoofd | Kassamenu | Voet |
+|------|-------------|-----------|------|
+| Home / Etalage / Magazijn / Loods / werk | ja | nee | ja |
+| Winkelmand `/mand` | ja | nee (voorstel) | ja |
+| Kassa `/afrekenen` | nee | ja | nee / minimaal |
+| Mollie pending/fail | nee | ja | nee |
+| Bon / bestelling (betaald) | light | light | ja (kort) |
 
 ---
-Routes en server-invarianten: [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).
+
+## Copy
+
+- **Kassa** i.p.v. checkout · **Winkelmand** i.p.v. cart · **Magazijn** i.p.v. alleen “collectie” in UI  
+- Escape: “Terug naar de winkel”  
+- Loods-toon: eerlijk, geen schreeuw-sale  
+
+Zie [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) · [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).

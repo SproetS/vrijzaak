@@ -57,5 +57,6 @@ Op GitHub.com werken de **blauwe markdown-links**; `[[wikilinks]]` zijn vooral h
 ## Ontwerp (kort)
 
 - Font voorlopig **GAP Code** (bouwcode kan nog Mono hebben tot sync)
-- Kassa-routes (bouw): `/mand`, `/afrekenen`, `/bestellingen/:id`
+- Winkelnamen: **Etalage · Magazijn · Loods · Kassa** ([docs](./docs/00-nomenclatuur-winkel.md))
+- Routes (bouw): `/mand`, `/afrekenen`, `/bestellingen/:id`, `/collectie` (Magazijn)
 - Prijzen en “betaald” komen van de **server**

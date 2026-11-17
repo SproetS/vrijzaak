@@ -22,6 +22,7 @@ Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 | [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md) | Pagina’s + componenten uit bouwrepo (SoT UI-structuur) |
 | [00-tech-traject.md](./00-tech-traject.md) | Stack Nuxt + Directus + Mollie |
 | [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md) | Winkel vs kassa vs voet |
+| [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) | **Etalage · Magazijn · Loods · Kassa** (winkelnamen) |
 | [00-design-tokens.md](./00-design-tokens.md) | GAP-fonts, greyscale; vs bouw-tokens |
 | [00-git-en-github.md](./00-git-en-github.md) | Ontwerp-GitHub |
 | [00-sessie-2026-11-17-bouwdocs-in-ontwerp.md](./00-sessie-2026-11-17-bouwdocs-in-ontwerp.md) | Sessieverslag |
@@ -36,8 +37,8 @@ Gekoppeld aan bouw-componenten/routes (zie ook [08](./08-componenten-en-staten.m
 
 | Note | Inhoud |
 |------|--------|
-| [01-winkelwagen.md](./01-winkelwagen.md) | Mand (`/mand`) |
-| [02-checkout-overzicht.md](./02-checkout-overzicht.md) | Flow desktop/mobiel (`/afrekenen`) |
+| [01-winkelwagen.md](./01-winkelwagen.md) | Winkelmand (`/mand`) |
+| [02-checkout-overzicht.md](./02-checkout-overzicht.md) | **Kassa** (`/afrekenen`) |
 | [03-gegevens.md](./03-gegevens.md) | Adres / gast-account |
 | [04-verzending.md](./04-verzending.md) | Pakket vs kunst |
 | [05-betaling.md](./05-betaling.md) | Mollie / iDEAL (return ≠ paid) |
@@ -51,7 +52,7 @@ Gekoppeld aan bouw-componenten/routes (zie ook [08](./08-componenten-en-staten.m
 
 - Fysiek, B2C; gast + account  
 - Vrijplaatsen + makers; eerlijke opbrengst (server-aandelen)  
-- UX: vertrouwen, fijne kassa, geen schreeuw-commerce  
+- UX: vertrouwen, fijne **kassa**; vitrine-taal (Etalage/Magazijn/Loods); geen schreeuw-commerce  
 - Tech: **Nuxt + Directus 12 + PostgreSQL + Mollie** (bouw); ontwerp in deze repo  
 
 ---
@@ -63,7 +64,8 @@ Gekoppeld aan bouw-componenten/routes (zie ook [08](./08-componenten-en-staten.m
 3. Prijzen **incl. btw** in presentatie; bedragen van server; split maker/vrijplaats/winkel optioneel transparant  
 4. Verzending mag slim achter de schermen  
 5. Mollie-states in mensentaal; **pending tot server bevestigt**  
-6. **Gescheiden nav:** winkel-browse ≠ kassa-focus ≠ voet-info  
+6. **Gescheiden nav:** winkel (Etalage/Magazijn/Loods) ≠ **Kassa** ≠ voet-info  
+8. UI-namen als echte zaak; routes volgen bouw tot hernoemd  
 7. Geen dummyprijzen of nep-koop-CTA’s alsof productie  
 
 ---
@@ -72,7 +74,7 @@ Gekoppeld aan bouw-componenten/routes (zie ook [08](./08-componenten-en-staten.m
 
 Volledig plan: [00-projectbeschrijving-en-stappenplan.md](./00-projectbeschrijving-en-stappenplan.md).
 
-1. `09-sitemap-ia.md` — URL’s sluiten aan op catalogue-routes *(nog te schrijven)*  
+1. `09-sitemap-ia.md` — IA met Etalage/Magazijn/Loods + bouwroutes *(nog te schrijven)*  
 2. `10-productmodel.md` — velden o.b.v. catalogue/Directus *(nog te schrijven)*  
 3. Draadmodellen: home, listing, productdetail, maker, vrijplaats  
 4. Account licht + footer-pagina’s  

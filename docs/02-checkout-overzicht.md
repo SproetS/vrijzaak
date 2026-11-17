@@ -1,5 +1,6 @@
-# 02 — Checkout: overzicht
+# 02 — Kassa (overzicht)
 
+**UI-label:** Kassa (niet “checkout” in klantcopy) — [nomenclatuur](./00-nomenclatuur-winkel.md)  
 **Route (bouw):** `/afrekenen` · `app/pages/afrekenen.vue`  
 **Ook:** `/bestellingen/:id` na submit · **OrderFulfilment** op statuspagina  
 **Layout bouw:** **default** (nog geen NavKassa-shell)  

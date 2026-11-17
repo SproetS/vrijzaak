@@ -41,6 +41,7 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 4. `docs/00-projectbrief.md`
 5. `docs/00-projectbeschrijving-en-stappenplan.md`
 6. `docs/00-navigatie-omgevingen.md`
+6b. `docs/00-nomenclatuur-winkel.md`
 7. `docs/00-design-tokens.md`
 8. `docs/00-tech-traject.md`
 9. `docs/01`–`docs/08` checkout-draadmodellen
@@ -62,7 +63,8 @@ Deploy, secrets, zware binaries, fonts zonder licentie, destructief wissen, upse
 ## Design
 
 - Routes mand/checkout volgen **bouw**: `/mand`, `/afrekenen`, `/bestellingen/:id`
-- Nav-richting ontwerp: winkel ≠ kassa ≠ voet (bouw heeft nu één `default`-shell)
+- UI-nomenclatuur zaak: **Etalage · Magazijn · Loods · Kassa · Winkelmand** (`docs/00-nomenclatuur-winkel.md`); niet “checkout/cart/sale” in klantcopy
+- Nav-richting: winkel ≠ kassa ≠ voet (bouw heeft nu één `default`-shell)
 - Totalen en paid-status van **server**; Mollie-return ≠ betaald
 - Font ontwerp **voorlopig GAP Code**; bouw `tokens.ts` kan nog GAP Mono hebben tot programmeur sync’t
 - Inventaris UI: `docs/00-inventaris-bouw-ui.md`

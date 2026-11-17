@@ -1,5 +1,6 @@
 # 01 — Winkelmand
 
+**UI:** Winkelmand → daarna **Kassa**  
 **Route (bouw):** `/mand` · `app/pages/mand.vue`  
 **Componenten/bouw:** layout **default** · composable **useCart** · read `/api/cart` · geen aparte mand-SFC  
 **Inventaris:** [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md) · mapping [08-componenten-en-staten.md](./08-componenten-en-staten.md)

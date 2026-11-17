@@ -101,6 +101,19 @@ Uit checkout/mand/account/docs — herbruikbaar voor UX-kit:
 
 ---
 
+## 1b. UI-labels (ontwerp) vs routes (bouw)
+
+| UI (zaak) | Bouwroute nu | Note |
+|-----------|--------------|------|
+| Etalage | `/` (+ later eigen pad) | Aanbevolen |
+| Magazijn | `/collectie` | Alle artikelen |
+| Loods | — | Aanbiedingen; route t.b.d. |
+| Kassa | `/afrekenen` | |
+| Winkelmand | `/mand` | |
+| Bon / bestelling | `/bestellingen/:id` | |
+
+Zie [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md).
+
 ## 2. Webpagina’s (bouw)
 
 ### 2.1 Publieke winkel (indexeerbaar beleid via seo; dev vaak noindex)

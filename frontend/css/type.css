@@ -62,21 +62,21 @@ h1 {
   font-size: var(--vz-text-h1-size);
   line-height: var(--vz-text-h1-leading);
   font-weight: var(--vz-text-h1-weight);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--vz-tracking-normal);
 }
 
 h2 {
   font-size: var(--vz-text-h2-size);
   line-height: var(--vz-text-h2-leading);
   font-weight: var(--vz-text-h2-weight);
-  letter-spacing: -0.015em;
+  letter-spacing: var(--vz-tracking-normal);
 }
 
 h3 {
   font-size: var(--vz-text-h3-size);
   line-height: var(--vz-text-h3-leading);
   font-weight: var(--vz-text-h3-weight);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--vz-tracking-normal);
 }
 
 h4 {
@@ -95,8 +95,13 @@ h6 {
   font-size: var(--vz-text-h6-size);
   line-height: var(--vz-text-h6-leading);
   font-weight: var(--vz-text-h6-weight);
-  letter-spacing: 0.04em;
+  letter-spacing: var(--vz-tracking-normal);
   text-transform: uppercase;
+}
+
+/* Bewuste tracked labels (S P A C E-gevoel) — spaarzaam */
+.vz-track {
+  letter-spacing: var(--vz-tracking-display);
 }
 
 /* Eerste heading in card/section zonder top-margin */

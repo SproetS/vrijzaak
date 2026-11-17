@@ -30,7 +30,7 @@
   padding-block: var(--vz-space-x-3); /* 12 — vult tot ≥48 met line */
   padding-inline: var(--vz-space-x-8); /* 32 */
   border: 1px solid transparent;
-  border-radius: var(--vz-radius-md);
+  border-radius: var(--vz-radius-md); /* 2px — CLI, max 4 */
   font-family: var(--vz-font-ui);
   font-size: var(--vz-text-body-size);
   font-weight: 700;
@@ -38,7 +38,7 @@
   /* Knoptekst: small caps (SoT in CSS; FigCraft: text.case smallCaps) */
   font-variant-caps: all-small-caps;
   font-feature-settings: "smcp" 1, "c2sc" 1;
-  letter-spacing: 0.04em; /* iets ruimer; past 4px-denken, optisch */
+  letter-spacing: var(--vz-tracking-normal); /* mono: geen decoratieve tracking */
   text-decoration: none;
   cursor: pointer;
   background: var(--vz-cta-bg);
@@ -89,7 +89,7 @@
   padding-block: var(--vz-space-x-3);
   padding-inline: var(--vz-space-x-4); /* 16 */
   border: 1px solid var(--vz-border);
-  border-radius: var(--vz-radius-md);
+  border-radius: var(--vz-radius-sm); /* 0 — scherpe forms, anti-Bootstrap */
   background: var(--vz-bg-secondary);
   color: var(--vz-text-primary);
   font-family: var(--vz-font-ui);

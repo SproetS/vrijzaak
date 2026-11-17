@@ -1,17 +1,17 @@
 {"command":"text.create","params":{"name":"DS/Title","text":"Design system — Vrijzaak","x":64,"y":40,"parent":3,"props":{"fontSize":40,"fontWeight":700,"fill":"#202c27"}}}
 {"command":"text.create","params":{"name":"DS/Subtitle","text":"Tokens = frontend/css · Light/Dark variables · baseline 16/20","x":64,"y":100,"parent":3,"width":800,"props":{"fontSize":16,"fill":"#58645d"}}}
 {"command":"text.create","params":{"name":"DS/ColorsH","text":"Colors","x":64,"y":160,"parent":3,"props":{"fontSize":24,"fontWeight":700,"fill":"#202c27"}}}
-{"command":"shape.rectangle","params":{"name":"swatch/paper","x":64,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#f5f2e9","stroke":"#b7c2b5","strokeWeight":1,"cornerRadius":8}}}
+{"command":"shape.rectangle","params":{"name":"swatch/paper","x":64,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#f5f2e9","stroke":"#b7c2b5","strokeWeight":1,"cornerRadius":4}}}
 {"command":"text.create","params":{"name":"label/paper","text":"paper","x":64,"y":328,"parent":3,"props":{"fontSize":14,"fill":"#58645d"}}}
-{"command":"shape.rectangle","params":{"name":"swatch/surface","x":176,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#fffdf7","stroke":"#b7c2b5","strokeWeight":1,"cornerRadius":8}}}
+{"command":"shape.rectangle","params":{"name":"swatch/surface","x":176,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#fffdf7","stroke":"#b7c2b5","strokeWeight":1,"cornerRadius":4}}}
 {"command":"text.create","params":{"name":"label/surface","text":"surface","x":176,"y":328,"parent":3,"props":{"fontSize":14,"fill":"#58645d"}}}
-{"command":"shape.rectangle","params":{"name":"swatch/ink","x":288,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#202c27","cornerRadius":8}}}
+{"command":"shape.rectangle","params":{"name":"swatch/ink","x":288,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#202c27","cornerRadius":4}}}
 {"command":"text.create","params":{"name":"label/ink","text":"ink","x":288,"y":328,"parent":3,"props":{"fontSize":14,"fill":"#58645d"}}}
-{"command":"shape.rectangle","params":{"name":"swatch/muted","x":400,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#58645d","cornerRadius":8}}}
+{"command":"shape.rectangle","params":{"name":"swatch/muted","x":400,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#58645d","cornerRadius":4}}}
 {"command":"text.create","params":{"name":"label/muted","text":"muted","x":400,"y":328,"parent":3,"props":{"fontSize":14,"fill":"#58645d"}}}
-{"command":"shape.rectangle","params":{"name":"swatch/accent","x":512,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#245c43","cornerRadius":8}}}
+{"command":"shape.rectangle","params":{"name":"swatch/accent","x":512,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#245c43","cornerRadius":4}}}
 {"command":"text.create","params":{"name":"label/accent","text":"accent","x":512,"y":328,"parent":3,"props":{"fontSize":14,"fill":"#58645d"}}}
-{"command":"shape.rectangle","params":{"name":"swatch/line","x":624,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#b7c2b5","cornerRadius":8}}}
+{"command":"shape.rectangle","params":{"name":"swatch/line","x":624,"y":220,"width":96,"height":96,"parent":3,"props":{"fill":"#b7c2b5","cornerRadius":4}}}
 {"command":"text.create","params":{"name":"label/line","text":"line","x":624,"y":328,"parent":3,"props":{"fontSize":14,"fill":"#58645d"}}}
 {"command":"text.create","params":{"name":"DS/TypeH","text":"Type (16 body / 20 baseline)","x":64,"y":400,"parent":3,"props":{"fontSize":24,"fontWeight":700,"fill":"#202c27"}}}
 {"command":"text.create","params":{"name":"type/h1","text":"H1 — Magazijn 40/40","x":64,"y":460,"parent":3,"props":{"fontSize":40,"fontWeight":700,"fill":"#202c27"}}}
@@ -21,9 +21,9 @@
 {"command":"text.create","params":{"name":"type/body","text":"Body 16/20 — Een zin op de basislijn. Prijzen en UI in GAP Code (of bouw: Mono).","x":64,"y":700,"parent":3,"width":720,"props":{"fontSize":16,"fill":"#202c27"}}}
 {"command":"text.create","params":{"name":"type/muted","text":"Muted 16/20 — secundaire tekst, hints, footers.","x":64,"y":740,"parent":3,"width":720,"props":{"fontSize":16,"fill":"#58645d"}}}
 {"command":"text.create","params":{"name":"DS/ButtonsH","text":"Buttons (AtomButton)","x":64,"y":820,"parent":3,"props":{"fontSize":24,"fontWeight":700,"fill":"#202c27"}}}
-{"command":"frame.create","params":{"name":"Btn/Primary","x":64,"y":880,"width":200,"height":48,"parent":3,"props":{"fill":"#245c43","cornerRadius":8,"layout":"HORIZONTAL","primaryAxisAlignItems":"CENTER","counterAxisAlignItems":"CENTER","paddingLeft":32,"paddingRight":32}}}
+{"command":"frame.create","params":{"name":"Btn/Primary","x":64,"y":880,"width":200,"height":48,"parent":3,"props":{"fill":"#245c43","cornerRadius":2,"layout":"HORIZONTAL","primaryAxisAlignItems":"CENTER","counterAxisAlignItems":"CENTER","paddingLeft":32,"paddingRight":32}}}
 {"command":"text.create","params":{"name":"Btn/Primary/Label","text":"Naar de kassa","x":0,"y":0,"parent":{"$step":23},"props":{"fontSize":16,"fontWeight":700,"fill":"#fffdf7"}}}
-{"command":"frame.create","params":{"name":"Btn/Ghost","x":288,"y":880,"width":120,"height":48,"parent":3,"props":{"fill":"#fffdf7","stroke":"#b7c2b5","strokeWeight":1,"cornerRadius":8,"layout":"HORIZONTAL","primaryAxisAlignItems":"CENTER","counterAxisAlignItems":"CENTER","paddingLeft":32,"paddingRight":32}}}
+{"command":"frame.create","params":{"name":"Btn/Ghost","x":288,"y":880,"width":120,"height":48,"parent":3,"props":{"fill":"#fffdf7","stroke":"#b7c2b5","strokeWeight":1,"cornerRadius":2,"layout":"HORIZONTAL","primaryAxisAlignItems":"CENTER","counterAxisAlignItems":"CENTER","paddingLeft":32,"paddingRight":32}}}
 {"command":"text.create","params":{"name":"Btn/Ghost/Label","text":"Terug","x":0,"y":0,"parent":{"$step":25},"props":{"fontSize":16,"fontWeight":700,"fill":"#202c27"}}}
 {"command":"component.create","params":{"ids":[{"$step":23}]}}
 {"command":"component.create","params":{"ids":[{"$step":25}]}}

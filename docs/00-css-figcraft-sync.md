@@ -42,13 +42,16 @@ Script: `frontend/design/figcraft/scripts/sync-css-to-figcraft.jsonl`.
 ## Wat het script zet
 
 ### Text styles (GAP Code + baseline)
-`Type/H1` … `Type/H6`, `Type/Body`, `Type/Muted`, `Type/Small`, `Type/Button`, `Type/ButtonGhost`
+`Type/H1` … `Type/H6`, `Type/Body`, `Type/Muted`, `Type/Small`, `Type/Button`, `Type/ButtonGhost`, `Type/Track`
 
 ### Paint styles
 `Color/paper|surface|ink|muted|accent|line` (light hex uit tokens)
 
 ### Applied op
 PageDesignSystem specimens + swatches + button labels.
+
+### Radius / knoppen
+Swatches `cornerRadius` **4**; `Btn/Primary` + `Btn/Ghost` **2** (CSS max 4). Geen shadow-effects.
 
 ### Default nieuwe tekst
 `edit.setDefaultProperties` vanaf body-laag → nieuwe text tools starten met **GAP Code 16/20**.
@@ -76,7 +79,7 @@ Obsidian mag Zuid VG lezen; **product-UI** = GAP Code (afspraak).
 | Feature | CSS (SoT implementatie) | FigCraft |
 |---------|-------------------------|----------|
 | Button small caps | `font-variant-caps: all-small-caps` op `.vz-btn` | `text.case` → **`smallCaps`** (geen CSS-variant) |
-| Letter-spacing knop | `letter-spacing: 0.04em` | zelfde in text style / node |
+| Letter-spacing | CSS default `0` (mono); `.vz-track` display | Type/* tracking 0; `Type/Track` spaarzaam |
 | Echte OpenType smcp/c2sc | `font-feature-settings` | hangt van font + app-support af |
 
 **Aanvliegen:** besluit in **CSS** vastleggen → in FigCraft zo goed mogelijk spiegelen (small caps case) → PNG-export is benadering; **browser/Nuxt** is de echte weergave.

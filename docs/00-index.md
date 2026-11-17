@@ -25,12 +25,13 @@ Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 | [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md) | Winkel vs kassa vs voet |
 | [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) | Zaak-labels **NL+EN**; techniek Engels; paths wachten |
 | [00-design-tokens.md](./00-design-tokens.md) | Maten: kleur, type, V/H-grid, thema |
-| [00-merk-toon-en-principes.md](./00-merk-toon-en-principes.md) | **Toon, sfeer, copy-houding, principes** |
+| [00-merk-toon-en-principes.md](./00-merk-toon-en-principes.md) | **Toon, sfeer, copy-houding, principes** (CLI/terminal) |
 | [00-git-en-github.md](./00-git-en-github.md) | Ontwerp-GitHub |
 | [00-figcraft-samenwerking.md](./00-figcraft-samenwerking.md) | FigCraft + CLI/MCP samenwerken |
 | [00-css-figcraft-sync.md](./00-css-figcraft-sync.md) | CSS-tokens → FigCraft styles/fonts |
 | [00-figcraft-naar-css-checklist.md](./00-figcraft-naar-css-checklist.md) | FigCraft tekenen → CSS verwerken |
-| [00-sessie-2026-11-17-bouwdocs-in-ontwerp.md](./00-sessie-2026-11-17-bouwdocs-in-ontwerp.md) | Sessieverslag |
+| [00-sessie-2026-11-17-bouwdocs-in-ontwerp.md](./00-sessie-2026-11-17-bouwdocs-in-ontwerp.md) | Sessieverslag bouwdocs |
+| [00-sessie-2026-11-17-cli-toon-css.md](./00-sessie-2026-11-17-cli-toon-css.md) | Sessieverslag CLI-toon + CSS |
 | [../AGENTS.md](../AGENTS.md) | Agent-regels |
 
 ---
@@ -83,13 +84,14 @@ Volledig plan: [00-projectbeschrijving-en-stappenplan.md](./00-projectbeschrijvi
 2. `10-productmodel.md` — velden o.b.v. catalogue/Directus *(nog te schrijven)*  
 3. Draadmodellen: home, listing, productdetail, maker, vrijplaats  
 4. Account licht + footer-pagina’s  
-5. Visuele UI-kit; fontbesluit Mono vs Zuid/Code  
+5. Visuele UI-kit; FigCraft radius ≤4; palette vs Solarized optioneel  
 
 ---
 
 ## Open punten
 
 - Font: ontwerp **GAP Code** (voorlopig); bouwcode mogelijk nog Mono tot sync  
+- Vorm: radius max 4px, shadow none, mono-tracking 0 (vault CSS); bouw sync open  
 - Exacte accenten en commerciële verzendtarieven  
 - Split-explainer default open/dicht  
 - Mollie-methodes naast iDEAL  

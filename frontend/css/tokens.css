@@ -136,11 +136,19 @@
   --vz-space-16: var(--vz-space-x-16); /* 64 */
   --vz-space-half: var(--vz-space-x-2); /* 8 — niet 10; blijf op 4px */
 
-  /* Radius ook op 4px-module */
-  --vz-radius-sm: var(--vz-space-x-1); /* 4 */
-  --vz-radius-md: var(--vz-space-x-2); /* 8 */
-  --vz-radius-lg: var(--vz-space-x-3); /* 12 */
-  --vz-radius-xl: var(--vz-space-x-4); /* 16 */
+  /*
+   * Radius: CLI, niet Bootstrap — hard maximum 4px.
+   * Forms/inputs: sm (0). Knoppen/chips: md (2). Cards/panels: lg (4).
+   * Zie docs/00-merk-toon-en-principes.md
+   */
+  --vz-radius-sm: 0;
+  --vz-radius-md: 2px;
+  --vz-radius-lg: var(--vz-space-x-1); /* 4 — maximum */
+  --vz-radius-xl: var(--vz-space-x-1); /* 4 — geen groter dan lg */
+
+  /* Mono: default 0; display = bewuste tracked labels (S P A C E-gevoel) */
+  --vz-tracking-normal: 0;
+  --vz-tracking-display: 0.2em;
 
   /* Tap: a11y ≥44px → afronden op 4px-grid = 48px */
   --vz-tap-min: var(--vz-space-x-12); /* 48 */
@@ -150,8 +158,9 @@
   --vz-focus-ring-offset: var(--vz-space-x-1); /* 4 */
 
   /*
-   * Licht = default. Zelfde hex-rollen als bouw light (paper/surface/ink/…).
-   * Componenten gebruiken bij voorkeur --vz-bg-* / --vz-text-* / --akws-*.
+   * Licht = default. Rollen = bouw-namen paper/surface/ink (technische aliassen).
+   * Sfeer = terminal/Solarized — niet “pen & papier”. Zie merk-toon-doc.
+   * Componenten: --vz-bg-* / --vz-text-* / --akws-*.
    */
   --vz-paper: #f5f2e9;
   --vz-surface: #fffdf7;
@@ -179,8 +188,8 @@
   --vz-accent-soft-yellow: #f0e6a8;
   --vz-accent-soft-blue: #a8c5e8;
 
-  /* Schaduw / elevation (licht: subtiel; donker: dieper) */
-  --vz-shadow-soft: 0 1px 2px rgb(32 44 39 / 0.06);
+  /* Geen elevation: diepte = border + contrast (CLI) */
+  --vz-shadow-soft: none;
 
   /* Logo: welk asset in welk thema (programmeur wisselt src/class) */
   --vz-logo-on: var(--vz-ink);
@@ -216,7 +225,7 @@
 .theme-dark {
   color-scheme: dark;
 
-  /* Omgekeerde “papier”-zaak: diep groen-zwart, warme surface, leesbare ink-licht */
+  /* Dark terminal: diep groen-zwart grond, warme surface, lichte ink */
   --vz-paper: #121a17;
   --vz-surface: #1a2420;
   --vz-ink: #e8efe9;
@@ -242,7 +251,7 @@
   --vz-accent-soft-yellow: #5c5428;
   --vz-accent-soft-blue: #2a4058;
 
-  --vz-shadow-soft: 0 1px 3px rgb(0 0 0 / 0.45);
+  --vz-shadow-soft: none;
 
   --vz-logo-on: var(--vz-ink);
   --vz-logo-on-inverse: var(--vz-paper);
@@ -288,7 +297,7 @@
     --vz-accent-soft-yellow: #5c5428;
     --vz-accent-soft-blue: #2a4058;
 
-    --vz-shadow-soft: 0 1px 3px rgb(0 0 0 / 0.45);
+    --vz-shadow-soft: none;
 
     --vz-logo-on: var(--vz-ink);
     --vz-logo-on-inverse: var(--vz-paper);

@@ -80,7 +80,9 @@ Debug: `html.vz-baseline-debug`.
 **Horizontaal — 4px-module (ankers 4 / 16 / 32)**  
 `padding-inline`, gaps in een rij, icon+label, page gutters: stappen van **4px** — `--vz-space-x-1`…`16` (4, 8, 12, **16**, 20, 24, 28, **32**, 36, 40, 48, 64).  
 Primair denken: **4 → 16 → 32**; daartussen alleen 4px-stappen.  
-Tap-target: **48px** (12×4), niet 44. Radius: 4 / 8 / 12 / 16.
+Tap-target: **48px** (12×4), niet 44.  
+**Radius (max 4px, CLI):** `sm 0` · `md 2px` · `lg/xl 4px` — geen Bootstrap-8/12/16.  
+**Schaduw:** `--vz-shadow-soft: none` (diepte = border + contrast).
 
 | Richting | Token-voorbeelden |
 |----------|-------------------|
@@ -105,18 +107,20 @@ Semantisch (align met bouw-namen waar mogelijk):
 --danger / --success   mild (Mollie fail/success)
 ```
 
-### Ruimte
+### Ruimte / vorm
 
 ```
---space-1 … --space-8
---radius-sm / md / lg
-tap targets ≥ 44px (bouw design.md)
+--space-x-* / --space-y-*   (H 4px-module · V 20px-basislijn)
+--radius-sm 0 · --radius-md 2px · --radius-lg/xl 4px   (hard max 4)
+--shadow-soft none
+tap ≥ 48px (vault); bouw design.md noemt ≥44 — programmeur sync
 ```
 
-### Knoptekst (small caps)
+### Knoptekst (small caps) en tracking
 
-UI-knoppen (`.vz-btn`): **`font-variant-caps: all-small-caps`** (+ lichte `letter-spacing`).  
-SoT = CSS. FigCraft: `text.case` → `smallCaps` op button-labels (geen volledige CSS OpenType-spiegel).
+UI-knoppen (`.vz-btn`): **`font-variant-caps: all-small-caps`**, **`letter-spacing: 0`** (mono).  
+Geen decoratieve tracking op body/koppen. Bewuste display-labels: `.vz-track` / `--vz-tracking-display`.  
+SoT = CSS. FigCraft: `text.case` → `smallCaps` op button-labels.
 
 ### Licht / donker (thema-toggle)
 
@@ -130,8 +134,8 @@ Naast NL/EN-taaltoggle: **Licht** (default) en **Donker**.
 | Opslag | cookie/localStorage naast taalvoorkeur (bouw) |
 | UI | molecuul `MolThemeSwitch` — [00-ui-moleculen.md](./00-ui-moleculen.md) |
 
-**Licht** = bouwhex paper/surface/ink/accent.  
-**Donker** = diep groen-zwart papier, lichte ink, helderder accent (voorstel in `tokens.css`; mag nog bijgestemd).  
+**Licht** = bouwhex paper/surface/ink/accent (namen = bouw-aliassen; sfeer = terminal/Solarized).  
+**Donker** = diep groen-zwart grond, lichte ink, helderder accent (voorstel in `tokens.css`; mag nog bijgestemd).  
 Componenten gebruiken semantische vars (`--vz-bg-primary`, `--vz-text-primary`, `--akws-*`), geen losse light-only hex.  
 **E-mail:** geen verplicht dark theme (clients onbetrouwbaar).
 
@@ -143,7 +147,7 @@ Componenten gebruiken semantische vars (`--vz-bg-primary`, `--vz-text-primary`, 
 |-------|--------|
 | Productie-font | **GAP Code (voorlopig vast in ontwerp)** · bouw nog Mono tot PR |
 | Accent | Huidig groen `#245c43` vast · of zachte multi-accent uit AI-ontwerp |
-| Papierwit | Bouw paper/surface overnemen als default in vault-UI-kit |
+| Light-grond | Bouw paper/surface overnemen als default in vault-UI-kit |
 | Donker-palette | Voorstel in tokens.css ok · of dichter op bouw-light inverted |
 | Default thema | Licht · systeem · laatst gekozen |
 
@@ -153,10 +157,12 @@ Tot besluit: **wireframes beschrijven hiërarchie en rust**; screenshots/CSS-pro
 
 ## Toon in UI
 
-- Veel papier/witruimte, dunne randen  
+- Veel ademruimte, dunne randen, geen elevation-shadow  
+- Radius ≤4px; forms scherp (0)  
 - Kassa nóg rustiger (minder nav)  
 - Bedragen uit server-DTO; geen dummy-prijzen in “echte” componenten  
-- Self-host fonts; licentie checken vóór publieke launch
+- Self-host fonts; licentie checken vóór publieke launch  
+- Volledige sfeer/copy: [00-merk-toon-en-principes.md](./00-merk-toon-en-principes.md)
 
 ## Logo en frontend-assets
 

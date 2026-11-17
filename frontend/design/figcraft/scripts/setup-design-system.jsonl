@@ -1,0 +1,11 @@
+{"command":"variable.createCollection","params":{"name":"Theme","modes":["Light","Dark"]}}
+{"command":"variable.create","params":{"collection":"Theme","name":"paper","type":"color","values":{"Light":"#f5f2e9","Dark":"#121a17"}}}
+{"command":"variable.create","params":{"collection":"Theme","name":"surface","type":"color","values":{"Light":"#fffdf7","Dark":"#1a2420"}}}
+{"command":"variable.create","params":{"collection":"Theme","name":"ink","type":"color","values":{"Light":"#202c27","Dark":"#e8efe9"}}}
+{"command":"variable.create","params":{"collection":"Theme","name":"muted","type":"color","values":{"Light":"#58645d","Dark":"#9aaba2"}}}
+{"command":"variable.create","params":{"collection":"Theme","name":"accent","type":"color","values":{"Light":"#245c43","Dark":"#3d9a6c"}}}
+{"command":"variable.create","params":{"collection":"Theme","name":"line","type":"color","values":{"Light":"#b7c2b5","Dark":"#2f3d36"}}}
+{"command":"variable.create","params":{"collection":"Theme","name":"danger","type":"color","values":{"Light":"#8f4a4a","Dark":"#e09090"}}}
+{"command":"variable.create","params":{"collection":"Theme","name":"success","type":"color","values":{"Light":"#2f6b4f","Dark":"#6bc49a"}}}
+{"command":"variable.create","params":{"collection":"Theme","name":"ctaText","type":"color","values":{"Light":"#fffdf7","Dark":"#0e1512"}}}
+{"command":"frame.create","params":{"name":"PageDesignSystem","x":1600,"y":0,"width":1440,"height":2000,"props":{"fill":"#f5f2e9"}}}

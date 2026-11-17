@@ -1,107 +1,85 @@
-# 02 — Checkout: overzicht flow (desktop + mobiel)
+# 02 — Checkout: overzicht
 
-Bouwroutes: mand `/mand` · kassa `/afrekenen` · status `/bestellingen/:id`  
-Zie [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).
+**Route (bouw):** `/afrekenen` · `app/pages/afrekenen.vue`  
+**Ook:** `/bestellingen/:id` na submit · **OrderFulfilment** op statuspagina  
+**Layout bouw:** **default** (nog geen NavKassa-shell)  
+**Mapping:** [08-componenten-en-staten.md](./08-componenten-en-staten.md)
 
-## Navigatie-omgeving
+## Twee beelden (belangrijk)
 
-**Kassamenu alleen** — geen Collectie/Makers/Vrijplaatsen in de topbar.  
-Escape: “Terug naar de winkel”. Footer weg of minimaal (Voorwaarden bij akkoord).  
-Zie [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md).
+| | **Bouw (SoT nu)** | **Ontwerp-draadmodel (richting UX)** |
+|--|-------------------|--------------------------------------|
+| Structuur | **Eén pagina** `/afrekenen` | Optioneel 3 stappen (gegevens → verzending → betalen) |
+| Nav | default winkel-header | **NavKassa** (geen Collectie-afleiding) |
+| Prijs | Pas na “Actueel voorstel aanvragen” (**quote**) | OrderSummary altijd zichtbaar nà quote |
+| Verzending | Select **Ontvangst** ship/pickup uit options | Rijkere klassen/split-zending (zie 04) — toekomst |
+| Betalen | Submit order → later Mollie hosted; return ≠ paid | Zelfde contract; copy in 05–06 |
 
-## Doel
+Ontwerp mag stappen **visueel** clusteren; programmeur hoeft niet meteen routes `/afrekenen/gegevens` te maken tenzij afgesproken.
 
-Eén vriendelijke flow van wagen → betaald, met zo weinig mogelijk hobbels. Gast standaard; account optioneel.
-
-## Stappen (voorgesteld)
-
-```
-(1) Gegevens  →  (2) Verzending  →  (3) Controle & betalen  →  [Mollie]  →  (4) Bevestiging
-```
-
-Alternatief later: één lange pagina met ankers; voor draadmodel houden we **3 stappen + Mollie + bedankt**.
-
-## Voortgangsindicator
+## Bouw-flow (as-is)
 
 ```
-Desktop:  o Gegevens  ---  o Verzending  ---  o Betalen
-Mobiel:   Stap 2 van 3 · Verzending
+/mand  →  /afrekenen
+            ├─ (optioneel) RecoverNotice: eerdere onzekere poging
+            ├─ leeg? → link mand
+            ├─ ContactAdresFieldset + OntvangstKeuze
+            ├─ [ Actueel voorstel aanvragen ]  → QuoteBlok
+            ├─ TermsCheckbox
+            ├─ [ Bestelling plaatsen … ] / replay
+            └─ success → /bestellingen/:id
 ```
 
-## Desktop layout (alle checkout-stappen)
+API’s (bouw): CSRF, `/api/checkout/options`, `quote`, `submit`, `recover`.  
+Client bewaart bij onzekerheid `commandId`/`quoteId` in `sessionStorage` (geen contact als bron van waarheid).
+
+## Ontwerp-flow (3 stappen — optioneel bovenop)
+
+```
+(1) Gegevens  →  (2) Verzending  →  (3) Controle & betalen  →  [Mollie]  →  status/bevestiging
+```
+
+Zie [03-gegevens.md](./03-gegevens.md), [04-verzending.md](./04-verzending.md), [05-betaling.md](./05-betaling.md).  
+Velden in 03/04 die **niet** in bouw staan = ontwerp-plus (issue met programmeur).
+
+## Desktop layout (ontwerp-richting)
 
 ```
 +------------------------------------------------------------------+
-| Vrijzaak · Kassa     Winkelmand · Account · Terug naar winkel    |
-|                         [Stap x van 3]                             |
+| [NavKassa: Logo · Kassa · Mand · Account · Terug naar winkel]   |
+|                         [Stap x van 3]   ← alleen als multi-step |
 +------------------------------------------------------------------+
-|                                                                  |
 |  +---------------------------+    +----------------------------+ |
-|  |                           |    | Je bestelling          [v] | |
-|  |  (stap-inhoud)            |    |                            | |
-|  |                           |    | 1x Product …    EUR …      | |
-|  |                           |    | 1x Product …    EUR …      | |
-|  |                           |    |                            | |
-|  |                           |    | Subtotaal       EUR …      | |
-|  |                           |    | Korting         - EUR …    | |
-|  |                           |    | Verzending      EUR … / —  | |
-|  |                           |    | waarvan btw     EUR …      | |
-|  |                           |    | ──────────────────         | |
-|  |                           |    | Totaal incl. btw EUR …     | |
-|  |                           |    |                            | |
-|  |                           |    | [i] Hoe wordt de opbrengst | |
-|  |                           |    |     verdeeld? (inklappen)  | |
+|  | stap / formulier          |    | QuoteBlok / OrderSummary   | |
+|  | ContactAdresFieldset      |    | regels, shipping, btw,     | |
+|  | OntvangstKeuze            |    | totaal, expiresAt          | |
+|  | …                         |    | optioneel SplitExplainer   | |
 |  +---------------------------+    +----------------------------+ |
-|                                                                  |
-|  [ Terug ]                              [ Verder / Betalen ]     |
+|  [Terug]  [Voorstel]  [Plaatsen / Betalen]                       |
 +------------------------------------------------------------------+
 ```
 
-## Mobiel layout
+## Mobiel
 
-```
-+-----------------------------+
-| [← Winkel]  Kassa · Stap x/3 |
-+-----------------------------+
-| [ v Je bestelling  EUR … ]  |  <- inklapbaar, default dicht
-|     (regels + totalen)      |     open bij eerste land of op tap
-+-----------------------------+
-|                             |
-| (stap-inhoud full width)    |
-|                             |
-+-----------------------------+
-| sticky onder:               |
-| [ Primaire actie ]          |
-| Terug                       |
-+-----------------------------+
-```
+- Quote inklapbaar of onder formulier (bouw: gestapeld)
+- Sticky primaire actie
+- Eén CTA-focus
 
 ## Gast vs account
 
-Bij start van checkout (boven gegevens):
+Bouw: checkout met e-mail in contact; account is apart `/account`.  
+Ontwerp-copy mag “afrekenen als gast” houden; geen verplicht account.
 
-```
-| Afrekenen als gast (standaard)                    |
-| of [Inloggen] / [Account maken] — optioneel       |
-| “Je hoeft geen account. Wel handig voor later.”   |
-```
+## Navigatie-regels (contract)
 
-Na inloggen: adresboek voorinvullen indien aanwezig.
+- Geen client-bedragen als waarheid
+- Prijswijziging / voorraad / 409 → nieuw voorstel, geen stille retry met andere payload
+- Pending recover vóór nieuwe bestelling
+- Na submit: statuspagina, niet meteen “betaald” tot server paid
 
-## Vriendelijkheid (copy-richting)
+## Componenten op deze flow
 
-- Knoppen: “Verder”, “Naar betalen”, niet “Submit order”.
-- Geen verplichte nieuwsbrief.
-- Fouten: “Dit veld hebben we nog nodig” i.p.v. alleen rood sterretje.
-- Trust: “Veilig betalen via Mollie / iDEAL” pas op de betaalstap.
-
-## Navigatie-regels
-
-- Terug behoudt ingevulde data waar de server dat toelaat.
-- Verversen: bouw bewaart o.a. commandId/quoteId in sessionStorage — geen contactgegevens als bron van waarheid in de browser.
-- Prijzen/totalen altijd van server-quote; client stuurt geen eigen bedragen.
-- Mand wijzigen tijdens checkout: terug naar `/mand` of nieuw voorstel na wijziging.
-- Bij voorraadtekort of prijs/policy-wijziging: geen stille retry — nieuwe bevestiging.
+Zie tabel in [08](./08-componenten-en-staten.md) §B: RecoverNotice, ContactAdresFieldset, OntvangstKeuze, QuoteBlok, TermsCheckbox, CheckoutSubmit, later NavKassa / StepHeader / SplitExplainer.
 
 ---
 Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

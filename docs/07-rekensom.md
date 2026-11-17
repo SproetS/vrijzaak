@@ -1,5 +1,9 @@
 # 07 — Rekensom (klantzichtbaar + intern)
 
+**Bouw-UI:** bedragen in **QuoteBlok** op `/afrekenen` (niet op `/mand`).  
+**Component-ontwerp:** OrderSummary / Price · mapping [08-componenten-en-staten.md](./08-componenten-en-staten.md)
+
+
 ## Uitgangspunt klant (B2C)
 
 - Alle getoonde productprijzen zijn **EUR incl. btw**.

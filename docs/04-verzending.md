@@ -1,80 +1,69 @@
-# 04 — Verzending (stap 2)
+# 04 — Verzending / ontvangst
 
-## Probleem
+**Bouw nu:** op `/afrekenen` — select **Ontvangst** (`delivery`: o.a. ship / pickup) uit `/api/checkout/options`.  
+Tarieven en labels komen uit **checkout-policy** (nu vooral test).  
+**Geen** multi-zending-UI en geen verzendklasse-kiezer in de storefront-code.
 
-Mand kan **heterogeen** zijn: T-shirt + boekje (makkelijk pakket) naast schilderij/kunstwerk (breekbaar, groter, duurder om te sturen). Eén flat rate voelt oneerlijk of te duur.
+## Probleem (ontwerp — blijft relevant)
 
-## Doel
+Mand kan heterogeen zijn (T-shirt + schilderij). Flat rate of één optie kan oneerlijk voelen. Dat is een **toekomstig** UX/policy-onderwerp; SoT blijft bouw tot er policy + UI is.
 
-Klant kiest een duidelijke verzendoptie (of ziet dat er meerdere zendingen nodig zijn) zonder spreadsheet-gevoel.
+## Bouw-UI (as-is)
 
-## Concept: slim groeperen
+```
+Ontvangst
+  [ select: labels uit options.delivery ]
+  bv. verzenden / afhalen (exacte copy uit policy)
+```
 
-Systeem deelt regels intern in **verzendklassen**, bijv.:
+Hoort in dezelfde flow als contactvelden; quote herberekent bij land/delivery-wijziging (bouw wist quote).
 
-| Klasse | Voorbeelden | Typische opties |
-|--------|-------------|-----------------|
-| Licht pakket | T-shirt, boekje, small merchandise | Standaard post, eventueel ophalen |
-| Middel / breekbaar | Klein werk, print op steun | Pakketdienst, handtekening |
-| Kunst / groot | Schilderij, object | Speciale verzending, maatwerk, of “we nemen contact op” |
+**Bloknaam ontwerp:** **OntvangstKeuze**.
 
-## UI — happy path (alles in één zending)
+## Ontwerp-richting (plus — niet gebouwd)
+
+### Happy path — één zending
 
 ```
 | Hoe wil je het ontvangen?                          |
-|                                                    |
-| ( ) Thuisbezorging — standaard pakket              |
-|     EUR x,xx · 2–5 werkdagen                       |
-|                                                    |
-| ( ) Thuisbezorging — zorgvuldig / breekbaar        |
-|     EUR y,yy · iets langer                         |
-|                                                    |
-| ( ) Ophalen bij vrijplaats [keuze]                 |
-|     EUR 0,00 · Je krijgt een mail als het klaar is |
-|                                                    |
-| [i] In je mand zitten verschillende soorten        |
-|     producten; we kiezen veilige verpakking.       |
+| ( ) Thuisbezorging — standaard     EUR …           |
+| ( ) Zorgvuldig / breekbaar         EUR …           |
+| ( ) Ophalen bij vrijplaats […]     EUR 0           |
 ```
 
-## UI — gesplitste zending (als nodig)
+### Gesplitste zending (als policy dat ooit kan)
 
 ```
-| Je bestelling gaat in 2 zendingen:                 |
-|                                                    |
-| Zending A — pakket (T-shirt, boekje)               |
-|   Optie: [ Standaard  EUR … ]                      |
-|                                                    |
-| Zending B — kunstwerk “Titel”                      |
-|   Optie: [ Speciale verzending EUR … ]             |
-|   of [ Op afspraak — we mailen je ]  EUR 0 nu      |
-|                                                    |
-| Totaal verzending: EUR …                           |
+| Zending A — pakket …                               |
+| Zending B — kunst … / op afspraak                  |
 ```
 
-“Op afspraak” mag checkout niet blokkeren: klant betaalt producten (+ eventuele vaste kosten); planning volgt offline.
+Interne **verzendklassen** op product blijven catalogus/policy-werk (programmeur + winkelier), niet hard in Markdown verzinnen als live tarief.
 
 ## Wat de klant niet hoeft te zien
 
-- Interne tarieftabellen per gram
-- Welke carrier exact (tenzij trust helpt)
+- Tarieftabellen per gram, interne carrierkeuze (tenzij trust)
 
-## Wat wél helder moet
+## Wat wél helder moet (bouw + ontwerp)
 
-- Prijs incl. btw
-- Leverindicatie
-- Of er nader contact komt bij kunst
+- Prijs **incl. btw** in de **quote** (niet los gokken op deze stap)
+- Of ophalen vs versturen
+- Later: leverindicatie, contact bij kunst
 
 ## Gedrag
 
-- Geen optie gekozen → “Verder” disabled + hint
-- Wijzigt de mand later → verzendkeuze herbepalen
-- Alleen ophalen-producten → ophalen default
+| | Bouw |
+|--|------|
+| Geen options | Checkout “niet beschikbaar” |
+| Wijzig land/delivery | Quote reset |
+| Geen multi-step lock | Alles op één form |
 
-## Open (inhoudelijk te vullen met Vrijzaak)
+## Open met Vrijzaak (business)
 
-- Lijst vrijplaatsen voor pickup
-- Zones (NL / BE / EU)
-- Exacte prijzen per klasse
+- Vrijplaatsen voor pickup  
+- Zones NL/BE/EU  
+- Echte tarieven (`mode=approved` policy)  
+- Of ontwerp multi-klasse ooit in UI komt  
 
 ---
-Vrijzaak · https://vrijzaak.nl · [[00-index]]
+Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

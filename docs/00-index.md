@@ -31,6 +31,9 @@ Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 
 ## Checkout-draadmodellen
 
+Gekoppeld aan bouw-componenten/routes (zie ook [08](./08-componenten-en-staten.md) en [inventaris](./00-inventaris-bouw-ui.md)). Bouw = één pagina `/afrekenen`; 3 stappen blijven UX-optie.
+
+
 | Note | Inhoud |
 |------|--------|
 | [01-winkelwagen.md](./01-winkelwagen.md) | Mand (`/mand`) |

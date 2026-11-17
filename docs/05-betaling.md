@@ -1,82 +1,73 @@
-# 05 — Controle en betaling (stap 3) + Mollie
+# 05 — Controle, voorstel en betalen
 
-## Navigatie-omgeving
-
-Kassa-header. Geen winkel-hoofdmenu. Voorwaarden-link bij checkbox volstaat i.p.v. volle footer.
+**Bouw:** zelfde pagina `/afrekenen` na quote; daarna orderstatus `/bestellingen/:id` en Mollie hosted.  
+**Blokken:** **QuoteBlok**, **TermsCheckbox**, **CheckoutSubmit**, **RecoverNotice** · later **TrustLine** / iDEAL-keuze
 
 ## Doel
 
-Laatste check, akkoord, door naar Mollie (iDEAL). Geen kaartgegevens op Vrijzaak-servers in deze fase.
+Laatste check op **server-voorstel**, akkoord, order plaatsen, veilig betalen via Mollie.  
+Geen kaartgegevens op Vrijzaak.
 
-## Inhoud stap “Betalen”
+## Bouw-volgorde (as-is)
+
+1. (Indien nodig) **RecoverNotice** — eerdere onzekere poging eerst afronden  
+2. Contact + ontvangst ingevuld  
+3. **Actueel voorstel aanvragen** → **QuoteBlok**  
+4. **TermsCheckbox** — bevestig voorstel + opdracht tot bestellen  
+5. **CheckoutSubmit** — test- of echte bestelling met betalingsverplichting / replay  
+6. Navigate `/bestellingen/:id` — **nog niet** “betaald” tot server  
+7. Mollie hosted wanneer payment-attempt dat vereist; **return ≠ paid**
+
+## QuoteBlok (bouw-inhoud)
 
 ```
-| Controleer je bestelling                           |
-|                                                    |
-| Gegevens          [Wijzig]                         |
-|   Naam, adres, e-mail                              |
-|                                                    |
-| Verzending        [Wijzig]                         |
-|   Methode · prijs · indicatie                      |
-|                                                    |
-| Betaling                                           |
-|   ( • ) iDEAL                                      |
-|   (   ) Andere methodes via Mollie (optioneel)     |
-|                                                    |
-| [ ] Ik ga akkoord met de voorwaarden *             |
-|                                                    |
-| Totaal te betalen (incl. btw): EUR …               |
-|                                                    |
-| [ Betaal veilig met iDEAL ]                        |
-|                                                    |
-| Powered by Mollie · Je wordt tijdelijk             |
-| doorgestuurd om te betalen.                        |
+[testbanner als quote.testMode]
+
+regels: titel × aantal — EUR … incl. btw  (+ korting bps indien)
+shipping.label — EUR … incl. btw
+Btw: … · Totaal: …
+Geldig tot … (Europe/Amsterdam)
 ```
 
-## Na klikken op betalen
+Ontwerp mag dit rechts als **OrderSummary** stylen; data = quote-DTO.
 
-1. Server: order + reservering + payment_request (pending); daarna redirect Mollie hosted.
-2. **Browser-return is geen betaalbewijs** (bouw payments). UI mag geen “betaald” tonen op return alleen.
-3. Definitief paid via worker/webhook + serververificatie; daarna bevestigingsmail (`orders.confirmation`).
-4. Return-paden:
-   - open attempt + actieve hold → pending-UI + optioneel opnieuw Mollie-checkoutlink
-   - geannuleerd / mislukt / verlopen → melding + opnieuw proberen
-   - server-paid → happy bevestiging ([06-bevestiging.md](./06-bevestiging.md))
+## Terms + submit (bouw-copy richting)
 
-## Staten op terugkeer (vóór “bedankt, betaald”)
-
-**Nog bezig / pending** (standaard na return)
 ```
-| We wachten op bevestiging van je betaling…         |
-| Dit duurt meestal maar een moment.                 |
-| [Pagina vernieuwen]                                |
-```
-Geen belofte “het is gelukt” tot serverstatus paid.
+[ ] Ik bevestig dit prijsvoorstel en geef opdracht tot bestellen.
 
-**Geannuleerd**
-```
-| Je hebt de betaling afgebroken.                    |
-| Je bestelling is nog niet betaald.                 |
-| [Opnieuw betalen]  [Terug naar winkelmand]        |
+[ Bestelling plaatsen met betalingsverplichting ]
+  of testvariant / “Dezelfde bestelling opnieuw controleren”
 ```
 
-**Mislukt**
+## iDEAL / Mollie (ontwerp-chrome)
+
+Op wireframe mag:
+
 ```
-| Betaling is niet gelukt.                           |
-| Er is niets afgeschreven of het wordt teruggedraaid.|
-| [Opnieuw proberen met iDEAL]                       |
+Betaling: ( • ) iDEAL    TrustLine: Veilig via Mollie
 ```
 
-## Mobiel
+Bouw: eerste methode iDEAL in payments-contract; UI op afrekenen is nu vooral order-plaatsen, niet een rijke methodenlijst.
 
-- Één grote primaire knop “Betaal met iDEAL”
-- Summary inklapbaar erboven
-- Akkoord-checkbox met link naar voorwaarden (niet alleen icon)
+## Staten na return / op orderpagina
 
-## Niet in deze fase
+| Staat | UI |
+|-------|-----|
+| Pending | Wachten / vernieuwen — geen confetti |
+| Cancel / fail / expired | Opnieuw proberen, terug mand |
+| Server paid | Happy bevestiging · mail `orders.confirmation` |
 
-- Eigen betaalpagina bouwen
-- Split payments naar makers in de UI van de klant (kan wél intern via Mollie Connect later)
+Zie [06-bevestiging.md](./06-bevestiging.md).
+
+## Componenten
+
+| Ontwerp | Bouw |
+|---------|------|
+| OrderSummary | QuoteBlok inline |
+| TrustLine | copy / later component |
+| StepHeader “Betalen” | optioneel; bouw single page |
+| NavKassa | nog default |
 
 ---
 Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

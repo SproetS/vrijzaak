@@ -1,52 +1,98 @@
 # 08 — Componenten en staten
 
-## Herbruikbare blokken
+Twee lagen:
 
-1. **OrderSummary** — regels, korting, verzending, totaal, btw-regel, optioneel verdeling
-2. **StepHeader** — stap x van 3 + titel
-3. **Field** — label, input, hint, fout
-4. **Price** — altijd “EUR x,xx” + “incl. btw” in context (server-DTO)
-5. **TrustLine** — Mollie / iDEAL
-6. **SplitExplainer** — inklapbare opbrengstverdeling
-7. **NavWinkel** — hoofdmenu Collectie | …
-8. **NavKassa** — Kassa | Winkelmand | Account | Terug naar winkel
-9. **NavVoet** — Contact | Over ons | AV | Privacy
+1. **Bouw (SoT implementatie)** — wat er in de helling-repo staat  
+2. **Ontwerp-namen** — gewenste UX-blokken (mogen later SFC’s worden)
 
-## Globale staten
+Volledige inventaris: [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md).
 
-Bouw vraagt expliciet: laden, leeg, fout, niet beschikbaar, form valid/invalid, busy, succes (`docs/design.md` in webshop).
+---
+
+## A. Bouw — bestaande Vue / shell
+
+| Bouw | Bestand | Gebruik in winkel |
+|------|---------|-------------------|
+| **default layout** | `app/layouts/default.vue` | Skip-link, wordmark, tagline, nav (Collectie, Winkelmand, Account, Over), footer |
+| **CatalogueList** | `app/components/CatalogueList.vue` | `/collectie` (+ listing-patronen) |
+| **PartyProfile** | `app/components/PartyProfile.vue` | `/kunstenaars/:slug`, `/vrijplaatsen/:slug` |
+| **OrderFulfilment** | `app/components/OrderFulfilment.vue` | `/bestellingen/:id` |
+| **useCart** | `app/composables/useCart.ts` | Mandregels variant-ID + aantal |
+| **usePublicSeo** | `app/composables/usePublicSeo.ts` | Publieke meta |
+| **designTokens** | `shared/design/tokens.ts` | paper/surface/ink/… ; font (nog Mono in code) |
+| **brand** | `shared/brand.ts` | Shopnaam |
+| **main.css** | `app/assets/css/main.css` | o.a. `.button`, form layout |
+
+Checkout/mand/account zijn grotendeels **pagina-inline** (nog geen aparte SFC per blok).
+
+---
+
+## B. Mapping ontwerpblok ↔ bouw (kassa)
+
+| Ontwerpnaam (wireframe) | Bouw nu | Notitie |
+|-------------------------|---------|---------|
+| **NavWinkel** | `default` header-nav | Bouw: Collectie, Winkelmand, Account, Over — nog geen Makers/Vrijplaatsen-top |
+| **NavKassa** | *(nog niet)* | Ontwerp-wens; `/afrekenen` gebruikt nu ook `default` |
+| **NavVoet** | `default` footer | Bouw minimaal (“in voorbereiding”); ontwerp wil Contact/AV/Privacy |
+| **Mandregel** | `/mand` + `useCart` + `/api/cart` | Aantal 1–100, verwijderen, productlink |
+| **LegeMand** | `/mand` | Link → `/collectie` |
+| **OrderSummary / QuoteBlok** | `/afrekenen` na “Actueel voorstel” | Server-quote: regels, shipping, btw, totaal, expiresAt |
+| **ContactAdresFieldset** | `/afrekenen` fieldset | e-mail, naam, straat, huisnr, postcode, plaats, land |
+| **OntvangstKeuze** | `/afrekenen` select delivery | `ship` / `pickup` uit `/api/checkout/options` |
+| **RecoverNotice** | `/afrekenen` | Onzekere eerdere poging herstellen |
+| **TermsCheckbox** | `/afrekenen` | Akkoord prijsvoorstel + bestelopdracht |
+| **CheckoutSubmit** | `/afrekenen` submit | Incl. replay dezelfde command |
+| **StepHeader** (1/2/3) | *(niet in bouw)* | Bouw = **één pagina** `/afrekenen`; 3 stappen = ontwerpvoorstel |
+| **TrustLine Mollie** | deels copy/flow | Hosted Mollie na betalingstraject; return ≠ paid |
+| **SplitExplainer** | *(niet in bouw-UI)* | Ontwerp; data kan uit aandeel-snapshots |
+| **OrderstatusPaneel** | `/bestellingen/:id` | Serverstatus |
+| **OrderFulfilment** | component | Zending/fulfilment-zicht |
+| **Price** | `formatEuro` + servercenten | Geen client-prijs als waarheid |
+
+---
+
+## C. Mapping winkel (buiten pure kassa-docs 01–07)
+
+| Ontwerp | Bouw |
+|---------|------|
+| Collectielijst | **CatalogueList** |
+| Maker-/vrijplaatspagina | **PartyProfile** |
+| Productdetail + variant + “In winkelmand” | `producten/[slug].vue` |
+| Home hero / over | `index.vue` secties |
+| Account poort | `account/index.vue` + `[action].vue` |
+| Deelnemerportal | `deelnemer/*` |
+
+---
+
+## D. Globale staten (bouw + ontwerp)
 
 | Staat | Waar | Gedrag |
 |-------|------|--------|
-| Lege mand | `/mand` | CTA naar `/collectie` |
-| Laden / busy | mand, checkout, return | Geen dubbele submit; bevries onzekere poging |
-| Ongeldige korting | mand / checkout | Fout onder veld (server) |
-| Quote verlopen / prijs gewijzigd | checkout | Nieuw voorstel + bevestiging |
-| Geen verzendoptie | Verzending | Blokkeer verder + uitleg |
-| Mollie cancel/fail/expired | return | Opnieuw proberen |
-| Mollie pending | return | Wachten / refresh — geen “betaald” |
-| Betaald (server) | bevestiging | Happy path + mail confirmation |
-| Voorraadtekort | submit / paid-late | Duidelijke fout; geen halve order als succes |
-| Lege zoek/collectie | listing | Eerlijke lege staat, geen nepproducten |
+| Lege mand | `/mand` | CTA `/collectie` |
+| Laden / busy | mand, afrekenen | Geen dubbele submit; pending recover |
+| Ongeldig aantal | `/mand` | 1–100; alert |
+| Quote verlopen / 409 | `/afrekenen` | Nieuw voorstel |
+| Checkout uit | `/afrekenen` | “Nog niet beschikbaar”, mand blijft |
+| Mollie pending | orderstatus | Geen “betaald” tot server |
+| Betaald | `/bestellingen/:id` + mail | Happy path |
+| Voorraadtekort | submit | Fout; geen halve order als succes |
+| Lege collectie | **CatalogueList** | Eerlijke lege staat |
 
-## Desktop breakpoints (indicatief)
+---
 
-- Mobiel: < 768px — stacked, sticky CTA, ≥44px targets
-- Desktop: summary vaste kolom rechts ca. 360px
+## E. Breakpoints / a11y
 
-## Toegankelijkheid
+- Mobiel: stacked, sticky CTA-richting, ≥44px (bouw design.md)
+- Desktop: summary/quote rechts of onder formulier (bouw nu vooral gestapeld in één section)
+- Skip-link, labels, `role="alert"` / `status` waar bouw dat al doet
 
-- Focusvolgorde logisch; zichtbare focus; skiplink
-- Fouten met tekst, niet alleen kleur
-- Knoppen met duidelijke namen; geen nepknoppen
-- Voldoende tap targets op mobiel
+---
 
-## Koppeling met bouw
+## F. Werkafspraak
 
-- Nuxt `app/` + `shared/design/tokens.ts`
-- Routes: catalogue + `/mand` + `/afrekenen` + `/bestellingen/:id`
-- Mollie worker/webhooks; return ≠ paid
-- Catalogus: variant, prijsrevisie, btw-code, partijen, media
+- **Nieuwe SFC-namen in code** = programmeur / bouwrepo.  
+- Ontwerp mag bloknamen in wireframes houden, met regel “bouw: …” ernaast.  
+- Bij conflict over routes of checkout-velden: **bouw wint** tot er een issue/PR is.
 
 Zie [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).
 

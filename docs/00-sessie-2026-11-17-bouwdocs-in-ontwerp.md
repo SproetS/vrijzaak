@@ -38,3 +38,7 @@
 - Font ontwerp **voorlopig GAP Code**.
 - Team expliciet: ontwerper/UX, zakelijk leider/winkelier, programmeur; bouwrepo = SoT techniek.
 - Inventaris: [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md).
+
+### Draadmodellen × bouw-componenten
+
+01–08 bijgewerkt: mapping naar default, useCart, QuoteBlok, OrderFulfilment, CatalogueList/PartyProfile in 08; bouw single-page checkout vs ontwerp 3-step expliciet.

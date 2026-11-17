@@ -1,43 +1,54 @@
-# 03 — Gegevens (stap 1)
+# 03 — Gegevens (contact en adres)
+
+**Bouw:** onderdeel van **één** pagina `/afrekenen` (geen aparte route).  
+**Blok:** **ContactAdresFieldset** in `afrekenen.vue`  
+**Layout:** **default** · zie [02-checkout-overzicht.md](./02-checkout-overzicht.md)
 
 ## Doel
 
-Contact- en aflevergegevens van de koper (B2C).
+Contact- en aflevergegevens van de koper (B2C), gekoppeld aan de server-quote/submit.
 
-## Velden
+## Velden — bouw (SoT)
 
-**Contact**
-- E-mail (verplicht) — orderbevestiging
-- Telefoon (optioneel, handig bij bezorging kunst/grote zending)
+| Label (UI) | Model | Notes |
+|------------|-------|--------|
+| E-mail | `email` | verplicht, autocomplete email |
+| Naam | `name` | één veld (niet voor/achternaam gesplitst) |
+| Straat | `street` | |
+| Huisnummer | `houseNumber` | |
+| Postcode | `postalCode` | NL-pattern als land NL |
+| Plaats | `city` | |
+| Land | `country` | uit `options.countries` |
+| Ontvangst | `delivery` | hoort bij “verzending”; zie [04](./04-verzending.md) — zelfde fieldset-flow in bouw |
 
-**Afleveradres**
-- Voornaam, achternaam
-- Straat + huisnummer
-- Toevoeging (optioneel)
-- Postcode, plaats
-- Land (default Nederland; uitbreidbaar)
+Geen telefoon, geen apart factuuradres, geen “account maken” op deze pagina in bouw.
 
-**Factuuradres**
-- Checkbox: “Factuuradres is hetzelfde” (default aan)
-- Zo uit: zelfde veldenstructuur
+## Ontwerp-plus (niet in bouw — open met team)
 
-**Account (optioneel, onderaan of bovenaan)**
-- “Maak een account met dit e-mailadres” + wachtwoord
-- Of: overslaan als gast
+- Telefoon optioneel  
+- Voornaam / achternaam gesplitst  
+- Factuuradres afwijkend  
+- “Maak account met dit e-mail” op checkout  
+- StepHeader “Stap 1 van 3”
 
-## Desktop / mobiel
-
-Zie [02-checkout-overzicht.md](./02-checkout-overzicht.md): linker kolom = formulier; rechts (desktop) order summary.
+Markeer in UI-kit als *plus*; implementatie alleen na afspraak met programmeur/winkelier.
 
 ## Validatie
 
-- Inline na blur + bij “Verder”
-- Postcode NL-formaat als land = NL
-- E-mail syntax
+- Bouw: HTML required + NL postcode pattern; server her-valideert bij quote/submit  
+- Ontwerp: inline na blur mag; fouttekst in mensentaal
 
-## Privacy
+## Privacy-copy (ontwerp)
 
-Korte regel: “We gebruiken je gegevens alleen voor deze bestelling en verzending.”
+Korte regel onder het fieldset: gegevens voor bestelling/verzending — afstemmen met echte privacytekst.
+
+## Componenten
+
+| Ontwerp | Bouw |
+|---------|------|
+| Field | native `<label><input>` in pagina |
+| ContactAdresFieldset | fieldset “Contact en adres” |
+| NavKassa | nog default layout |
 
 ---
-Vrijzaak · https://vrijzaak.nl · [[00-index]]
+Vrijzaak · https://vrijzaak.nl · [00-index.md](./00-index.md)

@@ -5,7 +5,8 @@ Twee lagen:
 1. **Bouw (SoT implementatie)** — wat er in de helling-repo staat  
 2. **Ontwerp-namen** — gewenste UX-blokken (mogen later SFC’s worden)
 
-Volledige inventaris: [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md).
+Volledige inventaris: [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md).  
+**Atomic/moleculen-lijst:** [00-ui-moleculen.md](./00-ui-moleculen.md).
 
 ---
 

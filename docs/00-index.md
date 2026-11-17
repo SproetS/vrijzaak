@@ -20,6 +20,7 @@ Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 | [00-projectmap.md](./00-projectmap.md) | Mappen en twee-repo-model |
 | [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md) | **Bouwdocs → ontwerptaal** (Nuxt/routes/klantreis/tokens) |
 | [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md) | Pagina’s + componenten uit bouwrepo (SoT UI-structuur) |
+| [00-ui-moleculen.md](./00-ui-moleculen.md) | **Atomen · moleculen · organismen · pagina’s** |
 | [00-tech-traject.md](./00-tech-traject.md) | Stack Nuxt + Directus + Mollie |
 | [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md) | Winkel vs kassa vs voet |
 | [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) | Zaak-labels **NL+EN**; techniek Engels; paths wachten |

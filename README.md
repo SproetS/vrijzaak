@@ -51,6 +51,7 @@ Op GitHub.com werken de **blauwe markdown-links**; `[[wikilinks]]` zijn vooral h
 | Iedereen | [docs/00-index.md](./docs/00-index.md) |
 | Bouw-afstemming | [docs/00-bouwcontract-ontwerp.md](./docs/00-bouwcontract-ontwerp.md) |
 | Pagina’s & componenten | [docs/00-inventaris-bouw-ui.md](./docs/00-inventaris-bouw-ui.md) |
+| Atomen / moleculen | [docs/00-ui-moleculen.md](./docs/00-ui-moleculen.md) |
 | Plan | [docs/00-projectbeschrijving-en-stappenplan.md](./docs/00-projectbeschrijving-en-stappenplan.md) |
 | Agent | [AGENTS.md](./AGENTS.md) |
 

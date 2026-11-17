@@ -38,6 +38,7 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 1. `docs/00-index.md`
 2. `docs/00-bouwcontract-ontwerp.md` — afstemming op bouwcontracten
 3. `docs/00-inventaris-bouw-ui.md` — pagina’s/componenten uit bouw (SoT UI-structuur)
+3b. `docs/00-ui-moleculen.md` — atomen / moleculen / organismen / pages
 4. `docs/00-projectbrief.md`
 5. `docs/00-projectbeschrijving-en-stappenplan.md`
 6. `docs/00-navigatie-omgevingen.md`
@@ -68,5 +69,5 @@ Deploy, secrets, zware binaries, fonts zonder licentie, destructief wissen, upse
 - Nav-richting: winkel ≠ kassa ≠ voet (bouw heeft nu één `default`-shell)
 - Totalen en paid-status van **server**; Mollie-return ≠ betaald
 - Font ontwerp **voorlopig GAP Code**; bouw `tokens.ts` kan nog GAP Mono hebben tot programmeur sync’t
-- Inventaris UI: `docs/00-inventaris-bouw-ui.md`
+- Inventaris UI: `docs/00-inventaris-bouw-ui.md` · moleculen: `docs/00-ui-moleculen.md`
 - Geen dummyprijzen/koop-CTA alsof live

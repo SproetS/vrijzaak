@@ -42,3 +42,7 @@
 ### Draadmodellen × bouw-componenten
 
 01–08 bijgewerkt: mapping naar default, useCart, QuoteBlok, OrderFulfilment, CatalogueList/PartyProfile in 08; bouw single-page checkout vs ontwerp 3-step expliciet.
+
+### UI moleculen
+
+Toegevoegd `docs/00-ui-moleculen.md` (atomic design: atoms/molecules/organisms/pages), gekoppeld aan bouw-SFC’s en i18n-nomenclatuur. Git stond al clean op i18n-nomenclatuur; deze commit pusht moleculen-lijst.

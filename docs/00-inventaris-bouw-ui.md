@@ -8,7 +8,7 @@ Ontwerp-wireframes in deze vault mogen afwijken in *presentatie*, niet stilzwijg
 
 Peildatum: 2026-11-17.
 
-Gerelateerd: [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md) · [00-index.md](./00-index.md)
+Gerelateerd: [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md) · [00-ui-moleculen.md](./00-ui-moleculen.md) · [00-index.md](./00-index.md)
 
 ---
 

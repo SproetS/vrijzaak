@@ -3,47 +3,24 @@
  * Bron: docs/00-design-tokens.md
  * Bouw-spiegel: shared/design/tokens.ts (--akws-*) in helling Nuxt-repo
  * Dit bestand is GEEN live storefront-CSS.
+ *
+ * Thema: licht (default) + donker via data-theme / .theme-dark
+ * Taal (NL/EN) hoort bij i18n, niet bij dit bestand.
  */
 
+/* -------------------------------------------------------------------------- */
+/* Gedeeld (niet thema-afhankelijk)                                           */
+/* -------------------------------------------------------------------------- */
+
 :root {
+  color-scheme: light;
+
   /* Typografie — ontwerp voorlopig GAP Code; bouw kan nog GAP Mono hebben */
   --vz-font-ui: "GAP Code", ui-monospace, "Courier New", monospace;
   --vz-font-email-fallback: "Courier New", monospace;
-
-  /* Bouw-rollen (hex uit tokens.ts / design.md) */
-  --vz-paper: #f5f2e9;
-  --vz-surface: #fffdf7;
-  --vz-ink: #202c27;
-  --vz-muted: #58645d;
-  --vz-accent: #245c43;
-  --vz-line: #b7c2b5;
   --vz-measure: 76rem;
 
-  /* Aliassen richting bouw-namen (handig bij overleg) */
-  --akws-paper: var(--vz-paper);
-  --akws-surface: var(--vz-surface);
-  --akws-ink: var(--vz-ink);
-  --akws-muted: var(--vz-muted);
-  --akws-accent: var(--vz-accent);
-  --akws-line: var(--vz-line);
-
-  /* Semantisch UI */
-  --vz-bg-primary: var(--vz-paper);
-  --vz-bg-secondary: var(--vz-surface);
-  --vz-text-primary: var(--vz-ink);
-  --vz-text-secondary: var(--vz-muted);
-  --vz-border: var(--vz-line);
-  --vz-cta-bg: var(--vz-accent);
-  --vz-cta-text: var(--vz-surface);
-  --vz-danger: #8f4a4a;
-  --vz-success: #2f6b4f;
-
-  /* Optionele zachte accenten (spaarzaam; niet i.p.v. --vz-accent) */
-  --vz-accent-soft-red: #e8a0a0;
-  --vz-accent-soft-yellow: #f0e6a8;
-  --vz-accent-soft-blue: #a8c5e8;
-
-  /* Ruimte */
+  /* Ruimte & interactie */
   --vz-space-1: 0.25rem;
   --vz-space-2: 0.5rem;
   --vz-space-3: 0.75rem;
@@ -54,4 +31,171 @@
   --vz-radius-md: 8px;
   --vz-radius-lg: 12px;
   --vz-tap-min: 44px;
+
+  /* Focus (zichtbaar in beide thema’s; ringkleur kan meeliften op accent) */
+  --vz-focus-ring-width: 2px;
+  --vz-focus-ring-offset: 2px;
+
+  /*
+   * Licht = default. Zelfde hex-rollen als bouw light (paper/surface/ink/…).
+   * Componenten gebruiken bij voorkeur --vz-bg-* / --vz-text-* / --akws-*.
+   */
+  --vz-paper: #f5f2e9;
+  --vz-surface: #fffdf7;
+  --vz-ink: #202c27;
+  --vz-muted: #58645d;
+  --vz-accent: #245c43;
+  --vz-line: #b7c2b5;
+
+  --vz-bg-primary: var(--vz-paper);
+  --vz-bg-secondary: var(--vz-surface);
+  --vz-bg-elevated: var(--vz-surface);
+  --vz-text-primary: var(--vz-ink);
+  --vz-text-secondary: var(--vz-muted);
+  --vz-text-inverse: var(--vz-surface);
+  --vz-border: var(--vz-line);
+  --vz-cta-bg: var(--vz-accent);
+  --vz-cta-text: #fffdf7;
+  --vz-danger: #8f4a4a;
+  --vz-success: #2f6b4f;
+  --vz-warning: #8a6d1d;
+  --vz-focus-ring: var(--vz-accent);
+
+  /* Zachte accenten (spaarzaam; niet i.p.v. --vz-accent) */
+  --vz-accent-soft-red: #e8a0a0;
+  --vz-accent-soft-yellow: #f0e6a8;
+  --vz-accent-soft-blue: #a8c5e8;
+
+  /* Schaduw / elevation (licht: subtiel; donker: dieper) */
+  --vz-shadow-soft: 0 1px 2px rgb(32 44 39 / 0.06);
+
+  /* Logo: welk asset in welk thema (programmeur wisselt src/class) */
+  --vz-logo-on: var(--vz-ink);
+  --vz-logo-on-inverse: var(--vz-surface);
+
+  /* Bouw-aliassen (--akws-*): altijd de actieve thema-rollen */
+  --akws-paper: var(--vz-paper);
+  --akws-surface: var(--vz-surface);
+  --akws-ink: var(--vz-ink);
+  --akws-muted: var(--vz-muted);
+  --akws-accent: var(--vz-accent);
+  --akws-line: var(--vz-line);
 }
+
+/* Expliciet licht (toggle “Licht” / data-theme=light) */
+:root,
+[data-theme="light"],
+.theme-light {
+  color-scheme: light;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Donker                                                                      */
+/* -------------------------------------------------------------------------- */
+/*
+ * Activeren (bouw/ontwerp):
+ *   <html data-theme="dark">  of  class="theme-dark" op html/body
+ * Voorkeur opslaan naast taal-toggle (cookie/localStorage) — programmeur.
+ * Optioneel: prefers-color-scheme alleen als user nog geen expliciete keuze heeft.
+ */
+
+[data-theme="dark"],
+.theme-dark {
+  color-scheme: dark;
+
+  /* Omgekeerde “papier”-zaak: diep groen-zwart, warme surface, leesbare ink-licht */
+  --vz-paper: #121a17;
+  --vz-surface: #1a2420;
+  --vz-ink: #e8efe9;
+  --vz-muted: #9aaba2;
+  --vz-accent: #3d9a6c;
+  --vz-line: #2f3d36;
+
+  --vz-bg-primary: var(--vz-paper);
+  --vz-bg-secondary: var(--vz-surface);
+  --vz-bg-elevated: #222e29;
+  --vz-text-primary: var(--vz-ink);
+  --vz-text-secondary: var(--vz-muted);
+  --vz-text-inverse: #121a17;
+  --vz-border: var(--vz-line);
+  --vz-cta-bg: var(--vz-accent);
+  --vz-cta-text: #0e1512;
+  --vz-danger: #e09090;
+  --vz-success: #6bc49a;
+  --vz-warning: #e0c35c;
+  --vz-focus-ring: #5cb88a;
+
+  --vz-accent-soft-red: #6b3a3a;
+  --vz-accent-soft-yellow: #5c5428;
+  --vz-accent-soft-blue: #2a4058;
+
+  --vz-shadow-soft: 0 1px 3px rgb(0 0 0 / 0.45);
+
+  --vz-logo-on: var(--vz-ink);
+  --vz-logo-on-inverse: var(--vz-paper);
+
+  --akws-paper: var(--vz-paper);
+  --akws-surface: var(--vz-surface);
+  --akws-ink: var(--vz-ink);
+  --akws-muted: var(--vz-muted);
+  --akws-accent: var(--vz-accent);
+  --akws-line: var(--vz-line);
+}
+
+/*
+ * Systeemvoorkeur alleen als er nog geen data-theme op <html> staat.
+ * Heeft de gebruiker gekozen (light|dark), wint data-theme altijd.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    color-scheme: dark;
+
+    --vz-paper: #121a17;
+    --vz-surface: #1a2420;
+    --vz-ink: #e8efe9;
+    --vz-muted: #9aaba2;
+    --vz-accent: #3d9a6c;
+    --vz-line: #2f3d36;
+
+    --vz-bg-primary: var(--vz-paper);
+    --vz-bg-secondary: var(--vz-surface);
+    --vz-bg-elevated: #222e29;
+    --vz-text-primary: var(--vz-ink);
+    --vz-text-secondary: var(--vz-muted);
+    --vz-text-inverse: #121a17;
+    --vz-border: var(--vz-line);
+    --vz-cta-bg: var(--vz-accent);
+    --vz-cta-text: #0e1512;
+    --vz-danger: #e09090;
+    --vz-success: #6bc49a;
+    --vz-warning: #e0c35c;
+    --vz-focus-ring: #5cb88a;
+
+    --vz-accent-soft-red: #6b3a3a;
+    --vz-accent-soft-yellow: #5c5428;
+    --vz-accent-soft-blue: #2a4058;
+
+    --vz-shadow-soft: 0 1px 3px rgb(0 0 0 / 0.45);
+
+    --vz-logo-on: var(--vz-ink);
+    --vz-logo-on-inverse: var(--vz-paper);
+
+    --akws-paper: var(--vz-paper);
+    --akws-surface: var(--vz-surface);
+    --akws-ink: var(--vz-ink);
+    --akws-muted: var(--vz-muted);
+    --akws-accent: var(--vz-accent);
+    --akws-line: var(--vz-line);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Gebruik (notitie voor programmeur)                                         */
+/* -------------------------------------------------------------------------- */
+/*
+ * html[data-theme="light"|"dark"]  — expliciete toggle (aanbevolen)
+ * .theme-dark / .theme-light       — alternatief op html of body
+ *
+ * UI-molecuul: MolThemeSwitch (Licht/Donker · Light/Dark) naast MolLangSwitch.
+ * Mail: blijf lichte tokens of aparte mail-palette; dark mail is onbetrouwbaar.
+ */

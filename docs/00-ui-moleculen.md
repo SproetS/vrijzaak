@@ -39,6 +39,7 @@ Legenda status: **bouw-SFC** · **bouw-inline** · **ontwerp** (nog niet in code
 | `AtomHeading` | h1–h3 | pages | één h1 per page |
 | `AtomIcon` | — | ontwerp `frontend/svg` | currentColor |
 | `AtomLangToggle` | NL \| EN | ontwerp | i18n switch |
+| `AtomThemeToggle` | Licht \| Donker · Light \| Dark | ontwerp | `data-theme` op `html` |
 
 Geen dummyprijzen als “echte” `AtomPrice` in productie-UI.
 
@@ -63,6 +64,7 @@ Geen dummyprijzen als “echte” `AtomPrice` in productie-UI.
 | `MolEmptyState` | tekst + CTA-link | Mand leeg → Magazijn | mand, collectie |
 | `MolNoticeBanner` | status + actie | recover checkout | `/afrekenen` |
 | `MolLangSwitch` | `AtomLangToggle` + pref | — | ontwerp |
+| `MolThemeSwitch` | `AtomThemeToggle` + pref | Licht/Donker · Light/Dark | ontwerp; tokens.css |
 | `MolSaleBadge` | `AtomBadge` Loods | In de loods / On sale | ontwerp |
 
 ---
@@ -71,7 +73,7 @@ Geen dummyprijzen als “echte” `AtomPrice` in productie-UI.
 
 | ID | Moleculen / delen | Pagina’s | Status |
 |----|-------------------|----------|--------|
-| `OrgSiteHeader` | wordmark, nav items, cart, account, search, lang | alle publiek | **default.vue** (beperkte items) |
+| `OrgSiteHeader` | wordmark, nav items, cart, account, search, lang, theme | alle publiek | **default.vue** (beperkte items) |
 | `OrgSiteFooter` | juridische links, claim | winkel | default (minimaal) |
 | `OrgCheckoutHeader` | Kassa-label, mand, escape | kassa | **ontwerp** (nu = default) |
 | `OrgCatalogueList` | filters, lijst links, paginatie, empty | Magazijn | **CatalogueList.vue** |
@@ -135,6 +137,7 @@ E-mail: aparte organismen in `server/email/` (layout + templates) — zie invent
 | MolTermsRow | | | | | x | |
 | MolTrustMollie | | | | | x | o |
 | AtomLangToggle | x | x | x | x | o | o |
+| MolThemeSwitch | x | x | x | x | o | o |
 
 \*Kassa/order: streven `OrgCheckoutHeader` i.p.v. volle winkel-nav.
 

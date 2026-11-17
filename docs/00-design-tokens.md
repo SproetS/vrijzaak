@@ -77,6 +77,23 @@ Semantisch (align met bouw-namen waar mogelijk):
 tap targets ≥ 44px (bouw design.md)
 ```
 
+### Licht / donker (thema-toggle)
+
+Naast NL/EN-taaltoggle: **Licht** (default) en **Donker**.
+
+| | |
+|--|--|
+| CSS | `frontend/css/tokens.css` |
+| Activeren | `html[data-theme="light"\|"dark"]` of `.theme-light` / `.theme-dark` |
+| Systeem | `prefers-color-scheme: dark` alleen als nog geen `data-theme` |
+| Opslag | cookie/localStorage naast taalvoorkeur (bouw) |
+| UI | molecuul `MolThemeSwitch` — [00-ui-moleculen.md](./00-ui-moleculen.md) |
+
+**Licht** = bouwhex paper/surface/ink/accent.  
+**Donker** = diep groen-zwart papier, lichte ink, helderder accent (voorstel in `tokens.css`; mag nog bijgestemd).  
+Componenten gebruiken semantische vars (`--vz-bg-primary`, `--vz-text-primary`, `--akws-*`), geen losse light-only hex.  
+**E-mail:** geen verplicht dark theme (clients onbetrouwbaar).
+
 ---
 
 ## C. Besluit nodig
@@ -86,6 +103,8 @@ tap targets ≥ 44px (bouw design.md)
 | Productie-font | **GAP Code (voorlopig vast in ontwerp)** · bouw nog Mono tot PR |
 | Accent | Huidig groen `#245c43` vast · of zachte multi-accent uit AI-ontwerp |
 | Papierwit | Bouw paper/surface overnemen als default in vault-UI-kit |
+| Donker-palette | Voorstel in tokens.css ok · of dichter op bouw-light inverted |
+| Default thema | Licht · systeem · laatst gekozen |
 
 Tot besluit: **wireframes beschrijven hiërarchie en rust**; screenshots/CSS-proeven labelen “vault” vs “bouw”.
 

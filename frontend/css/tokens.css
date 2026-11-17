@@ -53,7 +53,7 @@
   --vz-text-h3-weight: 700;
 
   --vz-text-h4-size: 1.25rem; /* 20px */
-  --vz-text-h4-leading: calc(var(--vz-baseline) * 1.5); /* 30px — half-step; of *2 voor 40 */
+  --vz-text-h4-leading: calc(var(--vz-baseline) * 2); /* 40px — vol op basislijn */
   --vz-text-h4-weight: 700;
 
   --vz-text-h5-size: 1.125rem; /* 18px */
@@ -68,30 +68,85 @@
   --vz-text-sm-size: 0.875rem; /* 14px */
   --vz-text-sm-leading: var(--vz-baseline); /* 20px — één lijn, iets losser t.o.v. 14 */
   --vz-text-lg-size: 1.125rem;
-  --vz-text-lg-leading: calc(var(--vz-baseline) * 1.5);
+  --vz-text-lg-leading: calc(var(--vz-baseline) * 2); /* 40px */
 
-  /* Verticale rhythm: margins in basislijnen (zoals space-before/after) */
-  --vz-heading-space-before: var(--vz-baseline); /* 1 lijn */
-  --vz-heading-space-after: calc(var(--vz-baseline) * 0.5); /* ½ lijn — of 1 voor streng raster */
-  --vz-stack-gap: var(--vz-baseline); /* standaard alinea-afstand */
+  /*
+   * Twee assen (niet mengen):
+   * - VERTICAAL: alles op basislijn-grid 20px (leading, stack, section gaps, block margins)
+   * - HORIZONTAAL: 4px-module (padding-inline, gap in rijen, icon-gaps) — ankers 4 / 16 / 32
+   */
 
-  /* Ruimte & interactie — deels op baseline-grid (20px) */
-  --vz-space-1: calc(var(--vz-baseline) * 0.25); /* 5px */
-  --vz-space-2: calc(var(--vz-baseline) * 0.5); /* 10px */
-  --vz-space-3: calc(var(--vz-baseline) * 0.75); /* 15px */
-  --vz-space-4: var(--vz-baseline); /* 20px = 1 basislijn */
-  --vz-space-5: calc(var(--vz-baseline) * 1.5); /* 30px */
-  --vz-space-6: calc(var(--vz-baseline) * 2); /* 40px */
-  --vz-space-8: calc(var(--vz-baseline) * 3); /* 60px */
-  --vz-space-half: calc(var(--vz-baseline) * 0.5);
-  --vz-radius-sm: 4px;
-  --vz-radius-md: 8px;
-  --vz-radius-lg: 12px;
-  --vz-tap-min: 44px;
+  /* --- Verticaal: basislijn-rhythm (InDesign) --- */
+  --vz-heading-space-before: var(--vz-baseline); /* 20px = 1 lijn */
+  --vz-heading-space-after: var(--vz-baseline); /* 1 lijn — strak op raster */
+  --vz-stack-gap: var(--vz-baseline); /* alinea → alinea */
+  --vz-section-gap: calc(var(--vz-baseline) * 2); /* 40px = 2 lijnen */
+  --vz-section-gap-lg: calc(var(--vz-baseline) * 3); /* 60px = 3 lijnen */
+  --vz-block-pad-block: var(--vz-baseline); /* verticale padding cards/sections */
+  --vz-block-pad-block-lg: calc(var(--vz-baseline) * 2);
 
-  /* Focus (zichtbaar in beide thema’s; ringkleur kan meeliften op accent) */
-  --vz-focus-ring-width: 2px;
-  --vz-focus-ring-offset: 2px;
+  /* Aliassen verticaal (oude space-* voor block-richting) */
+  --vz-space-y-1: var(--vz-baseline); /* 20 */
+  --vz-space-y-2: calc(var(--vz-baseline) * 2); /* 40 */
+  --vz-space-y-3: calc(var(--vz-baseline) * 3); /* 60 */
+  --vz-space-y-4: calc(var(--vz-baseline) * 4); /* 80 */
+  --vz-space-y-half: calc(var(--vz-baseline) * 0.5); /* 10 — alleen bij uitzondering */
+
+  /* --- Horizontaal: 4px-grid (ankers 4 · 16 · 32) --- */
+  --vz-grid-x: 4px; /* kleinste stap */
+  --vz-space-x-1: var(--vz-grid-x); /* 4 */
+  --vz-space-x-2: calc(var(--vz-grid-x) * 2); /* 8 */
+  --vz-space-x-3: calc(var(--vz-grid-x) * 3); /* 12 */
+  --vz-space-x-4: calc(var(--vz-grid-x) * 4); /* 16 — anker */
+  --vz-space-x-5: calc(var(--vz-grid-x) * 5); /* 20 */
+  --vz-space-x-6: calc(var(--vz-grid-x) * 6); /* 24 */
+  --vz-space-x-7: calc(var(--vz-grid-x) * 7); /* 28 */
+  --vz-space-x-8: calc(var(--vz-grid-x) * 8); /* 32 — anker */
+  --vz-space-x-9: calc(var(--vz-grid-x) * 9); /* 36 */
+  --vz-space-x-10: calc(var(--vz-grid-x) * 10); /* 40 */
+  --vz-space-x-12: calc(var(--vz-grid-x) * 12); /* 48 */
+  --vz-space-x-16: calc(var(--vz-grid-x) * 16); /* 64 */
+
+  /* Handige composities */
+  --vz-inline-gap-tight: var(--vz-space-x-2); /* 8 — icon+label */
+  --vz-inline-gap: var(--vz-space-x-4); /* 16 — default inline */
+  --vz-inline-gap-loose: var(--vz-space-x-8); /* 32 — nav clusters */
+  --vz-page-pad-inline: var(--vz-space-x-8); /* 32 — page gutters mobiel start */
+  --vz-page-pad-inline-md: calc(var(--vz-grid-x) * 12); /* 48 */
+  --vz-page-pad-inline-lg: calc(var(--vz-grid-x) * 16); /* 64 */
+  --vz-block-pad-inline: var(--vz-space-x-4); /* 16 */
+  --vz-block-pad-inline-lg: var(--vz-space-x-8); /* 32 */
+
+  /*
+   * Generieke --vz-space-* (legacy): horizontaal 4px-schaal.
+   * Voor VERTICAAL liever --vz-space-y-* of --vz-baseline.
+   */
+  --vz-space-1: var(--vz-space-x-1); /* 4 */
+  --vz-space-2: var(--vz-space-x-2); /* 8 */
+  --vz-space-3: var(--vz-space-x-3); /* 12 */
+  --vz-space-4: var(--vz-space-x-4); /* 16 */
+  --vz-space-5: var(--vz-space-x-5); /* 20 */
+  --vz-space-6: var(--vz-space-x-6); /* 24 */
+  --vz-space-7: var(--vz-space-x-7); /* 28 */
+  --vz-space-8: var(--vz-space-x-8); /* 32 */
+  --vz-space-9: var(--vz-space-x-9); /* 36 */
+  --vz-space-10: var(--vz-space-x-10); /* 40 */
+  --vz-space-12: var(--vz-space-x-12); /* 48 */
+  --vz-space-16: var(--vz-space-x-16); /* 64 */
+  --vz-space-half: var(--vz-space-x-2); /* 8 — niet 10; blijf op 4px */
+
+  /* Radius ook op 4px-module */
+  --vz-radius-sm: var(--vz-space-x-1); /* 4 */
+  --vz-radius-md: var(--vz-space-x-2); /* 8 */
+  --vz-radius-lg: var(--vz-space-x-3); /* 12 */
+  --vz-radius-xl: var(--vz-space-x-4); /* 16 */
+
+  /* Tap: a11y ≥44px → afronden op 4px-grid = 48px */
+  --vz-tap-min: var(--vz-space-x-12); /* 48 */
+
+  /* Focus op 4px-grid */
+  --vz-focus-ring-width: 2px; /* uitzondering: 2px hairline ok */
+  --vz-focus-ring-offset: var(--vz-space-x-1); /* 4 */
 
   /*
    * Licht = default. Zelfde hex-rollen als bouw light (paper/surface/ink/…).

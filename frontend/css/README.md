@@ -10,29 +10,37 @@
 <link rel="stylesheet" href="type.css" />
 ```
 
-## Basislijn (InDesign-achtig)
+## Twee rasters
 
-| | |
-|--|--|
-| Body | **16px** (`1rem`) |
-| Basislijn / leading-unit | **20px** (`1.25rem`) |
-| Body line-height | 20px |
-| Verticale ritme | margins/gaps in × 20px |
+| As | Module | Ankers | Gebruik |
+|----|--------|--------|--------|
+| **Verticaal** | **20px** basislijn | 20 · 40 · 60 · 80 | line-height, margin-block, stack/section gaps, padding-block |
+| **Horizontaal** | **4px** | **4 · 16 · 32** (+ stappen 8, 12, 20, 24, 28, 36, 40, 48, 64) | padding-inline, gap in rijen, icon-spacing, page gutters |
 
-### Koppen (leading = n × 20px)
+**Niet:** verticale 10/15px-halves tenzij uitzondering; **niet** horizontale 5/10/20 uit baseline-delen — horizontaal altijd veelvoud van 4.
+
+```css
+/* voorbeelden */
+padding-block: var(--vz-space-y-1);           /* 20 — verticaal */
+padding-inline: var(--vz-space-x-4);        /* 16 — horizontaal */
+gap: var(--vz-inline-gap);                  /* 16 rij */
+margin-block: var(--vz-section-gap);        /* 40 sectie */
+```
+
+Tokens: `--vz-space-x-*` / `--vz-space-y-*` · legacy `--vz-space-*` = horizontaal 4px-schaal.
+
+### Koppen (leading = n × 20px verticaal)
 
 | | size | line-height | k |
 |--|------|-------------|---|
 | h1 | 40px | 40px | 2 |
 | h2 | 32px | 40px | 2 |
 | h3 | 24px | 40px | 2 |
-| h4 | 20px | 30px* | 1.5 |
+| h4 | 20px | 40px | 2 |
 | h5 | 18px | 20px | 1 |
 | h6 | 16px | 20px | 1 (uppercase) |
 
-\*Half-step voor h4; class `.vz-type-strict` zet h4-leading op 40px.
-
-Debug-raster: `html.vz-baseline-debug`.
+\Debug-raster: `html.vz-baseline-debug`.
 
 ## Relatie met bouw
 

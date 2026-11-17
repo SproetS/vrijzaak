@@ -2,9 +2,9 @@
  * Vrijzaak — basislijn-typografie (voorstel)
  * Vereist: tokens.css
  *
- * Raster: body 16px, basislijn 20px (InDesign-achtig).
- * line-height en verticale margins in veelvouden van --vz-baseline.
- * optioneel debug: html.vz-baseline-debug { … } onderaan
+ * VERTICAAL: body 16px, basislijn 20px — alle block-margins/gaps op n × 20px.
+ * HORIZONTAAL: 4px-module (ankers 4 / 16 / 32) — padding-inline, row gaps (tokens).
+ * optioneel debug: html.vz-baseline-debug
  */
 
 html {
@@ -63,8 +63,6 @@ h1 {
   line-height: var(--vz-text-h1-leading);
   font-weight: var(--vz-text-h1-weight);
   letter-spacing: -0.02em;
-  /* Twee basislijnen leading (40px); iets meer adem erna */
-  margin-block-end: var(--vz-baseline);
 }
 
 h2 {
@@ -99,12 +97,6 @@ h6 {
   font-weight: var(--vz-text-h6-weight);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
-
-/* Strenger: h4 ook op 2 basislijnen (40px) i.p.v. 30px half-step */
-.vz-type-strict {
-  --vz-text-h4-leading: calc(var(--vz-baseline) * 2);
-  --vz-heading-space-after: var(--vz-baseline);
 }
 
 /* Eerste heading in card/section zonder top-margin */

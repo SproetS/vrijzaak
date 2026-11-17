@@ -68,13 +68,23 @@ Zoals een **basislijn-raster in InDesign**: vaste leading-unit, koppen en alinea
 | h1 | 40px | 40px | 2 |
 | h2 | 32px | 40px | 2 |
 | h3 | 24px | 40px | 2 |
-| h4 | 20px | 30px (of 40 in `.vz-type-strict`) | 1.5 / 2 |
+| h4 | 20px | 40px | 2 |
 | h5 | 18px | 20px | 1 |
 | h6 | 16px | 20px | 1 (+ caps) |
 
-Verticale margins: `--vz-heading-space-before/after`, `--vz-stack-gap` = veelvouden van 20px.  
-Space-tokens `--vz-space-4` = 1 basislijn, `--vz-space-6` = 2, enz.  
-Debug: `html.vz-baseline-debug` tekent 20px-lijnen.
+**Verticaal — alles op basislijn 20px**  
+`margin-block`, `padding-block`, `gap` in kolom-stacks, section spacing, line-height-boxes: alleen `n × 20px` (`--vz-space-y-*`, `--vz-baseline`, `--vz-section-gap`).  
+Debug: `html.vz-baseline-debug`.
+
+**Horizontaal — 4px-module (ankers 4 / 16 / 32)**  
+`padding-inline`, gaps in een rij, icon+label, page gutters: stappen van **4px** — `--vz-space-x-1`…`16` (4, 8, 12, **16**, 20, 24, 28, **32**, 36, 40, 48, 64).  
+Primair denken: **4 → 16 → 32**; daartussen alleen 4px-stappen.  
+Tap-target: **48px** (12×4), niet 44. Radius: 4 / 8 / 12 / 16.
+
+| Richting | Token-voorbeelden |
+|----------|-------------------|
+| Verticaal | `--vz-stack-gap`, `--vz-space-y-2`, `--vz-heading-space-*` |
+| Horizontaal | `--vz-inline-gap` (16), `--vz-page-pad-inline` (32), `--vz-space-x-4` |
 
 ### Kleur (vault-voorstel boven greyscale)
 

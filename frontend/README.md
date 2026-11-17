@@ -22,7 +22,7 @@ Zie [docs/00-design-tokens.md](../docs/00-design-tokens.md), [docs/00-bouwcontra
 
 | Map | Inhoud |
 |-----|--------|
-| `css/` | `tokens.css` + `type.css` (basislijn 16/20, h1–h6); **niet** de live Nuxt-build |
+| `css/` | Cascade `main.css`: tokens → type → base → atoms → molecules → organisms → layout |
 | `fonts/` | Lokale webfont-proeven; **gitignored** t.o.v. bulk — licentie vóór delen/commit |
 | `logos/` | Merklogo (SVG/PNG) voor handoff |
 | `svg/` | UX-iconen en overige vectoren |
@@ -32,7 +32,7 @@ Zie [docs/00-design-tokens.md](../docs/00-design-tokens.md), [docs/00-bouwcontra
 ## Handoff naar programmeur
 
 1. Waarden en keuzes in **`docs/00-design-tokens.md`** (GAP Code voorlopig, kleuren, logo-regels).  
-2. Bestanden hier: `logos/logo.svg`, eventueel `css/tokens.css`, schermexports in `assets/`.  
+2. Bestanden hier: `logos/logo.svg`, `css/main.css` (moleculen-structuur), schermexports in `assets/`.  
 3. Programmeur mapt naar bouw: `tokens.ts`, `public/fonts/`, `public/` of `app/assets/` — via issue/PR op **bouwrepo**, niet door hier een Nuxt-app te starten.  
 4. Routes/componenten: blijf namen gebruiken uit de inventaris (`/mand`, QuoteBlok, …).
 

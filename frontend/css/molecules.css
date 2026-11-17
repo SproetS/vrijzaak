@@ -1,0 +1,196 @@
+/**
+ * Molecules — vaste combinaties van atomen
+ * ≈ Mol* in docs/00-ui-moleculen.md
+ */
+
+/* --- MolFieldRow: label + control + hint/error --- */
+.vz-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vz-space-x-2); /* 8 — tussen label en input (kleine H-stap) */
+  margin-block-end: var(--vz-space-y-1); /* 20 — volgende field op basislijn */
+}
+
+.vz-field__hint,
+.vz-field__error {
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+  margin: 0;
+}
+
+.vz-field__hint {
+  color: var(--vz-text-secondary);
+}
+
+.vz-field__error {
+  color: var(--vz-danger);
+}
+
+/* --- MolNavItem --- */
+.vz-nav-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--vz-tap-min);
+  padding-inline: var(--vz-space-x-4);
+  color: var(--vz-text-primary);
+  text-decoration: none;
+  font-size: var(--vz-text-body-size);
+  line-height: var(--vz-text-body-leading);
+}
+
+.vz-nav-item:hover,
+.vz-nav-item[aria-current="page"] {
+  color: var(--vz-accent);
+}
+
+/* --- MolCartCount --- */
+.vz-cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vz-inline-gap-tight);
+  min-height: var(--vz-tap-min);
+  text-decoration: none;
+  color: var(--vz-text-primary);
+}
+
+.vz-cart-link__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--vz-space-x-6);
+  min-height: var(--vz-space-x-6);
+  padding-inline: var(--vz-space-x-1);
+  border-radius: var(--vz-radius-sm);
+  background: var(--vz-accent);
+  color: var(--vz-cta-text);
+  font-size: var(--vz-text-sm-size);
+  line-height: 1;
+}
+
+/* --- MolQuantityStepper --- */
+.vz-qty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vz-space-x-2);
+  max-width: calc(var(--vz-grid-x) * 20); /* 80 */
+}
+
+.vz-qty .vz-input {
+  max-width: 100%;
+}
+
+/* --- MolLinePrice / cart line fragment --- */
+.vz-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--vz-inline-gap);
+  padding-block: var(--vz-space-y-1);
+  border-block-end: 1px solid var(--vz-border);
+  line-height: var(--vz-text-body-leading);
+}
+
+/* --- MolEmptyState --- */
+.vz-empty {
+  padding-block: var(--vz-space-y-2);
+  padding-inline: var(--vz-space-x-4);
+  text-align: start;
+}
+
+.vz-empty__title {
+  font-size: var(--vz-text-h4-size);
+  line-height: var(--vz-text-h4-leading);
+  font-weight: 700;
+  margin-block: 0 var(--vz-space-y-1);
+}
+
+.vz-empty__text {
+  margin-block: 0 var(--vz-space-y-1);
+  color: var(--vz-text-secondary);
+}
+
+/* --- MolNoticeBanner --- */
+.vz-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--vz-inline-gap);
+  padding-block: var(--vz-space-y-1);
+  padding-inline: var(--vz-space-x-4);
+  background: var(--vz-bg-secondary);
+  border: 1px solid var(--vz-border);
+  border-radius: var(--vz-radius-md);
+  margin-block-end: var(--vz-space-y-1);
+}
+
+/* --- MolTermsRow --- */
+.vz-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--vz-inline-gap-tight);
+  margin-block: var(--vz-space-y-1);
+  line-height: var(--vz-text-body-leading);
+}
+
+.vz-terms .vz-checkbox {
+  margin-block-start: var(--vz-space-x-1); /* 4 — optische align */
+  flex-shrink: 0;
+}
+
+/* --- MolTrustMollie --- */
+.vz-trust {
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+  color: var(--vz-text-secondary);
+  margin-block: var(--vz-space-y-1) 0;
+}
+
+/* --- MolLangSwitch / MolThemeSwitch --- */
+.vz-switch {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--vz-border);
+  border-radius: var(--vz-radius-md);
+  overflow: hidden;
+}
+
+.vz-switch__btn {
+  min-height: var(--vz-tap-min);
+  padding-inline: var(--vz-space-x-4);
+  border: 0;
+  background: var(--vz-bg-secondary);
+  color: var(--vz-text-secondary);
+  font-family: var(--vz-font-ui);
+  font-size: var(--vz-text-sm-size);
+  cursor: pointer;
+}
+
+.vz-switch__btn[aria-pressed="true"],
+.vz-switch__btn.is-active {
+  background: var(--vz-accent);
+  color: var(--vz-cta-text);
+}
+
+.vz-switch__btn:focus-visible {
+  outline: var(--vz-focus-ring-width) solid var(--vz-focus-ring);
+  outline-offset: calc(-1 * var(--vz-focus-ring-width));
+}
+
+/* --- MolSearchField --- */
+.vz-search {
+  display: flex;
+  gap: var(--vz-space-x-2);
+  align-items: stretch;
+  max-width: calc(var(--vz-grid-x) * 80); /* 320 */
+}
+
+.vz-search .vz-input {
+  flex: 1;
+}
+
+.vz-search .vz-btn {
+  flex-shrink: 0;
+  padding-inline: var(--vz-space-x-4);
+}

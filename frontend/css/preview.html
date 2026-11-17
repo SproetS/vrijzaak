@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vrijzaak CSS preview (ontwerp)</title>
+  <link rel="stylesheet" href="./main.css" />
+</head>
+<body>
+  <a class="vz-skip-link" href="#inhoud">Naar de inhoud</a>
+  <div class="vz-shell">
+    <header class="vz-site-header">
+      <a class="vz-wordmark" href="#">Vrijzaak*</a>
+      <nav class="vz-site-header__nav" aria-label="Hoofd">
+        <a class="vz-nav-item" href="#">Etalage</a>
+        <a class="vz-nav-item" href="#" aria-current="page">Magazijn</a>
+        <a class="vz-nav-item" href="#">Loods</a>
+      </nav>
+      <div class="vz-site-header__utils">
+        <div class="vz-switch" role="group" aria-label="Taal">
+          <button type="button" class="vz-switch__btn is-active" aria-pressed="true">NL</button>
+          <button type="button" class="vz-switch__btn" aria-pressed="false">EN</button>
+        </div>
+        <div class="vz-switch" role="group" aria-label="Thema">
+          <button type="button" class="vz-switch__btn is-active" aria-pressed="true">Licht</button>
+          <button type="button" class="vz-switch__btn" aria-pressed="false">Donker</button>
+        </div>
+        <a class="vz-cart-link" href="#">Winkelmand <span class="vz-cart-link__count">2</span></a>
+      </div>
+    </header>
+    <main id="inhoud" class="vz-main">
+      <h1 class="vz-heading-flush">Magazijn</h1>
+      <p class="vz-lead">Voorbeeld van de moleculen-cascade (geen live shop).</p>
+      <div class="vz-field">
+        <label class="vz-label" for="q">Zoeken</label>
+        <input class="vz-input" id="q" type="search" />
+      </div>
+      <p><button type="button" class="vz-btn">Naar de kassa</button>
+         <button type="button" class="vz-btn vz-btn--ghost">Terug</button></p>
+      <div class="vz-quote">
+        <ul class="vz-quote__list">
+          <li><span>Voorbeeld werk × 1</span><span class="vz-price">EUR 12,00</span></li>
+        </ul>
+        <p class="vz-quote__total">Totaal <span class="vz-price">EUR 12,00</span></p>
+      </div>
+    </main>
+    <footer class="vz-site-footer">
+      <nav class="vz-site-footer__nav">
+        <a href="#">Contact</a>
+        <a href="#">Voorwaarden</a>
+      </nav>
+      <p>Vrijzaak — ontwerp CSS preview</p>
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('[aria-label="Thema"] .vz-switch__btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const dark = btn.textContent.trim() === 'Donker';
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        btn.parentElement.querySelectorAll('.vz-switch__btn').forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

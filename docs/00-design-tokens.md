@@ -157,7 +157,7 @@ Tot besluit: **wireframes beschrijven hiërarchie en rust**; screenshots/CSS-pro
 | Asset | Pad |
 |-------|-----|
 | Primair logo | `frontend/logos/logo.svg` (en evt. `.png`) |
-| CSS-voorstel | `frontend/css/tokens.css` + `type.css` |
+| CSS-voorstel | `frontend/css/main.css` (tokens → … → layout) |
 | Uitleg mappen | `frontend/README.md` |
 
 Implementatie in de shop: programmeur → helling Nuxt (`public/`, `shared/design/tokens.ts`).  

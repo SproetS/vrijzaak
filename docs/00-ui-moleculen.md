@@ -12,7 +12,8 @@ Niet elk blok hoeft meteen een Vue-SFC te zijn; wél een **stabiele naam** (Enge
 
 **SoT routes nu:** bouwrepo (nog NL-paden). **Hernoem paths:** programmeur later.  
 **Labels:** [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md).  
-**Bestaande SFC’s:** [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md).
+**Bestaande SFC’s:** [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md).  
+**CSS-cascade (ontwerp):** `frontend/css/main.css` — basis in atoms/molecules/organisms; uitzonderingen in `frontend/css/components/`.
 
 Legenda status: **bouw-SFC** · **bouw-inline** · **ontwerp** (nog niet in code) · **deels**
 

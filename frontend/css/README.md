@@ -1,60 +1,70 @@
-# css/ — ontwerp-tokens en type (voorstel)
+# css/ — moleculen-cascade (ontwerpvoorstel)
 
-| Bestand | Rol |
-|---------|-----|
-| `tokens.css` | Custom properties: kleur, thema, **basislijn 20px**, type-scale, space |
-| `type.css` | `body` + **h1–h6** op dat raster (laadt ná tokens) |
+**Idee:** vaste basisregels per laag; **uitzonderingen** alleen in `components/` of Vue scoped.
+
+```text
+tokens  →  type  →  base  →  atoms  →  molecules  →  organisms  →  layout
+                                                              ↘ components/* (optioneel)
+```
+
+Entry: **`main.css`** (importeert alles in volgorde).
+
+| Bestand | Laag | Inhoud |
+|---------|------|--------|
+| `tokens.css` | tokens | Kleur, thema, type-scale, V/H-space |
+| `type.css` | type | body, h1–h6, baseline debug |
+| `base.css` | base | box-sizing, links, `.vz-stack` / `.vz-row` |
+| `atoms.css` | atoms | `.vz-btn`, `.vz-input`, `.vz-price`, … |
+| `molecules.css` | molecules | `.vz-field`, `.vz-nav-item`, `.vz-empty`, … |
+| `organisms.css` | organisms | `.vz-site-header`, `.vz-quote`, `.vz-cart`, … |
+| `layout.css` | layout | `.vz-shell`, `.vz-main`, checkout-grid |
+| `components/` | exceptions | Alleen afwijkingen |
+| `main.css` | entry | `@import` cascade |
+
+Classnamen sluiten aan op [docs/00-ui-moleculen.md](../../docs/00-ui-moleculen.md) (`Atom*` / `Mol*` / `Org*` → `.vz-*`).
+
+## Laden
 
 ```html
-<link rel="stylesheet" href="tokens.css" />
-<link rel="stylesheet" href="type.css" />
+<link rel="stylesheet" href="/path/to/css/main.css" />
 ```
 
-## Twee rasters
+Of in Nuxt later: dezelfde volgorde mappen naar `app/assets/css/`.
 
-| As | Module | Ankers | Gebruik |
+## Twee rasters (altijd)
+
+| As | Module | Ankers | Tokens |
 |----|--------|--------|--------|
-| **Verticaal** | **20px** basislijn | 20 · 40 · 60 · 80 | line-height, margin-block, stack/section gaps, padding-block |
-| **Horizontaal** | **4px** | **4 · 16 · 32** (+ stappen 8, 12, 20, 24, 28, 36, 40, 48, 64) | padding-inline, gap in rijen, icon-spacing, page gutters |
-
-**Niet:** verticale 10/15px-halves tenzij uitzondering; **niet** horizontale 5/10/20 uit baseline-delen — horizontaal altijd veelvoud van 4.
+| **Verticaal** | 20px basislijn | 20 · 40 · 60 | `--vz-space-y-*`, `--vz-baseline` |
+| **Horizontaal** | 4px | **4 · 16 · 32** | `--vz-space-x-*`, `--vz-inline-gap` |
 
 ```css
-/* voorbeelden */
-padding-block: var(--vz-space-y-1);           /* 20 — verticaal */
-padding-inline: var(--vz-space-x-4);        /* 16 — horizontaal */
-gap: var(--vz-inline-gap);                  /* 16 rij */
-margin-block: var(--vz-section-gap);        /* 40 sectie */
+padding-block: var(--vz-space-y-1);    /* 20 */
+padding-inline: var(--vz-space-x-4); /* 16 */
+gap: var(--vz-inline-gap);           /* 16 in een rij */
 ```
 
-Tokens: `--vz-space-x-*` / `--vz-space-y-*` · legacy `--vz-space-*` = horizontaal 4px-schaal.
+## Regel vs uitzondering
 
-### Koppen (leading = n × 20px verticaal)
+| Wel in basis-lagen | Wel in `components/` of SFC |
+|--------------------|-----------------------------|
+| Default knop, field, quote-blok | Unieke test-banner, fulfilment-tabel |
+| Raster, focus, tap 48px | Eenmalige layout-hack |
+| Modifiers `--ghost`, `--tight` | Page-only one-offs |
 
-| | size | line-height | k |
-|--|------|-------------|---|
-| h1 | 40px | 40px | 2 |
-| h2 | 32px | 40px | 2 |
-| h3 | 24px | 40px | 2 |
-| h4 | 20px | 40px | 2 |
-| h5 | 18px | 20px | 1 |
-| h6 | 16px | 20px | 1 (uppercase) |
+1. Kan het een **modifier** op atom/molecule? → daar.  
+2. Echt uniek? → `components/<naam>.css`.  
+3. Geen losse hex / 13px / verticale 15px.
 
-\Debug-raster: `html.vz-baseline-debug`.
+## Thema & i18n
 
-## Relatie met bouw
+- Licht/donker: `html[data-theme="dark"]` (tokens).  
+- NL/EN: i18n in Nuxt, niet CSS.  
+- UI: `.vz-switch` voor lang + theme.
 
-| Ontwerp (deze map) | Bouw (helling Nuxt) |
-|--------------------|---------------------|
-| `--vz-*` / type-scale | `shared/design/tokens.ts` + `app/assets/css/main.css` |
-| Licht/donker | nog te mappen in Nuxt |
+## Documentatie
 
-Documentatie: [docs/00-design-tokens.md](../../docs/00-design-tokens.md).
+- [docs/00-design-tokens.md](../../docs/00-design-tokens.md)  
+- [docs/00-ui-moleculen.md](../../docs/00-ui-moleculen.md)  
 
-### Thema licht / donker
-
-- Default: licht (`:root`).
-- Donker: `html[data-theme="dark"]` of `.theme-dark`.
-- Taal NL/EN = i18n, niet CSS.
-
-Bij wijziging: docs → CSS → programmeur. **Niet** automatisch de Nuxt-build.
+Dit is **geen** live Nuxt-build — handoff-referentie voor de programmeur.

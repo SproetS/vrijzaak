@@ -1,0 +1,204 @@
+/**
+ * Organisms — grote blokken (samenstelling van molecules)
+ * ≈ Org* in docs/00-ui-moleculen.md
+ * Specifieke page-overrides → components/ of Vue scoped
+ */
+
+/* --- OrgSiteHeader --- */
+.vz-site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--vz-inline-gap);
+  padding-block: var(--vz-space-y-1);
+  padding-inline: var(--vz-page-pad-inline);
+  border-block-end: 1px solid var(--vz-border);
+  background: var(--vz-bg-primary);
+}
+
+.vz-site-header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--vz-inline-gap-loose); /* 32 */
+}
+
+.vz-site-header__utils {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--vz-inline-gap);
+}
+
+/* --- OrgCheckoutHeader (strevens: minder nav) --- */
+.vz-checkout-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--vz-inline-gap);
+  padding-block: var(--vz-space-y-1);
+  padding-inline: var(--vz-page-pad-inline);
+  border-block-end: 1px solid var(--vz-border);
+  background: var(--vz-bg-primary);
+}
+
+.vz-checkout-header__title {
+  font-size: var(--vz-text-h4-size);
+  line-height: var(--vz-text-h4-leading);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --- OrgSiteFooter --- */
+.vz-site-footer {
+  padding-block: var(--vz-space-y-2);
+  padding-inline: var(--vz-page-pad-inline);
+  border-block-start: 1px solid var(--vz-border);
+  margin-block-start: var(--vz-section-gap);
+  color: var(--vz-text-secondary);
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+}
+
+.vz-site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vz-inline-gap-loose);
+  margin-block-end: var(--vz-space-y-1);
+}
+
+/* --- OrgHomeHero --- */
+.vz-hero {
+  padding-block: var(--vz-section-gap-lg);
+  padding-inline: var(--vz-page-pad-inline);
+}
+
+.vz-hero__eyebrow {
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+  color: var(--vz-text-secondary);
+  margin-block: 0 var(--vz-space-y-1);
+}
+
+.vz-hero h1 {
+  margin-block-start: 0;
+}
+
+/* --- OrgCartList --- */
+.vz-cart {
+  padding-inline: var(--vz-page-pad-inline);
+  padding-block: var(--vz-space-y-1);
+}
+
+.vz-cart__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vz-cart__list > li {
+  margin: 0;
+}
+
+.vz-cart__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vz-inline-gap);
+  margin-block-start: var(--vz-space-y-2);
+}
+
+/* --- OrgContactAddressForm + fulfillment (kassa form cluster) --- */
+.vz-checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* fields brengen eigen y-margin */
+  max-width: calc(var(--vz-grid-x) * 96); /* 384 */
+}
+
+.vz-checkout-form fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.vz-checkout-form legend {
+  font-size: var(--vz-text-h4-size);
+  line-height: var(--vz-text-h4-leading);
+  font-weight: 700;
+  margin-block: 0 var(--vz-space-y-1);
+  padding: 0;
+}
+
+/* --- OrgQuoteBlock --- */
+.vz-quote {
+  padding-block: var(--vz-space-y-1);
+  padding-inline: var(--vz-block-pad-inline-lg);
+  background: var(--vz-bg-secondary);
+  border: 1px solid var(--vz-border);
+  border-radius: var(--vz-radius-md);
+  margin-block: var(--vz-space-y-1);
+}
+
+.vz-quote__list {
+  list-style: none;
+  margin: 0 0 var(--vz-space-y-1);
+  padding: 0;
+}
+
+.vz-quote__list li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--vz-inline-gap);
+  padding-block: 0;
+  line-height: var(--vz-text-body-leading);
+  margin-block-end: var(--vz-space-y-1);
+}
+
+.vz-quote__total {
+  font-weight: 700;
+  font-size: var(--vz-text-h4-size);
+  line-height: var(--vz-text-h4-leading);
+  margin-block: var(--vz-space-y-1) 0;
+}
+
+.vz-quote__meta {
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+  color: var(--vz-text-secondary);
+  margin-block: var(--vz-space-y-1) 0;
+}
+
+.vz-quote__banner {
+  margin-block-end: var(--vz-space-y-1);
+}
+
+/* --- OrgCheckoutActions --- */
+.vz-checkout-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--vz-space-y-1);
+  margin-block-start: var(--vz-space-y-1);
+}
+
+/* --- OrgCatalogueList (shell) --- */
+.vz-catalogue {
+  padding-inline: var(--vz-page-pad-inline);
+  padding-block: var(--vz-space-y-1);
+}
+
+.vz-catalogue__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--vz-space-y-1);
+}
+
+.vz-catalogue__list a {
+  line-height: var(--vz-text-body-leading);
+}

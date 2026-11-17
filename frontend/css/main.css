@@ -1,0 +1,20 @@
+/**
+ * Vrijzaak — ontwerp CSS cascade (voorstel)
+ * Laad één keer in proef-HTML of als referentie voor Nuxt main.css.
+ *
+ * Volgorde = atomic layers:
+ *   tokens → type → base → atoms → molecules → organisms → layout
+ * Uitzonderingen: components/<naam>.css (ná deze cascade, of scoped in Vue)
+ *
+ * Zie docs/00-ui-moleculen.md · docs/00-design-tokens.md
+ */
+
+@import url("./tokens.css");
+@import url("./type.css");
+@import url("./base.css");
+@import url("./atoms.css");
+@import url("./molecules.css");
+@import url("./organisms.css");
+@import url("./layout.css");
+
+/* Component-uitzonderingen: @import url("./components/_index.css"); */

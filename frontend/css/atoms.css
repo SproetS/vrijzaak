@@ -1,0 +1,192 @@
+/**
+ * Atoms — kleinste herbruikbare UI
+ * Classnamen ≈ docs/00-ui-moleculen.md (Atom*)
+ * Uitzondering per variant: modifiers hier of components/
+ */
+
+/* --- AtomSkipLink --- */
+.vz-skip-link {
+  position: absolute;
+  inset-inline-start: var(--vz-space-x-4);
+  inset-block-start: var(--vz-space-x-4);
+  padding: var(--vz-space-x-2) var(--vz-space-x-4);
+  background: var(--vz-surface);
+  color: var(--vz-text-primary);
+  z-index: 100;
+  transform: translateY(-120%);
+}
+
+.vz-skip-link:focus {
+  transform: translateY(0);
+}
+
+/* --- AtomButton --- */
+.vz-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--vz-inline-gap-tight); /* 8 */
+  min-height: var(--vz-tap-min); /* 48 */
+  padding-block: var(--vz-space-x-3); /* 12 — vult tot ≥48 met line */
+  padding-inline: var(--vz-space-x-8); /* 32 */
+  border: 1px solid transparent;
+  border-radius: var(--vz-radius-md);
+  font-family: var(--vz-font-ui);
+  font-size: var(--vz-text-body-size);
+  font-weight: 700;
+  line-height: var(--vz-text-body-leading);
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--vz-cta-bg);
+  color: var(--vz-cta-text);
+}
+
+.vz-btn:focus-visible {
+  outline: var(--vz-focus-ring-width) solid var(--vz-focus-ring);
+  outline-offset: var(--vz-focus-ring-offset);
+}
+
+.vz-btn:disabled,
+.vz-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.vz-btn--ghost {
+  background: transparent;
+  color: var(--vz-text-primary);
+  border-color: var(--vz-border);
+}
+
+.vz-btn--quiet {
+  background: transparent;
+  color: var(--vz-accent);
+  padding-inline: var(--vz-space-x-4);
+  border-color: transparent;
+}
+
+/* --- AtomLabel --- */
+.vz-label {
+  display: block;
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+  color: var(--vz-text-secondary);
+  margin-block-end: var(--vz-space-x-2); /* 8 horizontaal-module als kleine gap vóór input — */
+  /* Verticaal strikt: liever margin-block-end: 0 + field molecule gap */
+}
+
+/* --- AtomInput / Select / Textarea --- */
+.vz-input,
+.vz-select,
+.vz-textarea {
+  display: block;
+  width: 100%;
+  min-height: var(--vz-tap-min);
+  padding-block: var(--vz-space-x-3);
+  padding-inline: var(--vz-space-x-4); /* 16 */
+  border: 1px solid var(--vz-border);
+  border-radius: var(--vz-radius-md);
+  background: var(--vz-bg-secondary);
+  color: var(--vz-text-primary);
+  font-family: var(--vz-font-ui);
+  font-size: var(--vz-text-body-size);
+  line-height: var(--vz-text-body-leading);
+}
+
+.vz-textarea {
+  min-height: calc(var(--vz-baseline) * 5); /* 100px = 5 lijnen */
+  resize: vertical;
+}
+
+.vz-input:focus-visible,
+.vz-select:focus-visible,
+.vz-textarea:focus-visible {
+  outline: var(--vz-focus-ring-width) solid var(--vz-focus-ring);
+  outline-offset: var(--vz-focus-ring-offset);
+  border-color: var(--vz-accent);
+}
+
+.vz-input[aria-invalid="true"],
+.vz-select[aria-invalid="true"] {
+  border-color: var(--vz-danger);
+}
+
+/* --- AtomCheckbox (visueel met label in molecule) --- */
+.vz-checkbox {
+  width: var(--vz-space-x-5); /* 20 */
+  height: var(--vz-space-x-5);
+  accent-color: var(--vz-accent);
+}
+
+/* --- AtomPrice --- */
+.vz-price {
+  font-family: var(--vz-font-ui);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--vz-text-primary);
+  line-height: var(--vz-text-body-leading);
+}
+
+.vz-price__vat {
+  font-weight: 400;
+  font-size: var(--vz-text-sm-size);
+  color: var(--vz-text-secondary);
+}
+
+/* --- AtomBadge --- */
+.vz-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--vz-space-x-6); /* 24 */
+  padding-inline: var(--vz-space-x-2); /* 8 */
+  border-radius: var(--vz-radius-sm);
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+  background: var(--vz-accent-soft-yellow);
+  color: var(--vz-text-primary);
+}
+
+.vz-badge--sale {
+  background: var(--vz-accent);
+  color: var(--vz-cta-text);
+}
+
+/* --- AtomTag --- */
+.vz-tag {
+  display: inline-block;
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+  color: var(--vz-text-secondary);
+}
+
+/* --- AtomAlert / Status --- */
+.vz-alert {
+  padding-block: var(--vz-space-y-1);
+  padding-inline: var(--vz-space-x-4);
+  border-inline-start: 4px solid var(--vz-danger);
+  background: var(--vz-bg-secondary);
+  color: var(--vz-text-primary);
+  line-height: var(--vz-text-body-leading);
+}
+
+.vz-status {
+  padding-block: var(--vz-space-y-1);
+  padding-inline: var(--vz-space-x-4);
+  border-inline-start: 4px solid var(--vz-accent);
+  background: var(--vz-bg-secondary);
+  line-height: var(--vz-text-body-leading);
+}
+
+/* --- AtomWordmark --- */
+.vz-wordmark {
+  font-family: var(--vz-font-ui);
+  font-weight: 700;
+  font-size: var(--vz-text-h5-size);
+  line-height: var(--vz-text-h5-leading);
+  color: var(--vz-logo-on);
+  text-decoration: none;
+}
+
+.vz-wordmark:hover {
+  color: var(--vz-accent);
+}

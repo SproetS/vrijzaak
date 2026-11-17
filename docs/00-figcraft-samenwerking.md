@@ -17,6 +17,39 @@ FigCraft is **alpha** — werk op kopieën, pin exports in Git, reken niet op pe
 
 ---
 
+## Als je Framer + CSS kent (deze workflow)
+
+| Jij kent | Hier |
+|----------|------|
+| Framer canvas / breakpoints | FigCraft frames (Desktop 1440, later Mobile) |
+| Framer components | FigCraft components + variants |
+| CSS variables / themes | FigCraft variables Light/Dark ≈ `data-theme` in `tokens.css` |
+| Spacing in CSS | V: 20px-basislijn · H: 4/16/32 (`frontend/css`) |
+| Klassen `.btn` | Moleculen `.vz-btn` — agent helpt mapping |
+| “Publish” naar web | Bij ons: **export PNG/SVG + Git** + Nuxt (geen Framer-site) |
+
+Je hoeft de CLI niet uit je hoofd te leren. **Jij ontwerpt; de agent exporteert, checkt en stuurt bij.**
+
+### Meesturen in de praktijk (simpel)
+
+**Modus A — opslaan + agent kijkt mee (aanbevolen start)**  
+1. Jij werkt in FigCraft, **Cmd+S** regelmatig.  
+2. Je zegt in Warp: “kijk even” / “export Desktop”.  
+3. Agent doet `figcraft-cli info` / `export` op het bestand op schijf.  
+4. Feedback in chat (layout, namen, tokens, moleculen).
+
+**Modus B — live sturen (control-poort)**  
+1. Jij start eenmaal:  
+   `frontend/design/start-figcraft-collab.sh`  
+   (opent FigCraft + poort **7979** + jouw storefront-file).  
+2. Je zegt: “poort 7979 is open, stuur mee”.  
+3. Agent attach’t en kan **in jouw open document** frames zetten (jij ziet het live).  
+4. Jij blijft de designer: agent stelt voor, jij keurt goed of stuurt bij.
+
+Poort = alleen op jouw Mac (`localhost`), geen cloud.
+
+---
+
 ## Mappen in deze repo
 
 ```text

@@ -27,6 +27,7 @@ Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 | [00-design-tokens.md](./00-design-tokens.md) | GAP-fonts, greyscale; vs bouw-tokens |
 | [00-git-en-github.md](./00-git-en-github.md) | Ontwerp-GitHub |
 | [00-figcraft-samenwerking.md](./00-figcraft-samenwerking.md) | FigCraft + CLI/MCP samenwerken |
+| [00-css-figcraft-sync.md](./00-css-figcraft-sync.md) | CSS-tokens → FigCraft styles/fonts |
 | [00-sessie-2026-11-17-bouwdocs-in-ontwerp.md](./00-sessie-2026-11-17-bouwdocs-in-ontwerp.md) | Sessieverslag |
 | [../AGENTS.md](../AGENTS.md) | Agent-regels |
 

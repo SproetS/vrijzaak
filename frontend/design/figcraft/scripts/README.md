@@ -13,3 +13,14 @@ figcraft-cli run setup-design-system-ui.jsonl \
 ```
 
 Contents match `frontend/css/tokens.css` (paper/ink/accent Light+Dark).
+
+## CSS → FigCraft sync
+
+```sh
+figcraft-cli run sync-css-to-figcraft.jsonl \
+  --in ../vrijzaak-storefront.figcraft --out /tmp/vz-sync.figcraft
+cp /tmp/vz-sync.figcraft ../vrijzaak-storefront.figcraft
+```
+
+Creates/applies text styles (GAP Code, 16/20 scale) and paint styles from `frontend/css`.
+See `docs/00-css-figcraft-sync.md`.

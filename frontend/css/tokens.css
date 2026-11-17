@@ -20,13 +20,70 @@
   --vz-font-email-fallback: "Courier New", monospace;
   --vz-measure: 76rem;
 
-  /* Ruimte & interactie */
-  --vz-space-1: 0.25rem;
-  --vz-space-2: 0.5rem;
-  --vz-space-3: 0.75rem;
-  --vz-space-4: 1rem;
-  --vz-space-6: 1.5rem;
-  --vz-space-8: 2rem;
+  /*
+   * Basislijn-raster (InDesign-achtig)
+   * - Body: 16px
+   * - Basislijn / leading-unit: 20px (1.25 × 16)
+   * - Regelafstand en verticale margins in veelvouden van de basislijn
+   * - font-size mag “tussen de lijnen”; line-height-box snap aan n × 20px
+   */
+  --vz-font-size-root: 16px;
+  --vz-baseline: 1.25rem; /* 20px bij root 16px */
+  --vz-baseline-ratio: 1.25;
+
+  /* Body */
+  --vz-text-body-size: 1rem; /* 16px */
+  --vz-text-body-leading: var(--vz-baseline); /* 20px */
+  --vz-text-body-weight: 400;
+
+  /*
+   * Koppen h1–h6: size + leading (leading = k × baseline)
+   * k=1 → 20px · k=2 → 40px · k=3 → 60px
+   */
+  --vz-text-h1-size: 2.5rem; /* 40px */
+  --vz-text-h1-leading: calc(var(--vz-baseline) * 2); /* 40px */
+  --vz-text-h1-weight: 700;
+
+  --vz-text-h2-size: 2rem; /* 32px */
+  --vz-text-h2-leading: calc(var(--vz-baseline) * 2); /* 40px */
+  --vz-text-h2-weight: 700;
+
+  --vz-text-h3-size: 1.5rem; /* 24px */
+  --vz-text-h3-leading: calc(var(--vz-baseline) * 2); /* 40px */
+  --vz-text-h3-weight: 700;
+
+  --vz-text-h4-size: 1.25rem; /* 20px */
+  --vz-text-h4-leading: calc(var(--vz-baseline) * 1.5); /* 30px — half-step; of *2 voor 40 */
+  --vz-text-h4-weight: 700;
+
+  --vz-text-h5-size: 1.125rem; /* 18px */
+  --vz-text-h5-leading: var(--vz-baseline); /* 20px */
+  --vz-text-h5-weight: 700;
+
+  --vz-text-h6-size: 1rem; /* 16px */
+  --vz-text-h6-leading: var(--vz-baseline); /* 20px */
+  --vz-text-h6-weight: 700;
+
+  /* Small / caption / mono data */
+  --vz-text-sm-size: 0.875rem; /* 14px */
+  --vz-text-sm-leading: var(--vz-baseline); /* 20px — één lijn, iets losser t.o.v. 14 */
+  --vz-text-lg-size: 1.125rem;
+  --vz-text-lg-leading: calc(var(--vz-baseline) * 1.5);
+
+  /* Verticale rhythm: margins in basislijnen (zoals space-before/after) */
+  --vz-heading-space-before: var(--vz-baseline); /* 1 lijn */
+  --vz-heading-space-after: calc(var(--vz-baseline) * 0.5); /* ½ lijn — of 1 voor streng raster */
+  --vz-stack-gap: var(--vz-baseline); /* standaard alinea-afstand */
+
+  /* Ruimte & interactie — deels op baseline-grid (20px) */
+  --vz-space-1: calc(var(--vz-baseline) * 0.25); /* 5px */
+  --vz-space-2: calc(var(--vz-baseline) * 0.5); /* 10px */
+  --vz-space-3: calc(var(--vz-baseline) * 0.75); /* 15px */
+  --vz-space-4: var(--vz-baseline); /* 20px = 1 basislijn */
+  --vz-space-5: calc(var(--vz-baseline) * 1.5); /* 30px */
+  --vz-space-6: calc(var(--vz-baseline) * 2); /* 40px */
+  --vz-space-8: calc(var(--vz-baseline) * 3); /* 60px */
+  --vz-space-half: calc(var(--vz-baseline) * 0.5);
   --vz-radius-sm: 4px;
   --vz-radius-md: 8px;
   --vz-radius-lg: 12px;

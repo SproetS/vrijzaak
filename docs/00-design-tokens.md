@@ -47,9 +47,34 @@ In `frontend/fonts/` van deze repo: placeholder; licentie vóór commit van webf
 
 ```
 /* voorlopig ontwerpbesluit */
---font-ui: "GAP Code", ui-monospace, monospace;
+--vz-font-ui: "GAP Code", ui-monospace, monospace;
 /* bouw tokens.ts heeft nog font: GAP Mono — sync via programmeur */
 ```
+
+### Basislijn-typografie (16 / 20)
+
+Zoals een **basislijn-raster in InDesign**: vaste leading-unit, koppen en alinea’s daarop gestapeld.
+
+| | |
+|--|--|
+| Body size | **16px** (`1rem`) |
+| Basislijn | **20px** (`--vz-baseline: 1.25rem`) |
+| Body leading | **20px** (ratio 1.25) |
+| CSS | `frontend/css/tokens.css` (vars) + `frontend/css/type.css` (h1–h6, body) |
+
+| Element | font-size | line-height | basislijnen |
+|---------|-----------|-------------|-------------|
+| body / p | 16px | 20px | 1 |
+| h1 | 40px | 40px | 2 |
+| h2 | 32px | 40px | 2 |
+| h3 | 24px | 40px | 2 |
+| h4 | 20px | 30px (of 40 in `.vz-type-strict`) | 1.5 / 2 |
+| h5 | 18px | 20px | 1 |
+| h6 | 16px | 20px | 1 (+ caps) |
+
+Verticale margins: `--vz-heading-space-before/after`, `--vz-stack-gap` = veelvouden van 20px.  
+Space-tokens `--vz-space-4` = 1 basislijn, `--vz-space-6` = 2, enz.  
+Debug: `html.vz-baseline-debug` tekent 20px-lijnen.
 
 ### Kleur (vault-voorstel boven greyscale)
 
@@ -122,7 +147,7 @@ Tot besluit: **wireframes beschrijven hiërarchie en rust**; screenshots/CSS-pro
 | Asset | Pad |
 |-------|-----|
 | Primair logo | `frontend/logos/logo.svg` (en evt. `.png`) |
-| CSS-voorstel | `frontend/css/tokens.css` |
+| CSS-voorstel | `frontend/css/tokens.css` + `type.css` |
 | Uitleg mappen | `frontend/README.md` |
 
 Implementatie in de shop: programmeur → helling Nuxt (`public/`, `shared/design/tokens.ts`).  

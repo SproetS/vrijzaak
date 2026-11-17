@@ -22,7 +22,7 @@ Zie [docs/00-design-tokens.md](../docs/00-design-tokens.md), [docs/00-bouwcontra
 
 | Map | Inhoud |
 |-----|--------|
-| `css/` | Voorstel-tokens (`tokens.css`) gespiegeld aan docs; **niet** de live Nuxt-build |
+| `css/` | `tokens.css` + `type.css` (basislijn 16/20, h1–h6); **niet** de live Nuxt-build |
 | `fonts/` | Lokale webfont-proeven; **gitignored** t.o.v. bulk — licentie vóór delen/commit |
 | `logos/` | Merklogo (SVG/PNG) voor handoff |
 | `svg/` | UX-iconen en overige vectoren |

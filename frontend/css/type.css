@@ -1,0 +1,144 @@
+/**
+ * Vrijzaak — basislijn-typografie (voorstel)
+ * Vereist: tokens.css
+ *
+ * Raster: body 16px, basislijn 20px (InDesign-achtig).
+ * line-height en verticale margins in veelvouden van --vz-baseline.
+ * optioneel debug: html.vz-baseline-debug { … } onderaan
+ */
+
+html {
+  font-size: 100%; /* browserdefault ≈ 16px → 1rem */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--vz-font-ui);
+  font-size: var(--vz-text-body-size);
+  font-weight: var(--vz-text-body-weight);
+  line-height: var(--vz-text-body-leading);
+  color: var(--vz-text-primary);
+  background-color: var(--vz-bg-primary);
+}
+
+/* Stapel: alinea’s op basislijn-afstand */
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+table,
+figure {
+  margin-block: 0 var(--vz-stack-gap);
+}
+
+p:last-child,
+ul:last-child,
+ol:last-child {
+  margin-block-end: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Koppen h1–h6                                                                */
+/* -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--vz-font-ui);
+  color: var(--vz-text-primary);
+  text-wrap: balance;
+  /* Eerste kop in een sectie: minder space-before mag via .vz-heading-flush */
+  margin-block: var(--vz-heading-space-before) var(--vz-heading-space-after);
+}
+
+h1 {
+  font-size: var(--vz-text-h1-size);
+  line-height: var(--vz-text-h1-leading);
+  font-weight: var(--vz-text-h1-weight);
+  letter-spacing: -0.02em;
+  /* Twee basislijnen leading (40px); iets meer adem erna */
+  margin-block-end: var(--vz-baseline);
+}
+
+h2 {
+  font-size: var(--vz-text-h2-size);
+  line-height: var(--vz-text-h2-leading);
+  font-weight: var(--vz-text-h2-weight);
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-size: var(--vz-text-h3-size);
+  line-height: var(--vz-text-h3-leading);
+  font-weight: var(--vz-text-h3-weight);
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-size: var(--vz-text-h4-size);
+  line-height: var(--vz-text-h4-leading);
+  font-weight: var(--vz-text-h4-weight);
+}
+
+h5 {
+  font-size: var(--vz-text-h5-size);
+  line-height: var(--vz-text-h5-leading);
+  font-weight: var(--vz-text-h5-weight);
+}
+
+h6 {
+  font-size: var(--vz-text-h6-size);
+  line-height: var(--vz-text-h6-leading);
+  font-weight: var(--vz-text-h6-weight);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Strenger: h4 ook op 2 basislijnen (40px) i.p.v. 30px half-step */
+.vz-type-strict {
+  --vz-text-h4-leading: calc(var(--vz-baseline) * 2);
+  --vz-heading-space-after: var(--vz-baseline);
+}
+
+/* Eerste heading in card/section zonder top-margin */
+.vz-heading-flush {
+  margin-block-start: 0;
+}
+
+/* Lead / intro onder h1 */
+.vz-lead {
+  font-size: var(--vz-text-lg-size);
+  line-height: var(--vz-text-lg-leading);
+  color: var(--vz-text-secondary);
+  margin-block-end: calc(var(--vz-baseline) * 2);
+}
+
+.vz-text-sm {
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Debug-basislijn (optioneel in ontwerp-proef)                                */
+/* -------------------------------------------------------------------------- */
+/*
+ * html class="vz-baseline-debug"
+ * Toont 20px-lijnen — niet in productie.
+ */
+html.vz-baseline-debug body {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--vz-baseline) - 1px),
+    color-mix(in srgb, var(--vz-accent) 28%, transparent) calc(var(--vz-baseline) - 1px),
+    color-mix(in srgb, var(--vz-accent) 28%, transparent) var(--vz-baseline)
+  );
+  background-attachment: local;
+}

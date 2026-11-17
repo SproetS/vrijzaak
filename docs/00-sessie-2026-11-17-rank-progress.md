@@ -13,3 +13,9 @@
 - FigCraft Type styles italic op H3 / CLI heading specimens (optioneel)
 - Commit/push
 - Font: progress.full/empty/head tekenen
+
+## Afronding dezelfde avond
+
+- FigCraft PageDesignSystem: Type/H3+H6 italic; Type/H2Cli + Type/H3Cli; CLI/progress specimens; export PNG
+- AGENTS.md: stand van zaken, open punten, snelstart voor volgende agent
+- Push main

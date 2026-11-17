@@ -1,7 +1,7 @@
 {
   "styles": [
     {
-      "description": "type.css h1 40/40 GAP Code tracking 0",
+      "description": "rank1 h1 40/40",
       "id": "S:1",
       "name": "Type/H1",
       "style": {
@@ -24,7 +24,7 @@
       "type": "text"
     },
     {
-      "description": "type.css h2 32/40 tracking 0",
+      "description": "rank2 h2 32/40",
       "id": "S:2",
       "name": "Type/H2",
       "style": {
@@ -47,7 +47,7 @@
       "type": "text"
     },
     {
-      "description": "type.css h3 24/40",
+      "description": "rank3 h3 24/40 italic",
       "id": "S:3",
       "name": "Type/H3",
       "style": {
@@ -56,7 +56,7 @@
         "fills": null,
         "font_family": "GAP Code",
         "font_size": 24.0,
-        "font_style": "Regular",
+        "font_style": "Italic",
         "letter_spacing": {
           "unit": "pixels",
           "value": 0.0
@@ -70,7 +70,7 @@
       "type": "text"
     },
     {
-      "description": "type.css h4 20/40",
+      "description": "rank4 h4 20/40",
       "id": "S:4",
       "name": "Type/H4",
       "style": {
@@ -93,7 +93,7 @@
       "type": "text"
     },
     {
-      "description": "type.css h5 18/20",
+      "description": "h5 18/20",
       "id": "S:5",
       "name": "Type/H5",
       "style": {
@@ -116,16 +116,16 @@
       "type": "text"
     },
     {
-      "description": "type.css h6 16/20 upper tracking 0",
+      "description": "meta h6 16/20 italic no caps",
       "id": "S:6",
       "name": "Type/H6",
       "style": {
-        "case": "upper",
+        "case": "original",
         "decoration": "none",
         "fills": null,
         "font_family": "GAP Code",
         "font_size": 16.0,
-        "font_style": "Regular",
+        "font_style": "Italic",
         "letter_spacing": {
           "unit": "pixels",
           "value": 0.0
@@ -139,7 +139,7 @@
       "type": "text"
     },
     {
-      "description": "type.css body 16/20",
+      "description": "body 16/20",
       "id": "S:7",
       "name": "Type/Body",
       "style": {
@@ -162,7 +162,7 @@
       "type": "text"
     },
     {
-      "description": "type.css muted 16/20",
+      "description": "muted 16/20",
       "id": "S:8",
       "name": "Type/Muted",
       "style": {
@@ -185,7 +185,7 @@
       "type": "text"
     },
     {
-      "description": "type.css sm 14/20",
+      "description": "sm 14/20",
       "id": "S:9",
       "name": "Type/Small",
       "style": {
@@ -208,7 +208,7 @@
       "type": "text"
     },
     {
-      "description": "atoms .vz-btn small caps tracking 0",
+      "description": "btn small caps tracking 0",
       "id": "S:10",
       "name": "Type/Button",
       "style": {
@@ -351,7 +351,7 @@
       "type": "paint"
     },
     {
-      "description": "ghost button small caps tracking 0",
+      "description": "ghost btn small caps",
       "id": "S:17",
       "name": "Type/ButtonGhost",
       "style": {
@@ -374,7 +374,7 @@
       "type": "text"
     },
     {
-      "description": "CSS .vz-track display labels only",
+      "description": "track display",
       "id": "S:29",
       "name": "Type/Track",
       "style": {
@@ -391,6 +391,52 @@
         "line_height": {
           "unit": "pixels",
           "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "CLI - section - rank2",
+      "id": "S:30",
+      "name": "Type/H2Cli",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 32.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 40.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "CLI - sub - rank3 italic",
+      "id": "S:31",
+      "name": "Type/H3Cli",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 24.0,
+        "font_style": "Italic",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 40.0
         },
         "link": null
       },

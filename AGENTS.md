@@ -15,7 +15,8 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 | **Programmeur** | Nuxt/Directus-monorepo, routing, checkout, workers |
 
 **Source of truth techniek:** Gitea-bouwrepo (helling) voor routes, checkout, API, tokens in code. Ontwerp wijzigt die niet stilzwijgend.  
-**Source of truth ontwerpintentie:** deze repo (`docs/`, wireframes, copy, fontkeuze).
+**Source of truth ontwerpintentie:** deze repo (`docs/`, wireframes, copy, fontkeuze).  
+**CSS-proef in browser** = echte look voor vault-UI; FigCraft ≈ spiegel, geen live CSS-engine.
 
 ## Structuur
 
@@ -23,7 +24,7 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 / AGENTS.md, README.md
 / .obsidian/  ← vault (app/appearance/core-plugins in git; workspace lokaal)
 / docs/       ← Markdown ontwerp (start: docs/00-index.md)
-/ frontend/   ← CSS-proeven, fonts placeholder, logos, svg
+/ frontend/   ← CSS-proeven, fonts, logos, svg, FigCraft
 ```
 
 ## Lezen en schrijven
@@ -32,6 +33,10 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 - **GitHub.com:** collega’s lezen via relatieve markdown-links (README + `docs/00-index.md`). Wikilinks alleen zijn niet genoeg op github.com.
 - Houd **relatieve** `[tekst](./bestand.md)`-links in kern-docs voor GitHub en agents.
 - Nieuwe notes: in `docs/`, link vanuit `docs/00-index.md`, open punten expliciet.
+- Geen icons/emoji in Markdown-output van agents (gebruikersregel).
+- Geen destructieve acties zonder expliciete toestemming.
+- Commits: co-author regel `Co-Authored-By: Warp <agent@warp.dev>` als agent commit.
+- Sessie-einde: kort verslag in `docs/00-sessie-…md` + index bijwerken.
 
 ## Bron van waarheid (volgorde voor agents)
 
@@ -43,10 +48,13 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 5. `docs/00-projectbeschrijving-en-stappenplan.md`
 6. `docs/00-navigatie-omgevingen.md`
 6b. `docs/00-nomenclatuur-winkel.md`
-7. `docs/00-design-tokens.md`
-7b. `docs/00-merk-toon-en-principes.md` — sfeer, toon, principes
+7. `docs/00-design-tokens.md` — maten, rank, progress-tokens
+7b. `docs/00-merk-toon-en-principes.md` — sfeer CLI/terminal, rank, progress
+7c. `docs/00-gap-code-glyph-verzoek.md` — font glyphs progress
 8. `docs/00-tech-traject.md`
+8b. FigCraft: `docs/00-figcraft-samenwerking.md`, `docs/00-css-figcraft-sync.md`
 9. `docs/01`–`docs/08` checkout-draadmodellen
+10. Recente sessies: `docs/00-sessie-2026-11-17-*.md`
 
 ## Waar schrijven
 
@@ -60,16 +68,65 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 
 ## Niet doen tenzij gevraagd
 
-Deploy, secrets, zware binaries, fonts zonder licentie, destructief wissen, upsell-copy, stilzwijgend de bouwrepo aanpassen, force-push.
+Deploy, secrets, zware binaries, force-push, destructief wissen, upsell-copy, stilzwijgend de **bouwrepo** (`03 - Bouw/webshop` / helling) aanpassen.
 
-## Design
+GAP Code = **eigen font** van de ontwerper (geen externe licentie-blokkade); wél glyph-verzoeken documenteren i.p.v. stilletjes aannemen dat box-drawing bestaat.
+
+## Design (geldende afspraken)
 
 - Routes mand/checkout volgen **bouw**: `/mand`, `/afrekenen`, `/bestellingen/:id`
-- UI-nomenclatuur: zaaktaal via i18n **NL + EN** (Etalage/Magazijn/Loods/Kassa …); message keys en code **Engels** (`docs/00-nomenclatuur-winkel.md`)
-- URL-hernoem naar Engelse paths: **niet** door ontwerp; wacht op programmeur; huidige bouwroutes blijven SoT
-- Nav-richting: winkel ≠ kassa ≠ voet (bouw heeft nu één `default`-shell)
+- UI-nomenclatuur: zaaktaal **NL + EN** (Etalage/Magazijn/Loods/Kassa …); message keys en code **Engels**
+- URL-hernoem Engels: **niet** door ontwerp; wacht op programmeur
+- Nav: winkel ≠ kassa ≠ voet (bouw heeft nu één `default`-shell)
 - Totalen en paid-status van **server**; Mollie-return ≠ betaald
-- Font ontwerp **voorlopig GAP Code**; bouw `tokens.ts` kan nog GAP Mono hebben tot programmeur sync’t
-- Inventaris UI: `docs/00-inventaris-bouw-ui.md` · moleculen: `docs/00-ui-moleculen.md`
-- Visueel: FigCraft + `docs/00-figcraft-samenwerking.md`; exports in `frontend/design/exports/`
+- Font UI: **GAP Code** (bouw `tokens.ts` kan nog GAP Mono hebben tot programmeur sync’t)
+- **CLI / terminal-toon** (Solarized-achtig): geen “pen & papier”-metafoor; token-namen `paper`/`ink` mogen technisch blijven
+- Vorm: **radius max 4px** (forms 0–2); **shadow none**; mono **letter-spacing 0** tenzij `.vz-track`
+- Hiërarchie = **rank** (weight + italic + kleur), geen default ALL CAPS op koppen
+  - rank1 `h1` · rank2 `h2` + `.vz-h--cli` (`- Titel -`) · rank3 `h3` italic · meta `h6` muted italic
+  - `.vz-rank-active` spaarzaam accent; `.vz-h__index` alleen in geordende flows
+- Progress: `.vz-progress` (equals/hash/busy) — CLI brackets, accent-fill
+- Knoppen: small-caps, tracking 0
 - Geen dummyprijzen/koop-CTA alsof live
+- Preview: `frontend/css/preview.html` · cascade `frontend/css/main.css`
+- FigCraft: `frontend/design/figcraft/vrijzaak-storefront.figcraft` · sync `scripts/sync-css-to-figcraft.jsonl` (bij voorkeur `style.update`) · export `frontend/design/exports/`
+
+## Stand van zaken (peil 2026-11-17)
+
+### Af
+
+- Bouwcontracten → ontwerp-Markdown; inventaris UI; moleculen-lijst; nomenclatuur NL+EN
+- Checkout-draadmodellen 01–08 gekoppeld aan bouw
+- CSS-cascade tokens → type → base → atoms → molecules → organisms → layout
+- Merk-toon CLI; radius/shadow/tracking in CSS + FigCraft
+- Rank + AtomProgress in CSS/docs/preview; FigCraft DS-page: rank labels, CLI-koppen, progress-voorbeelden, Type/H3+H6 italic, Type/H2Cli+H3Cli
+- GitHub ontwerp: `SproetS/vrijzaak` (main)
+
+### Open / volgende sessie (prioriteit)
+
+1. **Winkel-IA:** `09-sitemap-ia.md`, `10-productmodel.md` (nog te schrijven)
+2. Draadmodellen buiten kassa: home, listing, product, maker, vrijplaats
+3. **GAP Code glyphs:** `progress.full` / `empty` / `head` (gelijke breedte) — zie `docs/00-gap-code-glyph-verzoek.md`
+4. Optioneel palette dichter op gekozen terminal-theme (hex nog bouw-paper/ink)
+5. FigCraft: echte componenten/progress frames verfijningen; Theme-variabele binds
+6. Programmeur: font Mono→Code, radius/shadow/rank sync naar Nuxt `tokens.ts` wanneer akkoord
+7. Akkoord winkelier + programmeur op toon-doc (kort)
+8. Collega-toegang GitHub / dunne pointer in bouw-`docs/ontwerp/`
+
+### Niet oppakken zonder vraag
+
+- Operatie Stofnest / andere shops
+- loesmuzi / vexy-lines
+- Live deploy of Mollie/productie-data
+
+## Snel starten (nieuwe agent)
+
+```text
+1. Lees docs/00-index.md + deze AGENTS.md (stand van zaken).
+2. Toon/maten: 00-merk-toon-en-principes.md + 00-design-tokens.md.
+3. CSS-proef: frontend/css/preview.html (main.css).
+4. FigCraft: frontend/design/figcraft/ + docs/00-css-figcraft-sync.md.
+5. Bouw niet stilzwijgend wijzigen; ontwerprepo = SproetS/vrijzaak.
+```
+
+Laatste afronding sessie: FigCraft rank/CLI/progress spiegel + deze stand — 2026-11-17.

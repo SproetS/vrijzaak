@@ -34,6 +34,7 @@ Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 | [00-sessie-2026-11-17-cli-toon-css.md](./00-sessie-2026-11-17-cli-toon-css.md) | Sessieverslag CLI-toon + CSS |
 | [00-sessie-2026-11-17-rank-progress.md](./00-sessie-2026-11-17-rank-progress.md) | Sessie rank + progress |
 | [00-gap-code-glyph-verzoek.md](./00-gap-code-glyph-verzoek.md) | Font: progress-glyphs |
+| [00-sessie-2026-11-17-afronding.md](./00-sessie-2026-11-17-afronding.md) | Sessie afronding |
 | [../AGENTS.md](../AGENTS.md) | Agent-regels |
 
 ---

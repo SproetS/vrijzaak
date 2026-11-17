@@ -52,7 +52,7 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 | Wat | Waar |
 |-----|------|
 | Draadmodellen, IA, brief, inventaris | `docs/` |
-| tokens-proef, logo, svg | `frontend/` |
+| tokens-proef, logo, svg, FigCraft | `frontend/` (`css/`, `design/figcraft`, `design/exports`) |
 | Agent-regels | root `AGENTS.md` |
 | Gedeelde Obsidian-instellingen | `.obsidian/` (geen workspace/plugins/themes committen tenzij gevraagd) |
 | Bouwcode / Directus | **niet hier** — helling webshop / programmeur |
@@ -70,4 +70,5 @@ Deploy, secrets, zware binaries, fonts zonder licentie, destructief wissen, upse
 - Totalen en paid-status van **server**; Mollie-return ≠ betaald
 - Font ontwerp **voorlopig GAP Code**; bouw `tokens.ts` kan nog GAP Mono hebben tot programmeur sync’t
 - Inventaris UI: `docs/00-inventaris-bouw-ui.md` · moleculen: `docs/00-ui-moleculen.md`
+- Visueel: FigCraft + `docs/00-figcraft-samenwerking.md`; exports in `frontend/design/exports/`
 - Geen dummyprijzen/koop-CTA alsof live

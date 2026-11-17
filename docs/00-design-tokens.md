@@ -112,6 +112,11 @@ Semantisch (align met bouw-namen waar mogelijk):
 tap targets ≥ 44px (bouw design.md)
 ```
 
+### Knoptekst (small caps)
+
+UI-knoppen (`.vz-btn`): **`font-variant-caps: all-small-caps`** (+ lichte `letter-spacing`).  
+SoT = CSS. FigCraft: `text.case` → `smallCaps` op button-labels (geen volledige CSS OpenType-spiegel).
+
 ### Licht / donker (thema-toggle)
 
 Naast NL/EN-taaltoggle: **Licht** (default) en **Donker**.

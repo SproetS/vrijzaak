@@ -71,6 +71,16 @@ Obsidian mag Zuid VG lezen; **product-UI** = GAP Code (afspraak).
 
 ---
 
+## Typografie die FigCraft beperkt dekt
+
+| Feature | CSS (SoT implementatie) | FigCraft |
+|---------|-------------------------|----------|
+| Button small caps | `font-variant-caps: all-small-caps` op `.vz-btn` | `text.case` → **`smallCaps`** (geen CSS-variant) |
+| Letter-spacing knop | `letter-spacing: 0.04em` | zelfde in text style / node |
+| Echte OpenType smcp/c2sc | `font-feature-settings` | hangt van font + app-support af |
+
+**Aanvliegen:** besluit in **CSS** vastleggen → in FigCraft zo goed mogelijk spiegelen (small caps case) → PNG-export is benadering; **browser/Nuxt** is de echte weergave.
+
 ## Workflow advies
 
 1. Tokens wijzigen in **`frontend/css/tokens.css` + `type.css`** (+ docs).  

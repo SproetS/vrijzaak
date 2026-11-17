@@ -63,7 +63,8 @@ Deploy, secrets, zware binaries, fonts zonder licentie, destructief wissen, upse
 ## Design
 
 - Routes mand/checkout volgen **bouw**: `/mand`, `/afrekenen`, `/bestellingen/:id`
-- UI-nomenclatuur zaak: **Etalage · Magazijn · Loods · Kassa · Winkelmand** (`docs/00-nomenclatuur-winkel.md`); niet “checkout/cart/sale” in klantcopy
+- UI-nomenclatuur: zaaktaal via i18n **NL + EN** (Etalage/Magazijn/Loods/Kassa …); message keys en code **Engels** (`docs/00-nomenclatuur-winkel.md`)
+- URL-hernoem naar Engelse paths: **niet** door ontwerp; wacht op programmeur; huidige bouwroutes blijven SoT
 - Nav-richting: winkel ≠ kassa ≠ voet (bouw heeft nu één `default`-shell)
 - Totalen en paid-status van **server**; Mollie-return ≠ betaald
 - Font ontwerp **voorlopig GAP Code**; bouw `tokens.ts` kan nog GAP Mono hebben tot programmeur sync’t

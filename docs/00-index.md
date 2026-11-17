@@ -22,7 +22,7 @@ Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 | [00-inventaris-bouw-ui.md](./00-inventaris-bouw-ui.md) | Pagina’s + componenten uit bouwrepo (SoT UI-structuur) |
 | [00-tech-traject.md](./00-tech-traject.md) | Stack Nuxt + Directus + Mollie |
 | [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md) | Winkel vs kassa vs voet |
-| [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) | **Etalage · Magazijn · Loods · Kassa** (winkelnamen) |
+| [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) | Zaak-labels **NL+EN**; techniek Engels; paths wachten |
 | [00-design-tokens.md](./00-design-tokens.md) | GAP-fonts, greyscale; vs bouw-tokens |
 | [00-git-en-github.md](./00-git-en-github.md) | Ontwerp-GitHub |
 | [00-sessie-2026-11-17-bouwdocs-in-ontwerp.md](./00-sessie-2026-11-17-bouwdocs-in-ontwerp.md) | Sessieverslag |
@@ -65,7 +65,7 @@ Gekoppeld aan bouw-componenten/routes (zie ook [08](./08-componenten-en-staten.m
 4. Verzending mag slim achter de schermen  
 5. Mollie-states in mensentaal; **pending tot server bevestigt**  
 6. **Gescheiden nav:** winkel (Etalage/Magazijn/Loods) ≠ **Kassa** ≠ voet-info  
-8. UI-namen als echte zaak; routes volgen bouw tot hernoemd  
+8. UI tweetalig (NL default, EN toggle); code/keys Engels; URL-hernoem wacht op programmeur  
 7. Geen dummyprijzen of nep-koop-CTA’s alsof productie  
 
 ---

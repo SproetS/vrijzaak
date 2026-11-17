@@ -2,8 +2,9 @@
 
 Drie gescheiden “werelden” in de UI. Doel: browsen in de **zaak** voelt anders dan bij de **kassa**; juridisch/info hoort in de voet, niet in kassa-focus.
 
-**Winkelnamen (UI):** [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) — Etalage, Magazijn, Loods, Kassa, Winkelmand.  
-**Routes (bouw SoT):** o.a. `/`, `/collectie`, `/mand`, `/afrekenen` — labels mogen afwijken van het pad.
+**Winkelnamen (UI):** tweetalig NL/EN via i18n — [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) (Etalage/Magazijn/Loods/Kassa …).  
+**Techniek:** identifiers en *toekomstige* paths in het **Engels**.  
+**Routes nu (bouw SoT, nog niet hernoemen):** `/`, `/collectie`, `/mand`, `/afrekenen`, … — programmeur plant migratie later.
 
 ## 1. Hoofdmenu — Winkel (browse)
 
@@ -104,10 +105,12 @@ Mobiel
 
 ---
 
-## Copy
+## Copy en taal
 
-- **Kassa** i.p.v. checkout · **Winkelmand** i.p.v. cart · **Magazijn** i.p.v. alleen “collectie” in UI  
-- Escape: “Terug naar de winkel”  
-- Loods-toon: eerlijk, geen schreeuw-sale  
+- Default **NL**; toggle **EN** (zelfde i18n-keys, zie nomenclatuur).  
+- NL-zaaktaal in UI; EN functioneel en helder (niet per se letterlijke vertaling van “Loods”).  
+- Escape NL: “Terug naar de winkel” · EN: “Back to the shop”.  
+- Loods-toon: eerlijk, geen schreeuw-sale (beide talen).  
+- Geen path-hernoem in ontwerpfase.
 
 Zie [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md) · [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).

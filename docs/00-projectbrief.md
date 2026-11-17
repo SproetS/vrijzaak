@@ -44,10 +44,13 @@ Details: [00-tech-traject.md](./00-tech-traject.md) · [00-bouwcontract-ontwerp.
 - B2C, anti-commercieel eerlijk, wél betrouwbare kassa.
 - Opbrengstverdeling: maker + vrijplaats + winkel (+ btw), server-side basispunten.
 
-## Winkelnamen (UI)
+## Winkelnamen en talen
 
-**Etalage** (aanbevolen) · **Magazijn** (alles) · **Loods** (aanbieding) · **Kassa** (afrekenen) · **Winkelmand**.  
-Zie [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md). Routes blijven bouw-SoT (`/collectie`, `/afrekenen`, …) tot hernoemd.
+- **UI:** NL default + **EN-toggle** (i18n). Zaak-metaforen o.a. Etalage, Magazijn, Loods, Kassa, Winkelmand.  
+- **Code / keys:** Engels (`nav.warehouse`, `checkout`, …).  
+- **URL’s:** huidige bouwpaden blijven tot de programmeur migreert (geen hernoem vanuit ontwerp).  
+
+Zie [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md).
 
 ## Designrichting (voorlopig)
 

@@ -1,7 +1,7 @@
 # 02 — Kassa (overzicht)
 
-**UI-label:** Kassa (niet “checkout” in klantcopy) — [nomenclatuur](./00-nomenclatuur-winkel.md)  
-**Route (bouw):** `/afrekenen` · `app/pages/afrekenen.vue`  
+**UI:** NL *Kassa* · EN *Checkout* (`nav.checkout` / i18n) — [nomenclatuur](./00-nomenclatuur-winkel.md)  
+**Route (bouw, nu):** `/afrekenen` (Engelse `/checkout` later, programmeur)   · `app/pages/afrekenen.vue`  
 **Ook:** `/bestellingen/:id` na submit · **OrderFulfilment** op statuspagina  
 **Layout bouw:** **default** (nog geen NavKassa-shell)  
 **Mapping:** [08-componenten-en-staten.md](./08-componenten-en-staten.md)

@@ -101,18 +101,18 @@ Uit checkout/mand/account/docs — herbruikbaar voor UX-kit:
 
 ---
 
-## 1b. UI-labels (ontwerp) vs routes (bouw)
+## 1b. UI i18n vs routes (bouw)
 
-| UI (zaak) | Bouwroute nu | Note |
-|-----------|--------------|------|
-| Etalage | `/` (+ later eigen pad) | Aanbevolen |
-| Magazijn | `/collectie` | Alle artikelen |
-| Loods | — | Aanbiedingen; route t.b.d. |
-| Kassa | `/afrekenen` | |
-| Winkelmand | `/mand` | |
-| Bon / bestelling | `/bestellingen/:id` | |
+| i18n-key (voorstel) | NL | EN | Route nu (SoT) | Route later (voorstel) |
+|---------------------|----|----|----------------|------------------------|
+| `nav.showcase` | Etalage | Showcase | `/` | `/` of `/showcase` |
+| `nav.warehouse` | Magazijn | Warehouse | `/collectie` | `/collection` |
+| `nav.yard` / sale | Loods | Sale? | — | `/sale` e.d. |
+| `nav.checkout` | Kassa | Checkout | `/afrekenen` | `/checkout` |
+| `nav.cart` | Winkelmand | Cart | `/mand` | `/cart` |
+| order | Bestelling / Bon | Order / Receipt | `/bestellingen/:id` | `/orders/:id` |
 
-Zie [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md).
+Path-migratie = programmeur. Zie [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md).
 
 ## 2. Webpagina’s (bouw)
 

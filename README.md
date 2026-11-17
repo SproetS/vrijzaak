@@ -57,6 +57,6 @@ Op GitHub.com werken de **blauwe markdown-links**; `[[wikilinks]]` zijn vooral h
 ## Ontwerp (kort)
 
 - Font voorlopig **GAP Code** (bouwcode kan nog Mono hebben tot sync)
-- Winkelnamen: **Etalage · Magazijn · Loods · Kassa** ([docs](./docs/00-nomenclatuur-winkel.md))
-- Routes (bouw): `/mand`, `/afrekenen`, `/bestellingen/:id`, `/collectie` (Magazijn)
+- UI **NL + EN** (zaaknamen Etalage/Magazijn/Loods/Kassa); code/keys Engels ([nomenclatuur](./docs/00-nomenclatuur-winkel.md))
+- Routes nu bouw-SoT (`/collectie`, `/mand`, `/afrekenen`, …); Engelse paths later via programmeur
 - Prijzen en “betaald” komen van de **server**

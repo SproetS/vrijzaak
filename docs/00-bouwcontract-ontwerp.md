@@ -58,8 +58,9 @@ Vastgelegd in bouw (`docs/catalogue.md`, `docs/checkout.md`, identity):
 | `/account` (+ verifieren, wachtwoord, uitnodiging) | Account |
 | `/deelnemer` | Maker/vrijplaats-portal (niet kassa-UI) |
 
-**Ontwerp-afspraak:** in draadmodellen deze paden gebruiken (niet `/winkelwagen` tenzij redirect).  
-Navigatie-omgevingen (winkel / kassa / voet) blijven UX-keuze bovenop deze routes — [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md).
+**Ontwerp-afspraak:** draadmodellen gebruiken **huidige** bouwpaden tot de programmeur migreert.  
+UI-labels: **NL + EN** (i18n); zaakmetaforen in [00-nomenclatuur-winkel.md](./00-nomenclatuur-winkel.md). Code/keys Engels.  
+Navigatie-omgevingen (winkel / kassa / voet) — [00-navigatie-omgevingen.md](./00-navigatie-omgevingen.md).
 
 ---
 

@@ -1,6 +1,7 @@
 {
   "cssTheme": "",
-  "interfaceFontFamily": "",
-  "textFontFamily": "",
-  "monospaceFontFamily": ""
+  "interfaceFontFamily": "GAP Zuid VG,GAP Zuid - Book",
+  "textFontFamily": "GAP Zuid VG,GAP Zuid - Book",
+  "monospaceFontFamily": "GAP Code",
+  "accentColor": "#95c44f"
 }

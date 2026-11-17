@@ -1,38 +1,57 @@
 /**
- * Vrijzaak design tokens (voorlopig)
+ * Vrijzaak — ontwerp-tokens (voorstel)
  * Bron: docs/00-design-tokens.md
+ * Bouw-spiegel: shared/design/tokens.ts (--akws-*) in helling Nuxt-repo
+ * Dit bestand is GEEN live storefront-CSS.
  */
+
 :root {
-  --font-sans: "GAP Zuid VG", system-ui, sans-serif;
-  --font-mono: "GAP Code", ui-monospace, monospace;
+  /* Typografie — ontwerp voorlopig GAP Code; bouw kan nog GAP Mono hebben */
+  --vz-font-ui: "GAP Code", ui-monospace, "Courier New", monospace;
+  --vz-font-email-fallback: "Courier New", monospace;
 
-  --gray-0: #fafafa;
-  --gray-50: #f5f5f5;
-  --gray-100: #eeeeee;
-  --gray-300: #d4d4d4;
-  --gray-500: #737373;
-  --gray-800: #262626;
-  --gray-900: #171717;
+  /* Bouw-rollen (hex uit tokens.ts / design.md) */
+  --vz-paper: #f5f2e9;
+  --vz-surface: #fffdf7;
+  --vz-ink: #202c27;
+  --vz-muted: #58645d;
+  --vz-accent: #245c43;
+  --vz-line: #b7c2b5;
+  --vz-measure: 76rem;
 
-  --bg-primary: var(--gray-0);
-  --bg-secondary: var(--gray-50);
-  --text-primary: var(--gray-900);
-  --text-secondary: var(--gray-500);
-  --border: var(--gray-300);
+  /* Aliassen richting bouw-namen (handig bij overleg) */
+  --akws-paper: var(--vz-paper);
+  --akws-surface: var(--vz-surface);
+  --akws-ink: var(--vz-ink);
+  --akws-muted: var(--vz-muted);
+  --akws-accent: var(--vz-accent);
+  --akws-line: var(--vz-line);
 
-  --accent-soft-red: #e8a0a0;
-  --accent-soft-yellow: #f0e6a8;
-  --accent-soft-blue: #a8c5e8;
-  --cta-bg: var(--gray-900);
-  --cta-text: #ffffff;
+  /* Semantisch UI */
+  --vz-bg-primary: var(--vz-paper);
+  --vz-bg-secondary: var(--vz-surface);
+  --vz-text-primary: var(--vz-ink);
+  --vz-text-secondary: var(--vz-muted);
+  --vz-border: var(--vz-line);
+  --vz-cta-bg: var(--vz-accent);
+  --vz-cta-text: var(--vz-surface);
+  --vz-danger: #8f4a4a;
+  --vz-success: #2f6b4f;
 
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Optionele zachte accenten (spaarzaam; niet i.p.v. --vz-accent) */
+  --vz-accent-soft-red: #e8a0a0;
+  --vz-accent-soft-yellow: #f0e6a8;
+  --vz-accent-soft-blue: #a8c5e8;
+
+  /* Ruimte */
+  --vz-space-1: 0.25rem;
+  --vz-space-2: 0.5rem;
+  --vz-space-3: 0.75rem;
+  --vz-space-4: 1rem;
+  --vz-space-6: 1.5rem;
+  --vz-space-8: 2rem;
+  --vz-radius-sm: 4px;
+  --vz-radius-md: 8px;
+  --vz-radius-lg: 12px;
+  --vz-tap-min: 44px;
 }

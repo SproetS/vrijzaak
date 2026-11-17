@@ -96,4 +96,14 @@ Tot besluit: **wireframes beschrijven hiërarchie en rust**; screenshots/CSS-pro
 - Veel papier/witruimte, dunne randen  
 - Kassa nóg rustiger (minder nav)  
 - Bedragen uit server-DTO; geen dummy-prijzen in “echte” componenten  
-- Self-host fonts; licentie checken vóór publieke launch  
+- Self-host fonts; licentie checken vóór publieke launch
+
+## Logo en frontend-assets
+
+| Asset | Pad |
+|-------|-----|
+| Primair logo | `frontend/logos/logo.svg` (en evt. `.png`) |
+| CSS-voorstel | `frontend/css/tokens.css` |
+| Uitleg mappen | `frontend/README.md` |
+
+Implementatie in de shop: programmeur → helling Nuxt (`public/`, `shared/design/tokens.ts`).  

@@ -5,7 +5,7 @@
 **Ontwerprepo:** https://github.com/SproetS/vrijzaak (`docs/` + `frontend/`)  
 **Bouwrepo (collega):** Gitea helling `Vrijzaak/Vrijzaak` — lokaal `03 - Bouw/webshop`
 
-Plain Markdown: browsen in GitHub, VS Code, Warp of optioneel Obsidian. Wikilinks `[[…]]` zijn optioneel; overal ook relatieve links.
+Obsidian-vault = **repo-root**. Ook plain Markdown op GitHub/editor. Wikilinks wél; kern-docs houden relatieve links voor agents/GitHub.
 
 Start: [00-projectbrief.md](./00-projectbrief.md) · hub hieronder.
 

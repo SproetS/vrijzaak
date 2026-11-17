@@ -29,7 +29,8 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 ## Lezen en schrijven
 
 - **Obsidian:** open de **repo-root** als vault. Wikilinks `[[…]]` zijn welkom.
-- Houd daarnaast **relatieve** `[tekst](./bestand.md)`-links in kern-docs zodat GitHub/agents zonder Obsidian blijven werken.
+- **GitHub.com:** collega’s lezen via relatieve markdown-links (README + `docs/00-index.md`). Wikilinks alleen zijn niet genoeg op github.com.
+- Houd **relatieve** `[tekst](./bestand.md)`-links in kern-docs voor GitHub en agents.
 - Nieuwe notes: in `docs/`, link vanuit `docs/00-index.md`, open punten expliciet.
 
 ## Bron van waarheid (volgorde voor agents)

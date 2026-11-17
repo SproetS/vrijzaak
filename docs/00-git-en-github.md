@@ -1,48 +1,54 @@
-# Git en GitHub
+# Git en GitHub — ontwerprepo
 
-Lokale repo: deze map (`main`).
+## Repo
 
-## Eerste koppeling aan GitHub (eenmalig)
+| | |
+|--|--|
+| GitHub | https://github.com/SproetS/vrijzaak |
+| Branch | `main` |
+| Lokaal (voorbeeld) | `…/Vrijzaak draadmodel` |
+| Inhoud | Ontwerp-Markdown, Obsidian-instellingen, lichte `frontend/`-assets |
 
-`gh` staat (nog) niet op deze Mac. Via de website:
+**Niet** de Nuxt-webshop. Die staat op Gitea helling (`Vrijzaak/Vrijzaak`) en is SoT voor code/routes/checkout.
 
-1. Ga naar https://github.com/new  
-2. Repository name voorstel: `vrijzaak-ontwerp` (of `vrijzaak-draadmodel`)  
-3. **Private** aanbevolen (ontwerp + interne keuzes)  
-4. **Geen** README / .gitignore / license toevoegen (repo moet leeg zijn)  
-5. Create repository  
+## Delen met collega’s
 
-Daarna in deze map:
+1. Nodig uit als **collaborator** op `SproetS/vrijzaak` (Settings → Collaborators), of via org-team.  
+2. Rechten: meestal **write** als ze issues/PR mogen; **read** volstaat om alleen te lezen.  
+3. Stuur de README: https://github.com/SproetS/vrijzaak#readme  
+4. Startpunt in de browser: [docs/00-index.md](./00-index.md)
 
-```bash
-cd "/Users/sjoerd/Documents/sproets/tycho/Vrijzaak/01 - Werkbestanden/Vrijzaak draadmodel"
-git remote add origin git@github.com:JOUW_USER/vrijzaak-ontwerp.git
-# of HTTPS:
-# git remote add origin https://github.com/JOUW_USER/vrijzaak-ontwerp.git
-git push -u origin main
+Lezen kan **zonder clone** op github.com. Clone + Obsidian is optioneel voor UX-werk.
+
+## Lokaal (ontwerper)
+
+```sh
+git clone git@github.com:SproetS/vrijzaak.git
+cd vrijzaak
+# Obsidian: Open folder as vault → deze map
 ```
 
-Vervang `JOUW_USER` door je GitHub-username.
+Wijzigingen:
 
-### SSH-key (als je SSH gebruikt)
-
-```bash
-# bestaand?
-ls ~/.ssh/id_*.pub
-# anders key maken en op GitHub zetten onder Settings → SSH keys
+```sh
+git status
+git add …
+git commit -m "…"
+git push origin main
 ```
 
-### Later optioneel
+Geen force-push op `main` tenzij team dat afspreekt. PR’s zijn welkom voor grotere stukken.
 
-```bash
-brew install gh
-gh auth login
-```
+## Wat wél / niet committen
 
-Dan kun je repos vanaf de terminal aanmaken met `gh repo create`.
+**Wel:** `docs/`, `AGENTS.md`, `README.md`, `.obsidian/app.json` / `appearance.json` / `core-plugins.json`, lichte exports.  
+**Niet:** `workspace.json`, plugins/themes (gitignored), secrets, zware binaries, fonts zonder licentie-afspraak, bouwmonorepo-mirror.
 
-## Workflow met collega
+## Twee repo’s onthouden
 
-- Private repo + collega als collaborator, of  
-- Organisatie-repo onder jullie gedeelde org  
-- Feedback: issues / PR’s, of jij merged en publiceert later static docs op VPS
+| Repo | Voor wie | Wat |
+|------|----------|-----|
+| `SproetS/vrijzaak` | Iedereen in het ontwerptraject | Wireframes, IA, UX-keuzes |
+| helling `Vrijzaak/Vrijzaak` | Programmeur (+ wie code meekijkt) | Nuxt, Directus, workers |
+
+Zie [00-bouwcontract-ontwerp.md](./00-bouwcontract-ontwerp.md).

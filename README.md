@@ -1,10 +1,29 @@
 # Vrijzaak (ontwerp)
 
 Werknaam **Vrijzaak** · https://vrijzaak.nl  
-GitHub: https://github.com/SproetS/vrijzaak
+**Deze repo:** https://github.com/SproetS/vrijzaak  
 
 Markdown-ontwerp en draadmodellen. **Geen** Nuxt-app hier.  
-**Technische source of truth** (routes, checkout, code): bouwrepo op Gitea helling (`Vrijzaak/Vrijzaak`), lokaal o.a. `03 - Bouw/webshop`.
+**Technische source of truth** (routes, checkout, code): bouwrepo op Gitea helling (`Vrijzaak/Vrijzaak`).
+
+Je kunt alles lezen op **GitHub.com** (links in de bestanden) en in **Obsidian** (dezelfde map als vault).
+
+## Voor collega's (delen via GitHub)
+
+1. Open de repo: https://github.com/SproetS/vrijzaak  
+2. Begin bij **[docs/00-index.md](./docs/00-index.md)** (inhoudsopgave).  
+3. Kort pad per rol:
+
+| Rol | Lees vooral |
+|-----|-------------|
+| **Zakelijk / winkelier** | [00-projectbrief](./docs/00-projectbrief.md) · [00-bouwcontract-ontwerp](./docs/00-bouwcontract-ontwerp.md) (samenvatting) · checkout [02](./docs/02-checkout-overzicht.md) + [06](./docs/06-bevestiging.md) |
+| **Programmeur** | [00-bouwcontract-ontwerp](./docs/00-bouwcontract-ontwerp.md) · [00-inventaris-bouw-ui](./docs/00-inventaris-bouw-ui.md) · [00-tech-traject](./docs/00-tech-traject.md) · eigen helling-repo blijft SoT voor code |
+| **Ontwerp / UX** | Hele `docs/` + optioneel clone + Obsidian |
+
+**Feedback:** GitHub Issues of PR op deze repo, of afgesproken chat — liever geen parallelle “waarheid” buiten Git.
+
+**Obsidian (optioneel lokaal):** clone/repo-map → *Open folder as vault* op de **repo-root**.  
+Op GitHub.com werken de **blauwe markdown-links**; `[[wikilinks]]` zijn vooral handig in Obsidian.
 
 ## Team
 
@@ -12,34 +31,31 @@ Markdown-ontwerp en draadmodellen. **Geen** Nuxt-app hier.
 |-----|--------|
 | Ontwerper / UX | Deze repo — flows, vormgeving, copy |
 | Zakelijk leider / winkelier | Producten, klanten, commercieel |
-| Programmeur | Nuxt + Directus-monorepo |
+| Programmeur | Nuxt + Directus-monorepo (helling) |
 
 ## Structuur
 
 ```
 .
-├── README.md
+├── README.md          ← je bent hier
 ├── AGENTS.md          ← regels voor AI-agents
-├── .obsidian/         ← vault-instellingen (workspace lokaal)
-├── docs/              ← projectbeschrijving & draadmodellen
+├── .obsidian/         ← gedeelde vault-instellingen
+├── docs/              ← ontwerp-Markdown
 └── frontend/          ← CSS-proeven, fonts placeholder, logo's, SVG
 ```
 
-## Starten
-
-**Obsidian:** *Open folder as vault* → deze **repo-root** (niet alleen `docs/`).  
-Wikilinks en graph werken zo het best. Ook leesbaar op GitHub / in een editor.
+## Starten (snel)
 
 | Wie | Start |
 |-----|--------|
-| Mens / UX | [docs/00-index.md](./docs/00-index.md) |
+| Iedereen | [docs/00-index.md](./docs/00-index.md) |
 | Bouw-afstemming | [docs/00-bouwcontract-ontwerp.md](./docs/00-bouwcontract-ontwerp.md) |
-| Pagina’s & componenten (bouw) | [docs/00-inventaris-bouw-ui.md](./docs/00-inventaris-bouw-ui.md) |
+| Pagina’s & componenten | [docs/00-inventaris-bouw-ui.md](./docs/00-inventaris-bouw-ui.md) |
 | Plan | [docs/00-projectbeschrijving-en-stappenplan.md](./docs/00-projectbeschrijving-en-stappenplan.md) |
-| Agent | [AGENTS.md](./AGENTS.md), daarna docs |
+| Agent | [AGENTS.md](./AGENTS.md) |
 
 ## Ontwerp (kort)
 
 - Font voorlopig **GAP Code** (bouwcode kan nog Mono hebben tot sync)
-- Kassa-routes: `/mand`, `/afrekenen`, `/bestellingen/:id`
+- Kassa-routes (bouw): `/mand`, `/afrekenen`, `/bestellingen/:id`
 - Prijzen en “betaald” komen van de **server**

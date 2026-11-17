@@ -37,7 +37,8 @@ Legenda status: **bouw-SFC** · **bouw-inline** · **ontwerp** (nog niet in code
 | `AtomSpinner` / busy | Bezig… / Working… | deels copy | disable + aria |
 | `AtomAlert` | — | `role="alert"` | fouten |
 | `AtomStatus` | — | `role="status"` | info |
-| `AtomHeading` | h1–h3 | pages | één h1 per page |
+| `AtomHeading` | h1–h3 | pages | rank 1–3; `.vz-h--cli` = `- titel -`; geen default caps |
+| `AtomProgress` | voortgang / busy | ontwerp | CLI `[===>--]`; equals/hash/busy; a11y progressbar |
 | `AtomIcon` | — | ontwerp `frontend/svg` | currentColor |
 | `AtomLangToggle` | NL \| EN | ontwerp | i18n switch |
 | `AtomThemeToggle` | Licht \| Donker · Light \| Dark | ontwerp | `data-theme` op `html` |

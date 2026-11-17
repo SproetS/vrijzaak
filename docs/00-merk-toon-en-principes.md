@@ -68,6 +68,39 @@ CSS-SoT: `--vz-radius-sm: 0`, `--vz-radius-md: 2px`, `--vz-radius-lg/xl: 4px`; `
 - Body: 16/20; geen dichte tekstmuren op productpagina’s.
 - Tijds- en voortgangsbalken: ASCII-stijl mag.
 
+
+### Hiërarchie (rank) en CLI-koppen
+
+Functie bepaalt vorm. **Geen default ALL CAPS** op koppen.
+
+| Rank | Rol | Weight | Style | Kleur | CLI-frame |
+|------|-----|--------|-------|-------|-----------|
+| **1** | Pagina-anker (`h1`) | bold | roman | ink | nee |
+| **2** | Sectie (`h2`) | bold | roman | ink | `- Titel -` via `.vz-h--cli` |
+| **3** | Sub (`h3`) | bold | *italic* | ink | `.vz-h--cli` optioneel |
+| **4** | Lokaal (`h4`/`h5`) | bold | roman | ink | nee |
+| **meta** | Labels (`h6`) | regular | *italic* | muted | nee |
+
+- Sentence case in NL-UI.
+- `.vz-rank-active` = spaarzaam **accent** (huidige kassa-stap).
+- Zichtbaar getal (`.vz-h__index`) **alleen** in geordende flows (kassa), niet op etalage-titels.
+- Tokens: `--vz-rank-*` in `tokens.css`; utilities `.vz-rank-1` … `.vz-rank-meta`.
+
+### Progress (CLI)
+
+Default: bracket-bar met accent-fill en tip `>` — sfeer `[=========>----------]`.
+
+| Variant | Class | Gebruik |
+|---------|-------|---------|
+| Equals + tip | `.vz-progress` | laden, stappen, default |
+| Hash | `.vz-progress--hash` | chunky / upload |
+| Busy | `.vz-progress--busy` | onbekende duur (`prefers-reduced-motion` stil) |
+| Glyph-string | `.vz-progress__glyphs` | echte `=`/`-` tekens (JS/server) |
+
+Kleur: fill = accent · rest = line · brackets/meta = muted.  
+Breedte: `--vz-progress-cols` (default 20). Waarde: `--vz-progress: 0–1` + `aria-valuenow`.  
+Glyphs swappable via tokens; font-verzoek: [00-gap-code-glyph-verzoek.md](./00-gap-code-glyph-verzoek.md).
+
 #### Letter-spacing (mono)
 
 Monospace **heeft al vaste glyph-breedte**. Willekeurige `letter-spacing` (0.02–0.04em) oogt gauw “kapot” of mode-UI.
@@ -166,6 +199,7 @@ Utility: `.vz-track` / `--vz-tracking-display` alleen waar bewust.
 |-------|---------|------|
 | 2026-11-17 | GAP Code UI; small caps op knoppen; grid 20 / 4-16-32; kleurrollen light/dark | team/ontwerp |
 | 2026-11-17 | Sfeer = moderne CLI/terminal (Solarized e.a.); **geen** pen-papier-metafoor | ontwerp |
+| 2026-11-17 | Rank 1–meta + CLI `- titel -` + AtomProgress equals/hash/busy | ontwerp |
 | 2026-11-17 | Radius **max 4px** (forms 0–2); schaduw **none**; mono **letter-spacing 0** tenzij bewuste tracked labels (`.vz-track`) | ontwerp |
 
 ---

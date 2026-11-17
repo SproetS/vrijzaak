@@ -52,51 +52,116 @@ h4,
 h5,
 h6 {
   font-family: var(--vz-font-ui);
-  color: var(--vz-text-primary);
   text-wrap: balance;
+  letter-spacing: var(--vz-tracking-normal);
+  text-transform: none; /* geen default ALL CAPS — rank via weight/style/color */
   /* Eerste kop in een sectie: minder space-before mag via .vz-heading-flush */
   margin-block: var(--vz-heading-space-before) var(--vz-heading-space-after);
 }
 
-h1 {
+/* Rank 1 — pagina-anker */
+h1,
+.vz-rank-1 {
   font-size: var(--vz-text-h1-size);
   line-height: var(--vz-text-h1-leading);
-  font-weight: var(--vz-text-h1-weight);
-  letter-spacing: var(--vz-tracking-normal);
+  font-weight: var(--vz-rank-1-weight);
+  font-style: var(--vz-rank-1-style);
+  color: var(--vz-rank-1-color);
 }
 
-h2 {
+/* Rank 2 — sectie */
+h2,
+.vz-rank-2 {
   font-size: var(--vz-text-h2-size);
   line-height: var(--vz-text-h2-leading);
-  font-weight: var(--vz-text-h2-weight);
-  letter-spacing: var(--vz-tracking-normal);
+  font-weight: var(--vz-rank-2-weight);
+  font-style: var(--vz-rank-2-style);
+  color: var(--vz-rank-2-color);
 }
 
-h3 {
+/* Rank 3 — sub (italic) */
+h3,
+.vz-rank-3 {
   font-size: var(--vz-text-h3-size);
   line-height: var(--vz-text-h3-leading);
-  font-weight: var(--vz-text-h3-weight);
-  letter-spacing: var(--vz-tracking-normal);
+  font-weight: var(--vz-rank-3-weight);
+  font-style: var(--vz-rank-3-style);
+  color: var(--vz-rank-3-color);
 }
 
-h4 {
+h4,
+.vz-rank-4 {
   font-size: var(--vz-text-h4-size);
   line-height: var(--vz-text-h4-leading);
-  font-weight: var(--vz-text-h4-weight);
+  font-weight: var(--vz-rank-4-weight);
+  font-style: var(--vz-rank-4-style);
+  color: var(--vz-rank-4-color);
 }
 
 h5 {
   font-size: var(--vz-text-h5-size);
   line-height: var(--vz-text-h5-leading);
-  font-weight: var(--vz-text-h5-weight);
+  font-weight: var(--vz-rank-4-weight);
+  font-style: normal;
+  color: var(--vz-rank-4-color);
 }
 
-h6 {
+/* Meta — muted italic, geen kapitalen-plicht */
+h6,
+.vz-rank-meta {
   font-size: var(--vz-text-h6-size);
   line-height: var(--vz-text-h6-leading);
-  font-weight: var(--vz-text-h6-weight);
-  letter-spacing: var(--vz-tracking-normal);
-  text-transform: uppercase;
+  font-weight: var(--vz-rank-meta-weight);
+  font-style: var(--vz-rank-meta-style);
+  color: var(--vz-rank-meta-color);
+}
+
+/* Actieve tak in een flow (kassa-stap, huidige sectie) */
+.vz-rank-active,
+h2.vz-rank-active,
+h3.vz-rank-active {
+  color: var(--vz-rank-active-color);
+}
+
+/*
+ * CLI-sectiekop: - Titel -
+ * Gebruik op h2/h3 (rank 2–3). Sentence case in HTML.
+ */
+.vz-h--cli {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0;
+}
+
+.vz-h--cli::before,
+.vz-h--cli::after {
+  content: "-";
+  color: var(--vz-text-secondary);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.vz-h--cli .vz-h__text {
+  padding-inline: 1ch;
+  color: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+/* Zonder inner span: spaties via padding op de heading zelf + pseudos */
+h2.vz-h--cli:not(:has(.vz-h__text)),
+h3.vz-h--cli:not(:has(.vz-h__text)) {
+  column-gap: 1ch;
+}
+
+/* Optioneel zichtbaar flow-nummer: alleen geordende flows */
+.vz-h__index {
+  font-weight: 400;
+  font-style: normal;
+  color: var(--vz-text-secondary);
+  margin-inline-end: 1ch;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Bewuste tracked labels (S P A C E-gevoel) — spaarzaam */

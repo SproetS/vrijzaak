@@ -181,6 +181,173 @@
   line-height: var(--vz-text-body-leading);
 }
 
+/*
+ * --- AtomProgress (CLI) ---
+ * Gebruik: style="--vz-progress: 0.45" + aria-valuenow.
+ * Visueel: [====>----] via cellen; glyphs uit tokens (swappable in GAP Code).
+ * Varianten: default equals · --hash · --busy (indeterminate)
+ */
+.vz-progress {
+  --vz-progress: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--vz-inline-gap-tight);
+  font-family: var(--vz-font-ui);
+  font-size: var(--vz-text-body-size);
+  line-height: var(--vz-text-body-leading);
+  font-variant-numeric: tabular-nums;
+  max-width: 100%;
+}
+
+.vz-progress__frame {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: pre;
+  color: var(--vz-progress-frame);
+}
+
+.vz-progress__brack {
+  color: var(--vz-progress-frame);
+  font-weight: 400;
+}
+
+.vz-progress__body {
+  position: relative;
+  display: inline-block;
+  width: calc(var(--vz-progress-cols) * 1ch);
+  height: 1em;
+  vertical-align: -0.1em;
+  overflow: hidden;
+  background-color: transparent;
+  /* lege cellen als herhaalde glyphs (fallback ASCII) */
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--vz-progress-rest) 0,
+    var(--vz-progress-rest) 0.65ch,
+    transparent 0.65ch,
+    transparent 1ch
+  );
+  background-size: 1ch 0.35em;
+  background-position: left center;
+  background-repeat: repeat-x;
+}
+
+.vz-progress__done {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: calc(var(--vz-progress) * 100%);
+  max-width: 100%;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--vz-progress-fill) 0,
+    var(--vz-progress-fill) 0.65ch,
+    transparent 0.65ch,
+    transparent 1ch
+  );
+  background-size: 1ch 0.55em;
+  background-position: left center;
+  background-repeat: repeat-x;
+  transition: width 120ms linear;
+}
+
+.vz-progress__done::after {
+  content: var(--vz-progress-glyph-head);
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: 0;
+  transform: translate(50%, -50%);
+  color: var(--vz-progress-fill);
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: none;
+}
+
+/* Vol = geen tip */
+.vz-progress[aria-valuenow="100"] .vz-progress__done::after,
+.vz-progress.is-complete .vz-progress__done::after {
+  content: none;
+}
+
+.vz-progress__meta {
+  color: var(--vz-progress-meta);
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+}
+
+/* Hash-variant: zwaardere “blokken” */
+.vz-progress--hash .vz-progress__body {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--vz-progress-rest) 0,
+    var(--vz-progress-rest) 0.85ch,
+    transparent 0.85ch,
+    transparent 1ch
+  );
+  background-size: 1ch 0.45em;
+}
+
+.vz-progress--hash .vz-progress__done {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--vz-progress-fill) 0,
+    var(--vz-progress-fill) 0.85ch,
+    transparent 0.85ch,
+    transparent 1ch
+  );
+  background-size: 1ch 0.7em;
+}
+
+.vz-progress--hash .vz-progress__done::after {
+  content: none; /* hash bars usually without tip */
+}
+
+/* Indeterminate / busy */
+.vz-progress--busy .vz-progress__done {
+  width: 30%;
+  animation: vz-progress-busy 1.4s linear infinite;
+}
+
+.vz-progress--busy .vz-progress__done::after {
+  content: var(--vz-progress-glyph-head);
+}
+
+@keyframes vz-progress-busy {
+  0% {
+    inset-inline-start: -30%;
+  }
+  100% {
+    inset-inline-start: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vz-progress__done {
+    transition: none;
+  }
+
+  .vz-progress--busy .vz-progress__done {
+    animation: none;
+    inset-inline-start: 35%;
+    width: 30%;
+  }
+}
+
+/* Glyph-string variant (expliciete tekens; JS of server vult) */
+.vz-progress__glyphs {
+  color: var(--vz-progress-fill);
+  white-space: pre;
+}
+
+.vz-progress__glyphs .vz-progress__rest-ch {
+  color: var(--vz-progress-rest);
+}
+
+.vz-progress__glyphs .vz-progress__brack-ch {
+  color: var(--vz-progress-frame);
+}
+
 /* --- AtomWordmark --- */
 .vz-wordmark {
   font-family: var(--vz-font-ui);

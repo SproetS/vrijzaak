@@ -31,13 +31,88 @@
     </header>
     <main id="inhoud" class="vz-main">
       <h1 class="vz-heading-flush">Magazijn</h1>
-      <p class="vz-lead">Voorbeeld van de moleculen-cascade (geen live shop).</p>
+      <p class="vz-lead">Voorbeeld cascade: rank-koppen, CLI-progress, moleculen (geen live shop).</p>
+
+      <h2 class="vz-h--cli"><span class="vz-h__text">Type · rank</span></h2>
+      <h3 class="vz-h--cli"><span class="vz-h__text">Subkop in italic</span></h3>
+      <h4>Regel h4</h4>
+      <h6>Meta-label zonder kapitalen-plicht</h6>
+      <p class="vz-text-sm">Rank 1 = h1 · rank 2 = h2 + <code class="vz-tag">.vz-h--cli</code> · rank 3 = h3 italic · meta = h6 muted.</p>
+
+      <h2 class="vz-h--cli vz-rank-active">
+        <span class="vz-h__text"><span class="vz-h__index">02</span>Gegevens</span>
+      </h2>
+      <p class="vz-text-sm">Actieve kassa-sectie: <code class="vz-tag">.vz-rank-active</code> + optioneel index alleen in flows.</p>
+
+      <h2 class="vz-h--cli"><span class="vz-h__text">Voortgang</span></h2>
+
+      <p>
+        <span
+          class="vz-progress"
+          style="--vz-progress: 0.45"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="45"
+          aria-label="Voorbeeld voortgang"
+        >
+          <span class="vz-progress__frame" aria-hidden="true">
+            <span class="vz-progress__brack">[</span>
+            <span class="vz-progress__body"><span class="vz-progress__done"></span></span>
+            <span class="vz-progress__brack">]</span>
+          </span>
+          <span class="vz-progress__meta">45%</span>
+        </span>
+      </p>
+
+      <p>
+        <span
+          class="vz-progress vz-progress--hash"
+          style="--vz-progress: 0.7"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="70"
+          aria-label="Hash-variant"
+        >
+          <span class="vz-progress__frame" aria-hidden="true">
+            <span class="vz-progress__brack">[</span>
+            <span class="vz-progress__body"><span class="vz-progress__done"></span></span>
+            <span class="vz-progress__brack">]</span>
+          </span>
+          <span class="vz-progress__meta">70% hash</span>
+        </span>
+      </p>
+
+      <p>
+        <span
+          class="vz-progress vz-progress--busy"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-label="Bezig, duur onbekend"
+        >
+          <span class="vz-progress__frame" aria-hidden="true">
+            <span class="vz-progress__brack">[</span>
+            <span class="vz-progress__body"><span class="vz-progress__done"></span></span>
+            <span class="vz-progress__brack">]</span>
+          </span>
+          <span class="vz-progress__meta">bezig…</span>
+        </span>
+      </p>
+
+      <p id="glyph-bar" class="vz-progress" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Glyph-string">
+        <!-- gevuld door script: echte [====>----] tekens -->
+      </p>
+
       <div class="vz-field">
         <label class="vz-label" for="q">Zoeken</label>
         <input class="vz-input" id="q" type="search" />
       </div>
-      <p><button type="button" class="vz-btn">Naar de kassa</button>
-         <button type="button" class="vz-btn vz-btn--ghost">Terug</button></p>
+      <p>
+        <button type="button" class="vz-btn">Naar de kassa</button>
+        <button type="button" class="vz-btn vz-btn--ghost">Terug</button>
+      </p>
       <div class="vz-quote">
         <ul class="vz-quote__list">
           <li><span>Voorbeeld werk × 1</span><span class="vz-price">EUR 12,00</span></li>
@@ -65,6 +140,31 @@
         });
       });
     });
+
+    /** Glyph-string progress: [====>----] met token-kleuren via spans */
+    function renderGlyphBar(el, pct, cols) {
+      const full = '=';
+      const empty = '-';
+      const head = '>';
+      const n = cols || 20;
+      const filled = Math.round((pct / 100) * n);
+      const tip = pct > 0 && pct < 100 ? 1 : 0;
+      const solid = Math.max(0, filled - tip);
+      const rest = n - solid - tip;
+      const parts = [];
+      parts.push('<span class="vz-progress__glyphs" aria-hidden="true">');
+      parts.push('<span class="vz-progress__brack-ch">[</span>');
+      parts.push(full.repeat(solid));
+      if (tip) parts.push(head);
+      parts.push('<span class="vz-progress__rest-ch">' + empty.repeat(rest) + '</span>');
+      parts.push('<span class="vz-progress__brack-ch">]</span>');
+      parts.push('</span>');
+      parts.push('<span class="vz-progress__meta">' + pct + '% glyphs</span>');
+      el.innerHTML = parts.join('');
+      el.style.setProperty('--vz-progress', String(pct / 100));
+    }
+    const gb = document.getElementById('glyph-bar');
+    if (gb) renderGlyphBar(gb, 45, 20);
   </script>
 </body>
 </html>

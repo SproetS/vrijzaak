@@ -116,6 +116,20 @@ Semantisch (align met bouw-namen waar mogelijk):
 tap ≥ 48px (vault); bouw design.md noemt ≥44 — programmeur sync
 ```
 
+
+### Rank en progress
+
+```
+--vz-rank-1-* … --vz-rank-4-* · --vz-rank-meta-*   weight / style / color
+--vz-rank-active-color
+--vz-progress-cols (20)
+--vz-progress-glyph-full|empty|head (+ -alt hash)
+--vz-progress-fill|rest|frame|meta
+```
+
+CSS: `type.css` (h1–h6 + `.vz-h--cli`) · `atoms.css` (`.vz-progress`).  
+Preview: `frontend/css/preview.html`.
+
 ### Knoptekst (small caps) en tracking
 
 UI-knoppen (`.vz-btn`): **`font-variant-caps: all-small-caps`**, **`letter-spacing: 0`** (mono).  

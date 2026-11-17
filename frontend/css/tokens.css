@@ -150,6 +150,49 @@
   --vz-tracking-normal: 0;
   --vz-tracking-display: 0.2em;
 
+  /*
+   * Rank (ontwerp-hiërarchie) — functie → weight/style/color.
+   * HTML h1–h6 blijft semantisch; rank is het contract voor UI-chrome.
+   * 1 pagina · 2 sectie · 3 sub · meta labels/h6
+   */
+  --vz-rank-1-weight: 700;
+  --vz-rank-1-style: normal;
+  --vz-rank-1-color: var(--vz-text-primary);
+
+  --vz-rank-2-weight: 700;
+  --vz-rank-2-style: normal;
+  --vz-rank-2-color: var(--vz-text-primary);
+
+  --vz-rank-3-weight: 700;
+  --vz-rank-3-style: italic;
+  --vz-rank-3-color: var(--vz-text-primary);
+
+  --vz-rank-4-weight: 700;
+  --vz-rank-4-style: normal;
+  --vz-rank-4-color: var(--vz-text-primary);
+
+  --vz-rank-meta-weight: 400;
+  --vz-rank-meta-style: italic;
+  --vz-rank-meta-color: var(--vz-text-secondary);
+
+  /* Actieve stap / focus in flow — spaarzaam accent op rank-tekst */
+  --vz-rank-active-color: var(--vz-accent);
+
+  /*
+   * Progress (CLI) — glyphs swappable als GAP Code custom cells krijgt.
+   * Default: ASCII equals + tip. Alt: hash + underscore.
+   */
+  --vz-progress-cols: 20;
+  --vz-progress-glyph-full: "=";
+  --vz-progress-glyph-empty: "-";
+  --vz-progress-glyph-head: ">";
+  --vz-progress-glyph-full-alt: "#";
+  --vz-progress-glyph-empty-alt: "_";
+  --vz-progress-fill: var(--vz-accent);
+  --vz-progress-rest: var(--vz-border);
+  --vz-progress-frame: var(--vz-text-secondary);
+  --vz-progress-meta: var(--vz-text-secondary);
+
   /* Tap: a11y ≥44px → afronden op 4px-grid = 48px */
   --vz-tap-min: var(--vz-space-x-12); /* 48 */
 

@@ -55,17 +55,35 @@ Hiërarchie zonder extreme schaal: **size (h1) · tracking (h2/h3) · kleur (h3)
 
 Tokens: `--vz-indent-0|1|2`. Utilities: `.vz-indent-*`.
 
-## Controls (input / button)
+## Plaatsing t.o.v. het grid (site-breed)
 
-Hoogte **2 × lh − 2px** (border), padding-block **0**, padding-inline **2ch**.  
-Zo vallen vakken **op** de baselijnen i.p.v. ertussen, zonder enorme tap-boxes.
+Het font-grid geldt voor **hele pagina**: main, **header**, **footer**, forms, knoppen.  
+Debug in preview toont lijnen over `.vz-shell` (dus ook chrome).
+
+| As | Eenheid | Rol |
+|----|---------|-----|
+| V (horizontale lijnen) | `1 × --vz-baseline` (1.2rem @ body) | stap tussen twee gridlijnen |
+| H (verticale lijnen) | `1ch` | mono-cel |
+
+**Gedrag (werkregel):**
+
+1. Blokken starten bij voorkeur **op** een basislijn, niet ertussen.
+2. Hoogtes bij voorkeur **hele** V-stappen (`n × baseline`), minus borders indien nodig.
+3. Breedtes/paddings/inspring in **hele** H-stappen (`n × ch`).
+4. Optische uitzonderingen (1px border, hairline) documenteren; niet stiekem half-stappen stapelen.
+
+### Controls (input / button)
+
+Hoogte = **één** V-stap (“tussen twee horizontale gridlijnen”) − 2px border:
 
 ```
---vz-control-lines: 2
---vz-control-height: calc(2 * 1lh - 2px)
+--vz-control-lines: 1
+--vz-control-height: calc(1 * baseline - 2px)
+padding-inline: 2ch
+padding-block: 0
 ```
 
-Quiet/tekst-CTA’s: geen vaste control-hoogte (schets “Terug naar winkel”).
+Quiet/tekst-CTA’s: geen control-box (schets “Terug naar winkel”).
 
 ## Zoom / a11y
 

@@ -25,3 +25,8 @@ GAP Code **bepaalt** H- en V-raster. 4px was startpunt. Browser-font/zoom schaal
 - Controls: hoogte `2 × baseline − 2px`, pad-inline `2ch`, pad-block 0
 - Inspring: h4 `1ch`, p/lists/fields `2ch`, h1–h3 `0`
 - Quiet button = tekstlink (geen control-box)
+
+## Update: control = 1 gridstap
+
+Buttons/inputs: hoogte tussen **twee** horizontale baselijnen (`--vz-control-lines: 1`).  
+Grid geldt hele shell (header/footer meegenomen in debug).

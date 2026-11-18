@@ -83,6 +83,7 @@ GAP Code = **eigen font** van de ontwerper (geen externe licentie-blokkade); wé
 - Font UI: **GAP Code** (bouw `tokens.ts` kan nog GAP Mono hebben tot programmeur sync’t)
 - **CLI / terminal-toon** (Solarized-achtig): geen “pen & papier”-metafoor; token-namen `paper`/`ink` mogen technisch blijven
 - **Font-grid:** GAP Code advance **0.6em** / line **1.2**; H in `ch`; V in `1.2rem`; 4px = legacy/radius only
+- **Controls:** hoogte **1 V-stap** (tussen twee baselijnen); site-breed grid incl. header/footer
 - Vorm: **radius max 4px**; **shadow none**
 - Hiërarchie: h1 **2rem**; h2/h3 **1rem + tracking 1ch**; h3 **accent-warm**; h4 bold; labels muted track
   - Schets: `frontend/design/illustrator-exports/`

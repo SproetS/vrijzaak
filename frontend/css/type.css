@@ -216,46 +216,55 @@ h3.vz-h--cli:not(:has(.vz-h__text)) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Debug                                                                        */
+/* Debug — op .vz-shell (body-bg wordt door shell bedekt)                        */
 /* -------------------------------------------------------------------------- */
 
-html.vz-baseline-debug body {
+html.vz-baseline-debug .vz-shell,
+html.vz-baseline-debug body:not(:has(.vz-shell)) {
+  background-color: var(--vz-bg-primary);
   background-image: repeating-linear-gradient(
     to bottom,
     transparent 0,
     transparent calc(var(--vz-baseline) - 1px),
-    color-mix(in srgb, var(--vz-accent) 28%, transparent) calc(var(--vz-baseline) - 1px),
-    color-mix(in srgb, var(--vz-accent) 28%, transparent) var(--vz-baseline)
+    color-mix(in srgb, var(--vz-accent) 35%, transparent) calc(var(--vz-baseline) - 1px),
+    color-mix(in srgb, var(--vz-accent) 35%, transparent) var(--vz-baseline)
   );
   background-attachment: local;
+  background-origin: border-box;
 }
 
 /* Verticale strepen = mono-cellen (1ch) */
-html.vz-cell-debug body {
+html.vz-cell-debug .vz-shell,
+html.vz-cell-debug body:not(:has(.vz-shell)) {
+  background-color: var(--vz-bg-primary);
   background-image: repeating-linear-gradient(
     to right,
     transparent 0,
     transparent calc(1ch - 1px),
-    color-mix(in srgb, var(--vz-accent-warm) 22%, transparent) calc(1ch - 1px),
-    color-mix(in srgb, var(--vz-accent-warm) 22%, transparent) 1ch
+    color-mix(in srgb, var(--vz-accent-warm) 30%, transparent) calc(1ch - 1px),
+    color-mix(in srgb, var(--vz-accent-warm) 30%, transparent) 1ch
   );
   background-attachment: local;
+  background-origin: border-box;
 }
 
-html.vz-baseline-debug.vz-cell-debug body {
+html.vz-baseline-debug.vz-cell-debug .vz-shell,
+html.vz-baseline-debug.vz-cell-debug body:not(:has(.vz-shell)) {
+  background-color: var(--vz-bg-primary);
   background-image:
     repeating-linear-gradient(
       to bottom,
       transparent 0,
       transparent calc(var(--vz-baseline) - 1px),
-      color-mix(in srgb, var(--vz-accent) 22%, transparent) calc(var(--vz-baseline) - 1px),
-      color-mix(in srgb, var(--vz-accent) 22%, transparent) var(--vz-baseline)
+      color-mix(in srgb, var(--vz-accent) 30%, transparent) calc(var(--vz-baseline) - 1px),
+      color-mix(in srgb, var(--vz-accent) 30%, transparent) var(--vz-baseline)
     ),
     repeating-linear-gradient(
       to right,
       transparent 0,
       transparent calc(1ch - 1px),
-      color-mix(in srgb, var(--vz-accent-warm) 18%, transparent) calc(1ch - 1px),
-      color-mix(in srgb, var(--vz-accent-warm) 18%, transparent) 1ch
+      color-mix(in srgb, var(--vz-accent-warm) 25%, transparent) calc(1ch - 1px),
+      color-mix(in srgb, var(--vz-accent-warm) 25%, transparent) 1ch
     );
+  background-attachment: local;
 }

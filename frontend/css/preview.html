@@ -72,7 +72,7 @@
       </p>
 
       <p class="vz-text-sm">
-        Font-grid debug:
+        Font-grid debug (hard-refresh na CSS-fix):
         <button type="button" id="dbg-base" class="vz-btn vz-btn--ghost">baseline</button>
         <button type="button" id="dbg-cell" class="vz-btn vz-btn--ghost">cellen</button>
       </p>
@@ -93,10 +93,19 @@
         });
       });
     });
-    document.getElementById('dbg-base').onclick = () =>
-      document.documentElement.classList.toggle('vz-baseline-debug');
-    document.getElementById('dbg-cell').onclick = () =>
-      document.documentElement.classList.toggle('vz-cell-debug');
+
+    function bindDebugToggle(id, className) {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.setAttribute('aria-pressed', 'false');
+      btn.addEventListener('click', () => {
+        const on = document.documentElement.classList.toggle(className);
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    bindDebugToggle('dbg-base', 'vz-baseline-debug');
+    bindDebugToggle('dbg-cell', 'vz-cell-debug');
   </script>
 </body>
 </html>

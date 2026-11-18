@@ -1,14 +1,16 @@
 /**
- * Vrijzaak — basislijn-typografie (voorstel)
+ * Vrijzaak — font-grid typografie
  * Vereist: tokens.css
  *
- * VERTICAAL: body 16px, basislijn 20px — alle block-margins/gaps op n × 20px.
- * HORIZONTAAL: 4px-module (ankers 4 / 16 / 32) — padding-inline, row gaps (tokens).
- * optioneel debug: html.vz-baseline-debug
+ * GRID = GAP Code (docs/00-font-grid.md)
+ * VERTICAAL: line-height 1.2 · baseline 1.2rem
+ * HORIZONTAAL: 1ch = mono-cel (0.6em)
+ * h1 = 2× body (size + glyph-breedte); h2/h3 = track 1ch; hiërarchie + kleur/weight
+ * debug: html.vz-baseline-debug · html.vz-cell-debug
  */
 
 html {
-  font-size: 100%; /* browserdefault ≈ 16px → 1rem */
+  font-size: 100%; /* user/browser → rem-grid schaalt mee */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -23,7 +25,6 @@ body {
   background-color: var(--vz-bg-primary);
 }
 
-/* Stapel: alinea’s op basislijn-afstand */
 p,
 ul,
 ol,
@@ -41,8 +42,21 @@ ol:last-child {
   margin-block-end: 0;
 }
 
+/* Links in body (schets: cyaan/blauw functioneel) */
+p a,
+li a {
+  color: var(--vz-accent-soft-blue);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+p a:hover,
+li a:hover {
+  color: var(--vz-accent);
+}
+
 /* -------------------------------------------------------------------------- */
-/* Koppen h1–h6                                                                */
+/* Koppen — rank via size / tracking / kleur / weight                          */
 /* -------------------------------------------------------------------------- */
 
 h1,
@@ -53,70 +67,75 @@ h5,
 h6 {
   font-family: var(--vz-font-ui);
   text-wrap: balance;
-  letter-spacing: var(--vz-tracking-normal);
-  text-transform: none; /* geen default ALL CAPS — rank via weight/style/color */
-  /* Eerste kop in een sectie: minder space-before mag via .vz-heading-flush */
+  text-transform: none;
   margin-block: var(--vz-heading-space-before) var(--vz-heading-space-after);
+  line-height: var(--vz-line);
 }
 
-/* Rank 1 — pagina-anker */
+/* Rank 1 — 2× body; box = 2 baselines */
 h1,
 .vz-rank-1 {
   font-size: var(--vz-text-h1-size);
-  line-height: var(--vz-text-h1-leading);
   font-weight: var(--vz-rank-1-weight);
   font-style: var(--vz-rank-1-style);
   color: var(--vz-rank-1-color);
+  letter-spacing: var(--vz-rank-1-tracking);
 }
 
-/* Rank 2 — sectie */
+/* Rank 2 — body-size, tracked, muted (schets WAT JIJ WIL) */
 h2,
 .vz-rank-2 {
   font-size: var(--vz-text-h2-size);
-  line-height: var(--vz-text-h2-leading);
   font-weight: var(--vz-rank-2-weight);
   font-style: var(--vz-rank-2-style);
   color: var(--vz-rank-2-color);
+  letter-spacing: var(--vz-rank-2-tracking);
 }
 
-/* Rank 3 — sub (italic) */
+/* Rank 3 — body-size, tracked, warm accent (schets Heading 3) */
 h3,
 .vz-rank-3 {
   font-size: var(--vz-text-h3-size);
-  line-height: var(--vz-text-h3-leading);
   font-weight: var(--vz-rank-3-weight);
   font-style: var(--vz-rank-3-style);
   color: var(--vz-rank-3-color);
+  letter-spacing: var(--vz-rank-3-tracking);
 }
 
+/* Rank 4 — body bold, strak op alinea */
 h4,
 .vz-rank-4 {
   font-size: var(--vz-text-h4-size);
-  line-height: var(--vz-text-h4-leading);
   font-weight: var(--vz-rank-4-weight);
   font-style: var(--vz-rank-4-style);
   color: var(--vz-rank-4-color);
+  letter-spacing: var(--vz-rank-4-tracking);
+  margin-block-end: 0; /* plakt aan volgende p */
+}
+
+h4 + p {
+  margin-block-start: 0;
 }
 
 h5 {
   font-size: var(--vz-text-h5-size);
-  line-height: var(--vz-text-h5-leading);
   font-weight: var(--vz-rank-4-weight);
   font-style: normal;
   color: var(--vz-rank-4-color);
+  letter-spacing: var(--vz-tracking-normal);
 }
 
-/* Meta — muted italic, geen kapitalen-plicht */
+/* Meta / label-toon */
 h6,
-.vz-rank-meta {
+.vz-rank-meta,
+.vz-label-line {
   font-size: var(--vz-text-h6-size);
-  line-height: var(--vz-text-h6-leading);
   font-weight: var(--vz-rank-meta-weight);
   font-style: var(--vz-rank-meta-style);
   color: var(--vz-rank-meta-color);
+  letter-spacing: var(--vz-rank-meta-tracking);
 }
 
-/* Actieve tak in een flow (kassa-stap, huidige sectie) */
 .vz-rank-active,
 h2.vz-rank-active,
 h3.vz-rank-active {
@@ -124,8 +143,8 @@ h3.vz-rank-active {
 }
 
 /*
- * CLI-sectiekop: - Titel -
- * Gebruik op h2/h3 (rank 2–3). Sentence case in HTML.
+ * CLI-frame optioneel: - Titel -
+ * Labels in schets: "NAAM - LABEL" — liever copy dan pseudo op h2.
  */
 .vz-h--cli {
   display: flex;
@@ -140,6 +159,7 @@ h3.vz-rank-active {
   color: var(--vz-text-secondary);
   font-weight: 400;
   font-style: normal;
+  letter-spacing: 0;
 }
 
 .vz-h--cli .vz-h__text {
@@ -147,53 +167,50 @@ h3.vz-rank-active {
   color: inherit;
   font-weight: inherit;
   font-style: inherit;
+  letter-spacing: inherit;
 }
 
-/* Zonder inner span: spaties via padding op de heading zelf + pseudos */
 h2.vz-h--cli:not(:has(.vz-h__text)),
 h3.vz-h--cli:not(:has(.vz-h__text)) {
   column-gap: 1ch;
 }
 
-/* Optioneel zichtbaar flow-nummer: alleen geordende flows */
 .vz-h__index {
   font-weight: 400;
   font-style: normal;
+  letter-spacing: 0;
   color: var(--vz-text-secondary);
   margin-inline-end: 1ch;
   font-variant-numeric: tabular-nums;
 }
 
-/* Bewuste tracked labels (S P A C E-gevoel) — spaarzaam */
+/* Expliciete track-utility (= 1ch, zelfde als h2/h3) */
 .vz-track {
   letter-spacing: var(--vz-tracking-display);
 }
 
-/* Eerste heading in card/section zonder top-margin */
 .vz-heading-flush {
   margin-block-start: 0;
 }
 
-/* Lead / intro onder h1 */
 .vz-lead {
-  font-size: var(--vz-text-lg-size);
-  line-height: var(--vz-text-lg-leading);
+  font-size: var(--vz-text-body-size);
+  line-height: var(--vz-line);
   color: var(--vz-text-secondary);
+  letter-spacing: var(--vz-tracking-display);
   margin-block-end: calc(var(--vz-baseline) * 2);
 }
 
 .vz-text-sm {
   font-size: var(--vz-text-sm-size);
   line-height: var(--vz-text-sm-leading);
+  color: var(--vz-text-secondary);
 }
 
 /* -------------------------------------------------------------------------- */
-/* Debug-basislijn (optioneel in ontwerp-proef)                                */
+/* Debug                                                                        */
 /* -------------------------------------------------------------------------- */
-/*
- * html class="vz-baseline-debug"
- * Toont 20px-lijnen — niet in productie.
- */
+
 html.vz-baseline-debug body {
   background-image: repeating-linear-gradient(
     to bottom,
@@ -203,4 +220,34 @@ html.vz-baseline-debug body {
     color-mix(in srgb, var(--vz-accent) 28%, transparent) var(--vz-baseline)
   );
   background-attachment: local;
+}
+
+/* Verticale strepen = mono-cellen (1ch) */
+html.vz-cell-debug body {
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(1ch - 1px),
+    color-mix(in srgb, var(--vz-accent-warm) 22%, transparent) calc(1ch - 1px),
+    color-mix(in srgb, var(--vz-accent-warm) 22%, transparent) 1ch
+  );
+  background-attachment: local;
+}
+
+html.vz-baseline-debug.vz-cell-debug body {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--vz-baseline) - 1px),
+      color-mix(in srgb, var(--vz-accent) 22%, transparent) calc(var(--vz-baseline) - 1px),
+      color-mix(in srgb, var(--vz-accent) 22%, transparent) var(--vz-baseline)
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(1ch - 1px),
+      color-mix(in srgb, var(--vz-accent-warm) 18%, transparent) calc(1ch - 1px),
+      color-mix(in srgb, var(--vz-accent-warm) 18%, transparent) 1ch
+    );
 }

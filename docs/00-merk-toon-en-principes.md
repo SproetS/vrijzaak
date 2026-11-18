@@ -69,17 +69,25 @@ CSS-SoT: `--vz-radius-sm: 0`, `--vz-radius-md: 2px`, `--vz-radius-lg/xl: 4px`; `
 - Tijds- en voortgangsbalken: ASCII-stijl mag.
 
 
+### Font-grid (2026-11-18)
+
+**GAP Code bepaalt het raster** (horizontaal = mono-cel / `ch`, verticaal = line 1.2). 4px was startpunt. Zoom/browser-font schaalt het grid mee. Zie [00-font-grid.md](./00-font-grid.md) en Illustrator `Typo - licht|donker`.
+
+- `h1` = **2×** `p` in size **en** glyph-breedte; leading 1.2 → 2 body-regels hoog.
+- `h2` / `h3` = body-size + **letter-spacing 1ch** (eert H-grid); h3 + **accent-warm**.
+- Hiërarchie verder: bold/regular, small-caps (knoppen), kleur — geen ALL CAPS-plicht.
+
 ### Hiërarchie (rank) en CLI-koppen
 
 Functie bepaalt vorm. **Geen default ALL CAPS** op koppen.
 
 | Rank | Rol | Weight | Style | Kleur | CLI-frame |
 |------|-----|--------|-------|-------|-----------|
-| **1** | Pagina-anker (`h1`) | bold | roman | ink | nee |
-| **2** | Sectie (`h2`) | bold | roman | ink | `- Titel -` via `.vz-h--cli` |
-| **3** | Sub (`h3`) | bold | *italic* | ink | `.vz-h--cli` optioneel |
-| **4** | Lokaal (`h4`/`h5`) | bold | roman | ink | nee |
-| **meta** | Labels (`h6`) | regular | *italic* | muted | nee |
+| **1** | `h1` 2rem | bold | 0 | ink | nee |
+| **2** | `h2` 1rem | regular | **1ch** | muted | optioneel |
+| **3** | `h3` 1rem | regular | **1ch** | **warm/oranje** | optioneel |
+| **4** | `h4` 1rem | bold | 0 | ink | nee |
+| **meta** | labels | regular | 1ch | muted | `NAAM - LABEL` in copy |
 
 - Sentence case in NL-UI.
 - `.vz-rank-active` = spaarzaam **accent** (huidige kassa-stap).

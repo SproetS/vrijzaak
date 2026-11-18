@@ -22,119 +22,121 @@
   --vz-measure: 76rem;
 
   /*
-   * Basislijn-raster (InDesign-achtig)
-   * - Body: 16px
-   * - Basislijn / leading-unit: 20px (1.25 × 16)
-   * - Regelafstand en verticale margins in veelvouden van de basislijn
-   * - font-size mag “tussen de lijnen”; line-height-box snap aan n × 20px
+   * FONT-GRID (besluit 2026-11-18)
+   * GAP Code metrics → raster. Browser-zoom/user font-size schaalt mee.
+   * Gemeten Regular: UPM 1000, advance 600 (0.6em = 1ch), line 1.2em.
+   * Zie docs/00-font-grid.md · schets illustrator-exports/Typo-*.png
    */
-  --vz-font-size-root: 16px;
-  --vz-baseline: 1.25rem; /* 20px bij root 16px */
-  --vz-baseline-ratio: 1.25;
+  --vz-font-upem: 1000;
+  --vz-font-advance: 600; /* mono cel in font units */
+  --vz-cell-em: 0.6; /* advance/upem — 1ch */
+  --vz-line: 1.2; /* (asc-desc+lineGap)/upem */
 
-  /* Body */
-  --vz-text-body-size: 1rem; /* 16px */
-  --vz-text-body-leading: var(--vz-baseline); /* 20px */
+  /* Root corps: 1rem = browser default; html font-size 100% */
+  --vz-font-size-root: 100%;
+  --vz-text-body-size: 1rem;
+  --vz-text-body-leading: var(--vz-line); /* unitless × font-size */
   --vz-text-body-weight: 400;
 
+  /* 1 body-regel in rem (bij body 1rem op root) */
+  --vz-baseline: 1.2rem;
+  --vz-cell: 0.6rem; /* 1 mono-cel @ body */
+
   /*
-   * Koppen h1–h6: size + leading (leading = k × baseline)
-   * k=1 → 20px · k=2 → 40px · k=3 → 60px
+   * Type-ladder (schets): h1 = 2× body (size én glyph-breedte).
+   * h2/h3 = body-size + tracking 1ch; h4 = body bold.
+   * Leading overal --vz-line (1.2) → h1 box = 2.4rem = 2 baselines.
    */
-  --vz-text-h1-size: 2.5rem; /* 40px */
-  --vz-text-h1-leading: calc(var(--vz-baseline) * 2); /* 40px */
+  --vz-text-h1-size: 2rem;
+  --vz-text-h1-leading: var(--vz-line);
   --vz-text-h1-weight: 700;
 
-  --vz-text-h2-size: 2rem; /* 32px */
-  --vz-text-h2-leading: calc(var(--vz-baseline) * 2); /* 40px */
-  --vz-text-h2-weight: 700;
+  --vz-text-h2-size: 1rem;
+  --vz-text-h2-leading: var(--vz-line);
+  --vz-text-h2-weight: 400;
 
-  --vz-text-h3-size: 1.5rem; /* 24px */
-  --vz-text-h3-leading: calc(var(--vz-baseline) * 2); /* 40px */
-  --vz-text-h3-weight: 700;
+  --vz-text-h3-size: 1rem;
+  --vz-text-h3-leading: var(--vz-line);
+  --vz-text-h3-weight: 400;
 
-  --vz-text-h4-size: 1.25rem; /* 20px */
-  --vz-text-h4-leading: calc(var(--vz-baseline) * 2); /* 40px — vol op basislijn */
+  --vz-text-h4-size: 1rem;
+  --vz-text-h4-leading: var(--vz-line);
   --vz-text-h4-weight: 700;
 
-  --vz-text-h5-size: 1.125rem; /* 18px */
-  --vz-text-h5-leading: var(--vz-baseline); /* 20px */
+  --vz-text-h5-size: 1rem;
+  --vz-text-h5-leading: var(--vz-line);
   --vz-text-h5-weight: 700;
 
-  --vz-text-h6-size: 1rem; /* 16px */
-  --vz-text-h6-leading: var(--vz-baseline); /* 20px */
-  --vz-text-h6-weight: 700;
+  --vz-text-h6-size: 1rem;
+  --vz-text-h6-leading: var(--vz-line);
+  --vz-text-h6-weight: 400;
 
-  /* Small / caption / mono data */
-  --vz-text-sm-size: 0.875rem; /* 14px */
-  --vz-text-sm-leading: var(--vz-baseline); /* 20px — één lijn, iets losser t.o.v. 14 */
-  --vz-text-lg-size: 1.125rem;
-  --vz-text-lg-leading: calc(var(--vz-baseline) * 2); /* 40px */
+  /* Meta/sm: blijf op body-corps (grid-puur); onderscheid via kleur/track */
+  --vz-text-sm-size: 1rem;
+  --vz-text-sm-leading: var(--vz-line);
+  --vz-text-lg-size: 1rem;
+  --vz-text-lg-leading: var(--vz-line);
+
+  /* Tracking: 1 mono-cel tussen glyphs (eert H-grid) */
+  --vz-tracking-normal: 0;
+  --vz-tracking-display: 1ch; /* h2/h3 / labels */
 
   /*
-   * Twee assen (niet mengen):
-   * - VERTICAAL: alles op basislijn-grid 20px (leading, stack, section gaps, block margins)
-   * - HORIZONTAAL: 4px-module (padding-inline, gap in rijen, icon-gaps) — ankers 4 / 16 / 32
+   * VERTICAAL = n × baseline (1.2rem)
+   * HORIZONTAAL = n × cel (ch / 0.6rem) — 4px was startpunt, nu secundair
    */
-
-  /* --- Verticaal: basislijn-rhythm (InDesign) --- */
-  --vz-heading-space-before: var(--vz-baseline); /* 20px = 1 lijn */
-  --vz-heading-space-after: var(--vz-baseline); /* 1 lijn — strak op raster */
-  --vz-stack-gap: var(--vz-baseline); /* alinea → alinea */
-  --vz-section-gap: calc(var(--vz-baseline) * 2); /* 40px = 2 lijnen */
-  --vz-section-gap-lg: calc(var(--vz-baseline) * 3); /* 60px = 3 lijnen */
-  --vz-block-pad-block: var(--vz-baseline); /* verticale padding cards/sections */
+  --vz-heading-space-before: var(--vz-baseline);
+  --vz-heading-space-after: var(--vz-baseline);
+  --vz-stack-gap: var(--vz-baseline);
+  --vz-section-gap: calc(var(--vz-baseline) * 2);
+  --vz-section-gap-lg: calc(var(--vz-baseline) * 3);
+  --vz-block-pad-block: var(--vz-baseline);
   --vz-block-pad-block-lg: calc(var(--vz-baseline) * 2);
 
-  /* Aliassen verticaal (oude space-* voor block-richting) */
-  --vz-space-y-1: var(--vz-baseline); /* 20 */
-  --vz-space-y-2: calc(var(--vz-baseline) * 2); /* 40 */
-  --vz-space-y-3: calc(var(--vz-baseline) * 3); /* 60 */
-  --vz-space-y-4: calc(var(--vz-baseline) * 4); /* 80 */
-  --vz-space-y-half: calc(var(--vz-baseline) * 0.5); /* 10 — alleen bij uitzondering */
+  --vz-space-y-1: var(--vz-baseline);
+  --vz-space-y-2: calc(var(--vz-baseline) * 2);
+  --vz-space-y-3: calc(var(--vz-baseline) * 3);
+  --vz-space-y-4: calc(var(--vz-baseline) * 4);
+  --vz-space-y-half: calc(var(--vz-baseline) * 0.5);
 
-  /* --- Horizontaal: 4px-grid (ankers 4 · 16 · 32) --- */
-  --vz-grid-x: 4px; /* kleinste stap */
-  --vz-space-x-1: var(--vz-grid-x); /* 4 */
-  --vz-space-x-2: calc(var(--vz-grid-x) * 2); /* 8 */
-  --vz-space-x-3: calc(var(--vz-grid-x) * 3); /* 12 */
-  --vz-space-x-4: calc(var(--vz-grid-x) * 4); /* 16 — anker */
-  --vz-space-x-5: calc(var(--vz-grid-x) * 5); /* 20 */
-  --vz-space-x-6: calc(var(--vz-grid-x) * 6); /* 24 */
-  --vz-space-x-7: calc(var(--vz-grid-x) * 7); /* 28 */
-  --vz-space-x-8: calc(var(--vz-grid-x) * 8); /* 32 — anker */
-  --vz-space-x-9: calc(var(--vz-grid-x) * 9); /* 36 */
-  --vz-space-x-10: calc(var(--vz-grid-x) * 10); /* 40 */
-  --vz-space-x-12: calc(var(--vz-grid-x) * 12); /* 48 */
-  --vz-space-x-16: calc(var(--vz-grid-x) * 16); /* 64 */
+  /* H-grid in ch (1ch = mono cel) */
+  --vz-grid-x: 1ch;
+  --vz-space-x-1: 1ch;
+  --vz-space-x-2: 2ch;
+  --vz-space-x-3: 3ch;
+  --vz-space-x-4: 4ch; /* anker */
+  --vz-space-x-5: 5ch;
+  --vz-space-x-6: 6ch;
+  --vz-space-x-7: 7ch;
+  --vz-space-x-8: 8ch; /* anker */
+  --vz-space-x-9: 9ch;
+  --vz-space-x-10: 10ch;
+  --vz-space-x-12: 12ch;
+  --vz-space-x-16: 16ch;
 
-  /* Handige composities */
-  --vz-inline-gap-tight: var(--vz-space-x-2); /* 8 — icon+label */
-  --vz-inline-gap: var(--vz-space-x-4); /* 16 — default inline */
-  --vz-inline-gap-loose: var(--vz-space-x-8); /* 32 — nav clusters */
-  --vz-page-pad-inline: var(--vz-space-x-8); /* 32 — page gutters mobiel start */
-  --vz-page-pad-inline-md: calc(var(--vz-grid-x) * 12); /* 48 */
-  --vz-page-pad-inline-lg: calc(var(--vz-grid-x) * 16); /* 64 */
-  --vz-block-pad-inline: var(--vz-space-x-4); /* 16 */
-  --vz-block-pad-inline-lg: var(--vz-space-x-8); /* 32 */
+  --vz-inline-gap-tight: 2ch;
+  --vz-inline-gap: 4ch;
+  --vz-inline-gap-loose: 8ch;
+  --vz-page-pad-inline: 8ch;
+  --vz-page-pad-inline-md: 12ch;
+  --vz-page-pad-inline-lg: 16ch;
+  --vz-block-pad-inline: 4ch;
+  --vz-block-pad-inline-lg: 8ch;
 
-  /*
-   * Generieke --vz-space-* (legacy): horizontaal 4px-schaal.
-   * Voor VERTICAAL liever --vz-space-y-* of --vz-baseline.
-   */
-  --vz-space-1: var(--vz-space-x-1); /* 4 */
-  --vz-space-2: var(--vz-space-x-2); /* 8 */
-  --vz-space-3: var(--vz-space-x-3); /* 12 */
-  --vz-space-4: var(--vz-space-x-4); /* 16 */
-  --vz-space-5: var(--vz-space-x-5); /* 20 */
-  --vz-space-6: var(--vz-space-x-6); /* 24 */
-  --vz-space-7: var(--vz-space-x-7); /* 28 */
-  --vz-space-8: var(--vz-space-x-8); /* 32 */
-  --vz-space-9: var(--vz-space-x-9); /* 36 */
-  --vz-space-10: var(--vz-space-x-10); /* 40 */
-  --vz-space-12: var(--vz-space-x-12); /* 48 */
-  --vz-space-16: var(--vz-space-x-16); /* 64 */
-  --vz-space-half: var(--vz-space-x-2); /* 8 — niet 10; blijf op 4px */
+  /* Legacy space-* → ch-grid */
+  --vz-space-1: var(--vz-space-x-1);
+  --vz-space-2: var(--vz-space-x-2);
+  --vz-space-3: var(--vz-space-x-3);
+  --vz-space-4: var(--vz-space-x-4);
+  --vz-space-5: var(--vz-space-x-5);
+  --vz-space-6: var(--vz-space-x-6);
+  --vz-space-7: var(--vz-space-x-7);
+  --vz-space-8: var(--vz-space-x-8);
+  --vz-space-9: var(--vz-space-x-9);
+  --vz-space-10: var(--vz-space-x-10);
+  --vz-space-12: var(--vz-space-x-12);
+  --vz-space-16: var(--vz-space-x-16);
+  --vz-space-half: var(--vz-space-x-2);
 
   /*
    * Radius: CLI, niet Bootstrap — hard maximum 4px.
@@ -143,39 +145,38 @@
    */
   --vz-radius-sm: 0;
   --vz-radius-md: 2px;
-  --vz-radius-lg: var(--vz-space-x-1); /* 4 — maximum */
-  --vz-radius-xl: var(--vz-space-x-1); /* 4 — geen groter dan lg */
-
-  /* Mono: default 0; display = bewuste tracked labels (S P A C E-gevoel) */
-  --vz-tracking-normal: 0;
-  --vz-tracking-display: 0.2em;
+  --vz-radius-lg: 4px; /* maximum — niet aan ch koppelen */
+  --vz-radius-xl: 4px;
 
   /*
-   * Rank (ontwerp-hiërarchie) — functie → weight/style/color.
-   * HTML h1–h6 blijft semantisch; rank is het contract voor UI-chrome.
-   * 1 pagina · 2 sectie · 3 sub · meta labels/h6
+   * Rank — schets: size · tracking · kleur · weight (niet extreme schaal).
+   * h1 2rem · h2 track+muted · h3 track+warm · h4 bold body · meta muted
    */
   --vz-rank-1-weight: 700;
   --vz-rank-1-style: normal;
   --vz-rank-1-color: var(--vz-text-primary);
+  --vz-rank-1-tracking: var(--vz-tracking-normal);
 
-  --vz-rank-2-weight: 700;
+  --vz-rank-2-weight: 400;
   --vz-rank-2-style: normal;
-  --vz-rank-2-color: var(--vz-text-primary);
+  --vz-rank-2-color: var(--vz-text-secondary);
+  --vz-rank-2-tracking: var(--vz-tracking-display);
 
-  --vz-rank-3-weight: 700;
-  --vz-rank-3-style: italic;
-  --vz-rank-3-color: var(--vz-text-primary);
+  --vz-rank-3-weight: 400;
+  --vz-rank-3-style: normal;
+  --vz-rank-3-color: var(--vz-accent-warm);
+  --vz-rank-3-tracking: var(--vz-tracking-display);
 
   --vz-rank-4-weight: 700;
   --vz-rank-4-style: normal;
   --vz-rank-4-color: var(--vz-text-primary);
+  --vz-rank-4-tracking: var(--vz-tracking-normal);
 
   --vz-rank-meta-weight: 400;
-  --vz-rank-meta-style: italic;
+  --vz-rank-meta-style: normal;
   --vz-rank-meta-color: var(--vz-text-secondary);
+  --vz-rank-meta-tracking: var(--vz-tracking-display);
 
-  /* Actieve stap / focus in flow — spaarzaam accent op rank-tekst */
   --vz-rank-active-color: var(--vz-accent);
 
   /*
@@ -193,12 +194,12 @@
   --vz-progress-frame: var(--vz-text-secondary);
   --vz-progress-meta: var(--vz-text-secondary);
 
-  /* Tap: a11y ≥44px → afronden op 4px-grid = 48px */
-  --vz-tap-min: var(--vz-space-x-12); /* 48 */
+  /* Tap: ≥ ~3 body-regels of 12 ch — schaalt met font */
+  --vz-tap-min: max(2.5rem, calc(var(--vz-baseline) * 2));
 
   /* Focus op 4px-grid */
   --vz-focus-ring-width: 2px; /* uitzondering: 2px hairline ok */
-  --vz-focus-ring-offset: var(--vz-space-x-1); /* 4 */
+  --vz-focus-ring-offset: 0.25rem;
 
   /*
    * Licht = default. Rollen = bouw-namen paper/surface/ink (technische aliassen).

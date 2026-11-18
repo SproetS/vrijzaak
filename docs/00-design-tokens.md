@@ -33,6 +33,9 @@ Bron: webshop `shared/design/tokens.ts` en `docs/design.md`.
 
 ## B. Ontwerpverkenning (deze vault)
 
+**Font-grid besluit (2026-11-18):** raster = GAP Code metrics (advance 0.6em, line 1.2). Niet langer 4px als primaire wet. Details: [00-font-grid.md](./00-font-grid.md). Schets: `frontend/design/illustrator-exports/`.
+
+
 Richting die UX mag blijven verkennen tot er een **gezamenlijk fontbesluit** is.
 
 ### Typografie
@@ -52,9 +55,9 @@ In `frontend/fonts/` van deze repo: placeholder; licentie vóór commit van webf
 /* bouw tokens.ts heeft nog font: GAP Mono — sync via programmeur */
 ```
 
-### Basislijn-typografie (16 / 20)
+### Basislijn-typografie (font-grid)
 
-Zoals een **basislijn-raster in InDesign**: vaste leading-unit, koppen en alinea’s daarop gestapeld.
+Leading **1.2** (font typo line). Body **1rem**, baseline **1.2rem**. h1 **2rem** (= 2× body, box 2 baselines). H-grid in **ch**.
 
 | | |
 |--|--|

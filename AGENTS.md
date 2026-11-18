@@ -49,6 +49,7 @@ Deze repo = Markdown + lichte frontend-assets + Obsidian-vault.
 6. `docs/00-navigatie-omgevingen.md`
 6b. `docs/00-nomenclatuur-winkel.md`
 7. `docs/00-design-tokens.md` — maten, rank, progress-tokens
+7a. `docs/00-font-grid.md` — **GAP Code = raster** (start design-bepaling)
 7b. `docs/00-merk-toon-en-principes.md` — sfeer CLI/terminal, rank, progress
 7c. `docs/00-gap-code-glyph-verzoek.md` — font glyphs progress
 8. `docs/00-tech-traject.md`
@@ -81,10 +82,10 @@ GAP Code = **eigen font** van de ontwerper (geen externe licentie-blokkade); wé
 - Totalen en paid-status van **server**; Mollie-return ≠ betaald
 - Font UI: **GAP Code** (bouw `tokens.ts` kan nog GAP Mono hebben tot programmeur sync’t)
 - **CLI / terminal-toon** (Solarized-achtig): geen “pen & papier”-metafoor; token-namen `paper`/`ink` mogen technisch blijven
-- Vorm: **radius max 4px** (forms 0–2); **shadow none**; mono **letter-spacing 0** tenzij `.vz-track`
-- Hiërarchie = **rank** (weight + italic + kleur), geen default ALL CAPS op koppen
-  - rank1 `h1` · rank2 `h2` + `.vz-h--cli` (`- Titel -`) · rank3 `h3` italic · meta `h6` muted italic
-  - `.vz-rank-active` spaarzaam accent; `.vz-h__index` alleen in geordende flows
+- **Font-grid:** GAP Code advance **0.6em** / line **1.2**; H in `ch`; V in `1.2rem`; 4px = legacy/radius only
+- Vorm: **radius max 4px**; **shadow none**
+- Hiërarchie: h1 **2rem**; h2/h3 **1rem + tracking 1ch**; h3 **accent-warm**; h4 bold; labels muted track
+  - Schets: `frontend/design/illustrator-exports/`
 - Progress: `.vz-progress` (equals/hash/busy) — CLI brackets, accent-fill
 - Knoppen: small-caps, tracking 0
 - Geen dummyprijzen/koop-CTA alsof live
@@ -99,7 +100,8 @@ GAP Code = **eigen font** van de ontwerper (geen externe licentie-blokkade); wé
 - Checkout-draadmodellen 01–08 gekoppeld aan bouw
 - CSS-cascade tokens → type → base → atoms → molecules → organisms → layout
 - Merk-toon CLI; radius/shadow/tracking in CSS + FigCraft
-- Rank + AtomProgress in CSS/docs/preview; FigCraft DS-page: rank labels, CLI-koppen, progress-voorbeelden, Type/H3+H6 italic, Type/H2Cli+H3Cli
+- Rank + AtomProgress; FigCraft DS (eerdere avond)
+- **Font-grid besluit:** metrics gemeten, tokens/type op cel/line; preview ≈ typo-schets
 - GitHub ontwerp: `SproetS/vrijzaak` (main)
 
 ### Open / volgende sessie (prioriteit)
@@ -129,4 +131,4 @@ GAP Code = **eigen font** van de ontwerper (geen externe licentie-blokkade); wé
 5. Bouw niet stilzwijgend wijzigen; ontwerprepo = SproetS/vrijzaak.
 ```
 
-Laatste afronding sessie: FigCraft rank/CLI/progress spiegel + deze stand — 2026-11-17.
+Laatste update: font-grid (GAP Code metrics) — 2026-11-18.

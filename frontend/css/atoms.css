@@ -25,20 +25,22 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--vz-inline-gap-tight); /* 8 */
-  min-height: var(--vz-tap-min); /* 48 */
-  padding-block: var(--vz-space-x-3); /* 12 — vult tot ≥48 met line */
-  padding-inline: var(--vz-space-x-8); /* 32 */
+  gap: 1ch;
+  box-sizing: border-box;
+  /* Exact 2 baselijnen minus border → buitenrand op V-grid */
+  height: var(--vz-control-height);
+  min-height: var(--vz-control-height);
+  padding-block: var(--vz-control-pad-block);
+  padding-inline: var(--vz-control-pad-inline);
   border: 1px solid transparent;
-  border-radius: var(--vz-radius-md); /* 2px — CLI, max 4 */
+  border-radius: var(--vz-radius-md);
   font-family: var(--vz-font-ui);
   font-size: var(--vz-text-body-size);
   font-weight: 700;
-  line-height: var(--vz-text-body-leading);
-  /* Knoptekst: small caps (SoT in CSS; FigCraft: text.case smallCaps) */
+  line-height: 1;
   font-variant-caps: all-small-caps;
   font-feature-settings: "smcp" 1, "c2sc" 1;
-  letter-spacing: var(--vz-tracking-normal); /* mono: geen decoratieve tracking */
+  letter-spacing: var(--vz-tracking-normal);
   text-decoration: none;
   cursor: pointer;
   background: var(--vz-cta-bg);
@@ -64,19 +66,27 @@
 
 .vz-btn--quiet {
   background: transparent;
-  color: var(--vz-accent);
-  padding-inline: var(--vz-space-x-4);
+  color: var(--vz-accent-soft-blue);
+  height: auto;
+  min-height: 0;
+  padding-block: 0;
+  padding-inline: 0;
   border-color: transparent;
+  font-variant-caps: normal;
+  font-feature-settings: normal;
+  font-weight: 400;
+  line-height: var(--vz-line);
 }
 
 /* --- AtomLabel --- */
 .vz-label {
   display: block;
-  font-size: var(--vz-text-sm-size);
-  line-height: var(--vz-text-sm-leading);
+  font-size: var(--vz-text-body-size);
+  line-height: var(--vz-line);
   color: var(--vz-text-secondary);
-  margin-block-end: var(--vz-space-x-2); /* 8 horizontaal-module als kleine gap vóór input — */
-  /* Verticaal strikt: liever margin-block-end: 0 + field molecule gap */
+  letter-spacing: var(--vz-tracking-display);
+  margin-block-end: 0;
+  padding-inline-start: 0; /* field/content levert indent */
 }
 
 /* --- AtomInput / Select / Textarea --- */
@@ -84,21 +94,28 @@
 .vz-select,
 .vz-textarea {
   display: block;
+  box-sizing: border-box;
   width: 100%;
-  min-height: var(--vz-tap-min);
-  padding-block: var(--vz-space-x-3);
-  padding-inline: var(--vz-space-x-4); /* 16 */
+  max-width: 100%;
+  /* 2 lh − 2×1px border → vak op horizontale baselijnen, niet ertussen */
+  height: var(--vz-control-height);
+  min-height: var(--vz-control-height);
+  padding-block: var(--vz-control-pad-block);
+  padding-inline: var(--vz-control-pad-inline);
   border: 1px solid var(--vz-border);
-  border-radius: var(--vz-radius-sm); /* 0 — scherpe forms, anti-Bootstrap */
+  border-radius: var(--vz-radius-sm);
   background: var(--vz-bg-secondary);
   color: var(--vz-text-primary);
   font-family: var(--vz-font-ui);
   font-size: var(--vz-text-body-size);
-  line-height: var(--vz-text-body-leading);
+  line-height: 1;
 }
 
 .vz-textarea {
-  min-height: calc(var(--vz-baseline) * 5); /* 100px = 5 lijnen */
+  height: auto;
+  min-height: calc(var(--vz-control-lines) * 3 * 1lh - 2px); /* 3 rijen controls */
+  padding-block: 0.5lh;
+  line-height: var(--vz-line);
   resize: vertical;
 }
 

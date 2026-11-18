@@ -45,6 +45,28 @@ Unieke advances in font: 0, 250 (specials), **600** (tekens) — UI rekent op **
 
 Hiërarchie zonder extreme schaal: **size (h1) · tracking (h2/h3) · kleur (h3) · weight (h4/body) · small-caps (knoppen)**.
 
+## Inspring (H-hiërarchie)
+
+| Element | `padding-inline-start` |
+|---------|------------------------|
+| h1–h3 | 0 |
+| h4 | **1ch** |
+| p / lists / labels / fields | **2ch** |
+
+Tokens: `--vz-indent-0|1|2`. Utilities: `.vz-indent-*`.
+
+## Controls (input / button)
+
+Hoogte **2 × lh − 2px** (border), padding-block **0**, padding-inline **2ch**.  
+Zo vallen vakken **op** de baselijnen i.p.v. ertussen, zonder enorme tap-boxes.
+
+```
+--vz-control-lines: 2
+--vz-control-height: calc(2 * 1lh - 2px)
+```
+
+Quiet/tekst-CTA’s: geen vaste control-hoogte (schets “Terug naar winkel”).
+
 ## Zoom / a11y
 
 `html { font-size: 100% }` — user/browser font size wijzigt `rem` → cel, baseline, h1 (2rem) schalen mee.  

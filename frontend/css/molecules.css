@@ -7,8 +7,9 @@
 .vz-field {
   display: flex;
   flex-direction: column;
-  gap: var(--vz-space-x-2); /* 8 — tussen label en input (kleine H-stap) */
-  margin-block-end: var(--vz-space-y-1); /* 20 — volgende field op basislijn */
+  gap: 0; /* label op lijn, control op volgende 2-lijns slot */
+  margin-block-end: var(--vz-space-y-1);
+  padding-inline-start: var(--vz-indent-2); /* zelfde inspring als body */
 }
 
 .vz-field__hint,
@@ -30,8 +31,8 @@
 .vz-nav-item {
   display: inline-flex;
   align-items: center;
-  min-height: var(--vz-tap-min);
-  padding-inline: var(--vz-space-x-4);
+  min-height: var(--vz-control-height);
+  padding-inline: 2ch;
   color: var(--vz-text-primary);
   text-decoration: none;
   font-size: var(--vz-text-body-size);
@@ -48,7 +49,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--vz-inline-gap-tight);
-  min-height: var(--vz-tap-min);
+  min-height: var(--vz-control-height);
   text-decoration: none;
   color: var(--vz-text-primary);
 }
@@ -157,8 +158,11 @@
 }
 
 .vz-switch__btn {
-  min-height: var(--vz-tap-min);
-  padding-inline: var(--vz-space-x-4);
+  height: var(--vz-control-height);
+  min-height: var(--vz-control-height);
+  padding-block: 0;
+  padding-inline: 2ch;
+  line-height: 1;
   border: 0;
   background: var(--vz-bg-secondary);
   color: var(--vz-text-secondary);

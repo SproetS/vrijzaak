@@ -19,3 +19,9 @@ GAP Code **bepaalt** H- en V-raster. 4px was startpunt. Browser-font/zoom schaal
 ## Schets
 
 `frontend/design/illustrator-exports/Typo - licht.png` · donker
+
+## Update: controls + inspring
+
+- Controls: hoogte `2 × baseline − 2px`, pad-inline `2ch`, pad-block 0
+- Inspring: h4 `1ch`, p/lists/fields `2ch`, h1–h3 `0`
+- Quiet button = tekstlink (geen control-box)

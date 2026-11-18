@@ -81,6 +81,22 @@
   --vz-tracking-normal: 0;
   --vz-tracking-display: 1ch; /* h2/h3 / labels */
 
+  /* Inspring (schets): hiërarchie via ch, niet alleen size */
+  --vz-indent-0: 0;
+  --vz-indent-1: 1ch; /* h4 */
+  --vz-indent-2: 2ch; /* body p */
+
+  /*
+   * Controls (input/button): exact n × lh op V-grid, niet “ergens ertussen”.
+   * 2 lh = 2 baselijnen — compact (schets), border 1px in mindering zodat
+   * de buitenrand op het raster valt (box-sizing border-box).
+   */
+  --vz-control-lines: 2;
+  /* baseline i.p.v. lh op :root — lh resolve’t verkeerd in custom props */
+  --vz-control-height: calc(var(--vz-control-lines) * var(--vz-baseline) - 2px);
+  --vz-control-pad-inline: 2ch;
+  --vz-control-pad-block: 0;
+
   /*
    * VERTICAAL = n × baseline (1.2rem)
    * HORIZONTAAL = n × cel (ch / 0.6rem) — 4px was startpunt, nu secundair
@@ -194,8 +210,8 @@
   --vz-progress-frame: var(--vz-text-secondary);
   --vz-progress-meta: var(--vz-text-secondary);
 
-  /* Tap: ≥ ~3 body-regels of 12 ch — schaalt met font */
-  --vz-tap-min: max(2.5rem, calc(var(--vz-baseline) * 2));
+  /* Tap ≈ 2 baselijnen (control-hoogte); schaalt met font */
+  --vz-tap-min: calc(var(--vz-control-lines) * var(--vz-baseline));
 
   /* Focus op 4px-grid */
   --vz-focus-ring-width: 2px; /* uitzondering: 2px hairline ok */
@@ -211,6 +227,7 @@
   --vz-ink: #202c27;
   --vz-muted: #58645d;
   --vz-accent: #245c43;
+  --vz-accent-warm: #c4703a; /* h3 */
   --vz-line: #b7c2b5;
 
   --vz-bg-primary: var(--vz-paper);
@@ -275,6 +292,7 @@
   --vz-ink: #e8efe9;
   --vz-muted: #9aaba2;
   --vz-accent: #3d9a6c;
+  --vz-accent-warm: #e09555;
   --vz-line: #2f3d36;
 
   --vz-bg-primary: var(--vz-paper);
@@ -321,6 +339,7 @@
     --vz-ink: #e8efe9;
     --vz-muted: #9aaba2;
     --vz-accent: #3d9a6c;
+    --vz-accent-warm: #e09555;
     --vz-line: #2f3d36;
 
     --vz-bg-primary: var(--vz-paper);

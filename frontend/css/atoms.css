@@ -73,7 +73,7 @@
 
 .vz-btn--quiet {
   background: transparent;
-  color: var(--vz-accent-soft-blue);
+  color: var(--vz-link);
   height: auto;
   min-height: 0;
   padding-block: 0;

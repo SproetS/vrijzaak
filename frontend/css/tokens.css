@@ -23,29 +23,28 @@
 
   /*
    * FONT-GRID (besluit 2026-11-18)
-   * GAP Code metrics → raster. Browser-zoom/user font-size schaalt mee.
-   * Gemeten Regular: UPM 1000, advance 600 (0.6em = 1ch), line 1.2em.
-   * Zie docs/00-font-grid.md · schets illustrator-exports/Typo-*.png
+   * GAP Code metrics → cel (0.6em). Interlinie UI: 1.333 (niet pure font 1.2 —
+   * iets lucht voor controls; ch-grid blijft strak).
+   * Zie docs/00-font-grid.md · schets illustrator-exports/
    */
   --vz-font-upem: 1000;
   --vz-font-advance: 600; /* mono cel in font units */
   --vz-cell-em: 0.6; /* advance/upem — 1ch */
-  --vz-line: 1.2; /* (asc-desc+lineGap)/upem */
+  --vz-line-font: 1.2; /* pure typo line uit font */
+  --vz-line: 1.333; /* UI baseline-factor ≈ 4/3 */
 
   /* Root corps: 1rem = browser default; html font-size 100% */
   --vz-font-size-root: 100%;
   --vz-text-body-size: 1rem;
-  --vz-text-body-leading: var(--vz-line); /* unitless × font-size */
+  --vz-text-body-leading: var(--vz-line);
   --vz-text-body-weight: 400;
 
-  /* 1 body-regel in rem (bij body 1rem op root) */
-  --vz-baseline: 1.2rem;
-  --vz-cell: 0.6rem; /* 1 mono-cel @ body */
+  /* 1 body-regel in rem */
+  --vz-baseline: 1.333rem;
+  --vz-cell: 0.6rem;
 
   /*
-   * Type-ladder (schets): h1 = 2× body (size én glyph-breedte).
-   * h2/h3 = body-size + tracking 1ch; h4 = body bold.
-   * Leading overal --vz-line (1.2) → h1 box = 2.4rem = 2 baselines.
+   * Type-ladder: h1 = 2× body; leading --vz-line → h1 box = 2.666rem = 2 baselines.
    */
   --vz-text-h1-size: 2rem;
   --vz-text-h1-leading: var(--vz-line);
@@ -98,8 +97,8 @@
   --vz-control-pad-block: 0;
 
   /*
-   * VERTICAAL = n × baseline (1.2rem)
-   * HORIZONTAAL = n × cel (ch / 0.6rem) — 4px was startpunt, nu secundair
+   * VERTICAAL = n × baseline (1.333rem)
+   * HORIZONTAAL = n × cel (ch) — strak; V iets ruimer dan pure font-line
    */
   --vz-heading-space-before: var(--vz-baseline);
   --vz-heading-space-after: var(--vz-baseline);
@@ -170,7 +169,7 @@
    */
   --vz-rank-1-weight: 700;
   --vz-rank-1-style: normal;
-  --vz-rank-1-color: var(--vz-text-primary);
+  --vz-rank-1-color: var(--vz-ink-strong, var(--vz-text-primary));
   --vz-rank-1-tracking: var(--vz-tracking-normal);
 
   --vz-rank-2-weight: 400;
@@ -185,7 +184,7 @@
 
   --vz-rank-4-weight: 700;
   --vz-rank-4-style: normal;
-  --vz-rank-4-color: var(--vz-text-primary);
+  --vz-rank-4-color: var(--vz-ink-strong, var(--vz-text-primary));
   --vz-rank-4-tracking: var(--vz-tracking-normal);
 
   --vz-rank-meta-weight: 400;
@@ -218,36 +217,37 @@
   --vz-focus-ring-offset: 0.25rem;
 
   /*
-   * Licht = default. Rollen = bouw-namen paper/surface/ink (technische aliassen).
-   * Sfeer = terminal/Solarized — niet “pen & papier”. Zie merk-toon-doc.
-   * Componenten: --vz-bg-* / --vz-text-* / --akws-*.
+   * Licht — kleuren uit illustrator-exports/Typo - licht.svg (2026-11-18).
+   * Aliassen paper/surface/ink blijven (bouw-namen).
    */
-  --vz-paper: #f5f2e9;
-  --vz-surface: #fffdf7;
-  --vz-ink: #202c27;
-  --vz-muted: #58645d;
-  --vz-accent: #245c43;
-  --vz-accent-warm: #c4703a; /* h3 */
-  --vz-line: #b7c2b5;
+  --vz-paper: #f2f2f2; /* pagina; artboard ≈ lichtgrijs */
+  --vz-surface: #e6e6e6; /* velden / vlakken */
+  --vz-ink: #666666; /* body dominant in SVG */
+  --vz-ink-strong: #4d4d4d; /* zwaardere koppen */
+  --vz-muted: #999999;
+  --vz-accent: #8cc63f; /* CTA groen */
+  --vz-accent-warm: #f15a24; /* h3 oranje */
+  --vz-link: #29abe2; /* tekstlinks / quiet */
+  --vz-link-bright: #3fa9f5;
+  --vz-line: #b3b3b3;
 
   --vz-bg-primary: var(--vz-paper);
   --vz-bg-secondary: var(--vz-surface);
-  --vz-bg-elevated: var(--vz-surface);
+  --vz-bg-elevated: #ffffff;
   --vz-text-primary: var(--vz-ink);
   --vz-text-secondary: var(--vz-muted);
-  --vz-text-inverse: var(--vz-surface);
+  --vz-text-inverse: #1a1a1a;
   --vz-border: var(--vz-line);
   --vz-cta-bg: var(--vz-accent);
-  --vz-cta-text: #fffdf7;
-  --vz-danger: #8f4a4a;
-  --vz-success: #2f6b4f;
-  --vz-warning: #8a6d1d;
-  --vz-focus-ring: var(--vz-accent);
+  --vz-cta-text: #1a1a1a; /* op lime-groen */
+  --vz-danger: #c44;
+  --vz-success: var(--vz-accent);
+  --vz-warning: var(--vz-accent-warm);
+  --vz-focus-ring: var(--vz-link);
 
-  /* Zachte accenten (spaarzaam; niet i.p.v. --vz-accent) */
-  --vz-accent-soft-red: #e8a0a0;
-  --vz-accent-soft-yellow: #f0e6a8;
-  --vz-accent-soft-blue: #a8c5e8;
+  --vz-accent-soft-red: #f79c7c;
+  --vz-accent-soft-yellow: #e8e0a0;
+  --vz-accent-soft-blue: var(--vz-link);
 
   /* Geen elevation: diepte = border + contrast (CLI) */
   --vz-shadow-soft: none;
@@ -286,32 +286,35 @@
 .theme-dark {
   color-scheme: dark;
 
-  /* Dark terminal: diep groen-zwart grond, warme surface, lichte ink */
-  --vz-paper: #121a17;
-  --vz-surface: #1a2420;
-  --vz-ink: #e8efe9;
-  --vz-muted: #9aaba2;
-  --vz-accent: #3d9a6c;
-  --vz-accent-warm: #e09555;
-  --vz-line: #2f3d36;
+  /* Donker — Typo - donker.svg */
+  --vz-paper: #3a3a3a;
+  --vz-surface: #4d4d4d;
+  --vz-ink: #cccccc;
+  --vz-ink-strong: #e6e6e6;
+  --vz-muted: #999999;
+  --vz-accent: #8cc63f;
+  --vz-accent-warm: #f47b50;
+  --vz-link: #29abe2;
+  --vz-link-bright: #3fa9f5;
+  --vz-line: #666666;
 
   --vz-bg-primary: var(--vz-paper);
   --vz-bg-secondary: var(--vz-surface);
-  --vz-bg-elevated: #222e29;
+  --vz-bg-elevated: #5a5a5a;
   --vz-text-primary: var(--vz-ink);
   --vz-text-secondary: var(--vz-muted);
-  --vz-text-inverse: #121a17;
+  --vz-text-inverse: #1a1a1a;
   --vz-border: var(--vz-line);
   --vz-cta-bg: var(--vz-accent);
-  --vz-cta-text: #0e1512;
-  --vz-danger: #e09090;
-  --vz-success: #6bc49a;
-  --vz-warning: #e0c35c;
-  --vz-focus-ring: #5cb88a;
+  --vz-cta-text: #1a1a1a;
+  --vz-danger: #f79c7c;
+  --vz-success: var(--vz-accent);
+  --vz-warning: var(--vz-accent-warm);
+  --vz-focus-ring: var(--vz-link);
 
-  --vz-accent-soft-red: #6b3a3a;
+  --vz-accent-soft-red: #f79c7c;
   --vz-accent-soft-yellow: #5c5428;
-  --vz-accent-soft-blue: #2a4058;
+  --vz-accent-soft-blue: var(--vz-link);
 
   --vz-shadow-soft: none;
 
@@ -334,31 +337,34 @@
   :root:not([data-theme="light"]):not([data-theme="dark"]) {
     color-scheme: dark;
 
-    --vz-paper: #121a17;
-    --vz-surface: #1a2420;
-    --vz-ink: #e8efe9;
-    --vz-muted: #9aaba2;
-    --vz-accent: #3d9a6c;
-    --vz-accent-warm: #e09555;
-    --vz-line: #2f3d36;
+    --vz-paper: #3a3a3a;
+    --vz-surface: #4d4d4d;
+    --vz-ink: #cccccc;
+    --vz-ink-strong: #e6e6e6;
+    --vz-muted: #999999;
+    --vz-accent: #8cc63f;
+    --vz-accent-warm: #f47b50;
+    --vz-link: #29abe2;
+    --vz-link-bright: #3fa9f5;
+    --vz-line: #666666;
 
     --vz-bg-primary: var(--vz-paper);
     --vz-bg-secondary: var(--vz-surface);
-    --vz-bg-elevated: #222e29;
+    --vz-bg-elevated: #5a5a5a;
     --vz-text-primary: var(--vz-ink);
     --vz-text-secondary: var(--vz-muted);
-    --vz-text-inverse: #121a17;
+    --vz-text-inverse: #1a1a1a;
     --vz-border: var(--vz-line);
     --vz-cta-bg: var(--vz-accent);
-    --vz-cta-text: #0e1512;
-    --vz-danger: #e09090;
-    --vz-success: #6bc49a;
-    --vz-warning: #e0c35c;
-    --vz-focus-ring: #5cb88a;
+    --vz-cta-text: #1a1a1a;
+    --vz-danger: #f79c7c;
+    --vz-success: var(--vz-accent);
+    --vz-warning: var(--vz-accent-warm);
+    --vz-focus-ring: var(--vz-link);
 
-    --vz-accent-soft-red: #6b3a3a;
+    --vz-accent-soft-red: #f79c7c;
     --vz-accent-soft-yellow: #5c5428;
-    --vz-accent-soft-blue: #2a4058;
+    --vz-accent-soft-blue: var(--vz-link);
 
     --vz-shadow-soft: none;
 

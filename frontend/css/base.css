@@ -44,7 +44,7 @@ img {
 }
 
 a {
-  color: var(--vz-accent);
+  color: var(--vz-link);
   text-decoration-thickness: 1px;
   text-underline-offset: var(--vz-space-x-1); /* 4px horizontaal-raster */
 }

@@ -33,7 +33,7 @@ Bron: webshop `shared/design/tokens.ts` en `docs/design.md`.
 
 ## B. Ontwerpverkenning (deze vault)
 
-**Font-grid besluit (2026-11-18):** raster = GAP Code metrics (advance 0.6em, line 1.2). Niet langer 4px als primaire wet. Details: [00-font-grid.md](./00-font-grid.md). Schets: `frontend/design/illustrator-exports/`.
+**Font-grid besluit (2026-11-18):** raster = GAP Code metrics (advance 0.6em, UI line **1.333**, kleuren uit Typo SVG). Niet langer 4px als primaire wet. Details: [00-font-grid.md](./00-font-grid.md). Schets: `frontend/design/illustrator-exports/`.
 
 
 Richting die UX mag blijven verkennen tot er een **gezamenlijk fontbesluit** is.

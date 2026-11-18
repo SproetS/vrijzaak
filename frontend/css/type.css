@@ -3,7 +3,7 @@
  * Vereist: tokens.css
  *
  * GRID = GAP Code (docs/00-font-grid.md)
- * VERTICAAL: line-height 1.2 · baseline 1.2rem
+ * VERTICAAL: line-height 1.333 · baseline 1.333rem
  * HORIZONTAAL: 1ch = mono-cel (0.6em)
  * h1 = 2× body (size + glyph-breedte); h2/h3 = track 1ch; hiërarchie + kleur/weight
  * debug: html.vz-baseline-debug · html.vz-cell-debug
@@ -46,14 +46,14 @@ ol:last-child {
 /* Links in body (schets: cyaan/blauw functioneel) */
 p a,
 li a {
-  color: var(--vz-accent-soft-blue);
+  color: var(--vz-link);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
 
 p a:hover,
 li a:hover {
-  color: var(--vz-accent);
+  color: var(--vz-link-bright);
 }
 
 /* -------------------------------------------------------------------------- */

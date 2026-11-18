@@ -24,8 +24,9 @@ Unieke advances in font: 0, 250 (specials), **600** (tekens) — UI rekent op **
 --vz-font-upem: 1000
 --vz-font-advance: 600
 --vz-cell: 0.6em          /* = 1ch bij mono 0 */
---vz-line: 1.2            /* unitless line-height factor */
---vz-baseline: 1.2rem     /* 1 body-regel @ root 1rem body */
+--vz-line-font: 1.2       /* pure font metric */
+--vz-line: 1.333          /* UI interlinie */
+--vz-baseline: 1.333rem
 ```
 
 - **Verticaal:** margins/gaps/line-boxes in `n × --vz-baseline` (of `n × 1.2em` op body-niveau).
@@ -97,3 +98,20 @@ Tap-minimaal blijft ≥ 2.5rem-ish of 3× baseline; niet vast 48px-only.
 - Toon: [00-merk-toon-en-principes.md](./00-merk-toon-en-principes.md)
 
 *Gemeten 2026-11-18 met fontTools op GAPCode-Regular.ttf.*
+
+
+## Palette (uit Typo SVG’s)
+
+| Rol | Licht | Donker |
+|-----|-------|--------|
+| paper (bg) | `#f2f2f2` | `#3a3a3a` |
+| surface (veld) | `#e6e6e6` | `#4d4d4d` |
+| ink | `#666666` | `#cccccc` |
+| ink-strong | `#4d4d4d` | `#e6e6e6` |
+| muted | `#999999` | `#999999` |
+| accent CTA | `#8cc63f` | `#8cc63f` |
+| accent-warm h3 | `#f15a24` | `#f47b50` |
+| link | `#29abe2` | `#29abe2` |
+| line | `#b3b3b3` | `#666666` |
+
+Bron: `frontend/design/illustrator-exports/Typo - licht|donker.svg`.

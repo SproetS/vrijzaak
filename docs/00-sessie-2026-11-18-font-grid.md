@@ -30,3 +30,8 @@ GAP Code **bepaalt** H- en V-raster. 4px was startpunt. Browser-font/zoom schaal
 
 Buttons/inputs: hoogte tussen **twee** horizontale baselijnen (`--vz-control-lines: 1`).  
 Grid geldt hele shell (header/footer meegenomen in debug).
+
+## Update: line 1.333 + schetskleuren
+
+- `--vz-line: 1.333` / baseline `1.333rem` (font-metric 1.2 blijft als `--vz-line-font`)
+- Palette light/dark uit Typo SVG’s in tokens.css

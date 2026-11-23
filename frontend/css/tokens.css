@@ -195,19 +195,35 @@
   --vz-rank-active-color: var(--vz-accent);
 
   /*
-   * Progress (CLI) — glyphs swappable als GAP Code custom cells krijgt.
-   * Default: ASCII equals + tip. Alt: hash + underscore.
+   * Progress + UX glyphs — GAP Code Regular (Bold volgt later).
+   * Export: frontend/fonts/GAP Code/
    */
   --vz-progress-cols: 20;
-  --vz-progress-glyph-full: "=";
-  --vz-progress-glyph-empty: "-";
-  --vz-progress-glyph-head: ">";
-  --vz-progress-glyph-full-alt: "#";
-  --vz-progress-glyph-empty-alt: "_";
+  --vz-progress-glyph-full: "\2588";   /* █ */
+  --vz-progress-glyph-empty: "\2591";  /* ░ */
+  --vz-progress-glyph-head: "\25B8";   /* ▸ (▶ U+25B6 nog niet in Regular) */
+  --vz-progress-glyph-full-alt: "\2588";  /* █ — ▓ nog niet getekend */
+  --vz-progress-glyph-empty-alt: "\2591"; /* ░ */
   --vz-progress-fill: var(--vz-accent);
   --vz-progress-rest: var(--vz-border);
   --vz-progress-frame: var(--vz-text-secondary);
   --vz-progress-meta: var(--vz-text-secondary);
+
+  /* UX chrome (Regular); content: via .vz-glyph-* */
+  --vz-glyph-cart: "\1F6D2";      /* 🛒 */
+  --vz-glyph-check-off: "\2610";  /* ☐ */
+  --vz-glyph-check-on: "\2611";   /* ☑ */
+  --vz-glyph-radio-off: "\25CB";  /* ○ */
+  --vz-glyph-radio-on: "\25CF";   /* ● */
+  --vz-glyph-ok: "\2713";         /* ✓ */
+  --vz-glyph-err: "\2717";        /* ✗ */
+  --vz-glyph-warn: "\26A0";       /* ⚠ */
+  --vz-glyph-box-ul: "\250C";     /* ┌ */
+  --vz-glyph-box-ur: "\2510";     /* ┐ */
+  --vz-glyph-box-ll: "\2514";     /* └ */
+  --vz-glyph-box-lr: "\2518";     /* ┘ */
+  --vz-glyph-box-h: "\2500";      /* ─ */
+  --vz-glyph-box-v: "\2502";      /* │ */
 
   /* Tap = control-hoogte (1 gridstap); schaalt met font */
   --vz-tap-min: calc(var(--vz-control-lines) * var(--vz-baseline));

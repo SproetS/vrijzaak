@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vrijzaak CSS preview — font-grid</title>
+  <title>Vrijzaak CSS preview — font-grid + glyphs</title>
   <link rel="stylesheet" href="./main.css" />
 </head>
 <body>
@@ -21,6 +21,10 @@
           <button type="button" class="vz-switch__btn is-active" aria-pressed="true">Licht</button>
           <button type="button" class="vz-switch__btn" aria-pressed="false">Donker</button>
         </div>
+        <a class="vz-cart-link" href="#" aria-label="Winkelmand, 2 artikelen">
+          <span class="vz-cart-link__icon" aria-hidden="true"></span>
+          <span class="vz-cart-link__count">2</span>
+        </a>
       </div>
     </header>
     <main id="inhoud" class="vz-main">
@@ -37,17 +41,57 @@
         vulputate velit esse molestie consequat.
       </p>
 
+      <h4>UX glyphs (GAP Code)</h4>
+      <p class="vz-label-line">Mand · checks · radio · status · box</p>
+      <p>
+        <span class="vz-glyph vz-glyph--cart" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--check-off" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--check-on" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--radio-off" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--radio-on" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--ok" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--err" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--warn" aria-hidden="true"></span>
+      </p>
+      <p class="vz-text-sm" id="glyph-box-sample" aria-hidden="true"></p>
+
       <p class="vz-label-line">Voortgang - label</p>
       <p>
-        <span class="vz-progress" style="--vz-progress: 0.3" role="progressbar"
-              aria-valuemin="0" aria-valuemax="100" aria-valuenow="30" aria-label="Voortgang">
-          <span class="vz-progress__frame" aria-hidden="true">
-            <span class="vz-progress__brack">[</span>
-            <span class="vz-progress__body"><span class="vz-progress__done"></span></span>
-            <span class="vz-progress__brack">]</span>
-          </span>
-          <span class="vz-progress__meta">30%</span>
-        </span>
+        <span
+          class="vz-progress"
+          data-vz-progress="30"
+          style="--vz-progress: 0.3"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="30"
+          aria-label="Voortgang"
+        ></span>
+      </p>
+      <p>
+        <span
+          class="vz-progress vz-progress--hash"
+          data-vz-progress="70"
+          data-vz-progress-variant="hash"
+          style="--vz-progress: 0.7"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="70"
+          aria-label="Voortgang hash"
+        ></span>
+      </p>
+      <p>
+        <span
+          class="vz-progress"
+          data-vz-progress="100"
+          style="--vz-progress: 1"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="100"
+          aria-label="Compleet"
+        ></span>
       </p>
 
       <div class="vz-field">
@@ -78,7 +122,7 @@
       </p>
     </main>
     <footer class="vz-site-footer">
-      <p>© Vrijzaak — font-grid preview (GAP Code)</p>
+      <p>© Vrijzaak — font-grid preview (GAP Code glyphs)</p>
     </footer>
   </div>
   <script>
@@ -106,6 +150,59 @@
     }
     bindDebugToggle('dbg-base', 'vz-baseline-debug');
     bindDebugToggle('dbg-cell', 'vz-cell-debug');
+
+    /** Read CSS token string (unicode escapes resolved by browser). */
+    function cssToken(name, fallback) {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      if (!v) return fallback;
+      // strip quotes if present
+      return v.replace(/^["']|["']$/g, '') || fallback;
+    }
+
+    function renderProgress(el) {
+      const pct = Math.max(0, Math.min(100, Number(el.dataset.vzProgress || el.getAttribute('aria-valuenow') || 0)));
+      const cols = Number(cssToken('--vz-progress-cols', '20')) || 20;
+      const variant = el.dataset.vzProgressVariant || '';
+      const full = variant === 'hash'
+        ? cssToken('--vz-progress-glyph-full-alt', '#')
+        : cssToken('--vz-progress-glyph-full', '=');
+      const empty = variant === 'hash'
+        ? cssToken('--vz-progress-glyph-empty-alt', '_')
+        : cssToken('--vz-progress-glyph-empty', '-');
+      const head = cssToken('--vz-progress-glyph-head', '>');
+      const filled = Math.round((pct / 100) * cols);
+      const tip = pct > 0 && pct < 100 && variant !== 'hash' ? 1 : 0;
+      const solid = Math.max(0, filled - tip);
+      const rest = Math.max(0, cols - solid - tip);
+
+      el.style.setProperty('--vz-progress', String(pct / 100));
+      el.setAttribute('aria-valuenow', String(pct));
+
+      const meta = pct === 100 ? '100%' : pct + '%';
+      el.innerHTML =
+        '<span class="vz-progress__glyphs" aria-hidden="true">' +
+        '<span class="vz-progress__brack-ch">[</span>' +
+        '<span class="vz-progress__fill-ch">' + full.repeat(solid) + '</span>' +
+        (tip ? '<span class="vz-progress__head-ch">' + head + '</span>' : '') +
+        '<span class="vz-progress__rest-ch">' + empty.repeat(rest) + '</span>' +
+        '<span class="vz-progress__brack-ch">]</span>' +
+        '</span>' +
+        '<span class="vz-progress__meta">' + meta + '</span>';
+    }
+
+    document.querySelectorAll('.vz-progress[data-vz-progress]').forEach(renderProgress);
+
+    // box drawing sample
+    const box = document.getElementById('glyph-box-sample');
+    if (box) {
+      const ul = cssToken('--vz-glyph-box-ul', '+');
+      const ur = cssToken('--vz-glyph-box-ur', '+');
+      const ll = cssToken('--vz-glyph-box-ll', '+');
+      const lr = cssToken('--vz-glyph-box-lr', '+');
+      const h = cssToken('--vz-glyph-box-h', '-');
+      const v = cssToken('--vz-glyph-box-v', '|');
+      box.textContent = ul + h.repeat(6) + ur + '  ' + v + ' panel ' + v + '  ' + ll + h.repeat(6) + lr;
+    }
   </script>
 </body>
 </html>

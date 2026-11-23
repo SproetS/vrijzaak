@@ -195,3 +195,13 @@ Panels later bv. class `.vz-box` met `::before` content uit hoeken, of echte tek
 ---
 
 *Uitgebreid 2026-11-21 — UX-first Unicode-lijst voor GAP Code.*
+
+
+## Export-check Regular (2026-11-23)
+
+In `frontend/fonts/GAP Code/GAPCode-Regular.ttf` o.a. aanwezig:
+`█ ░ ☐ ☑ ○ ● ✓ ✗ ⚠ 🛒 ┌┐└┘─│ ▸ ▾` …
+
+Nog niet / dun: `▶ ▓`, pijlen `→←↑↓`, lock, Bold UX-set.
+
+CSS tokens + preview gebruiken de aanwezige glyphs (`frontend/css/tokens.css`).

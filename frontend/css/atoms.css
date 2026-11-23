@@ -207,9 +207,9 @@
 
 /*
  * --- AtomProgress (CLI) ---
- * Gebruik: style="--vz-progress: 0.45" + aria-valuenow.
- * Visueel: [====>----] via cellen; glyphs uit tokens (swappable in GAP Code).
- * Varianten: default equals · --hash · --busy (indeterminate)
+ * style="--vz-progress: 0.45" + aria-valuenow.
+ * Voorkeur: .vz-progress__glyphs met █░▶ (tokens); JS in preview vult strings.
+ * --hash gebruikt ▓; --busy animeert kop.
  */
 .vz-progress {
   --vz-progress: 0;
@@ -358,10 +358,19 @@
   }
 }
 
-/* Glyph-string variant (expliciete tekens; JS of server vult) */
+/* Glyph-string variant (█░▶ — JS/server vult; tokens = SoT) */
 .vz-progress__glyphs {
-  color: var(--vz-progress-fill);
+  font-family: var(--vz-font-ui);
   white-space: pre;
+  font-variant-emoji: text; /* voorkeur tekstpresentatie waar ondersteund */
+}
+
+.vz-progress__glyphs .vz-progress__fill-ch {
+  color: var(--vz-progress-fill);
+}
+
+.vz-progress__glyphs .vz-progress__head-ch {
+  color: var(--vz-progress-fill);
 }
 
 .vz-progress__glyphs .vz-progress__rest-ch {
@@ -370,6 +379,46 @@
 
 .vz-progress__glyphs .vz-progress__brack-ch {
   color: var(--vz-progress-frame);
+}
+
+/* --- UX glyphs (GAP Code) --- */
+.vz-glyph {
+  font-family: var(--vz-font-ui);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--vz-line);
+  font-variant-emoji: text;
+}
+
+.vz-glyph--cart::before { content: var(--vz-glyph-cart); }
+.vz-glyph--check-off::before { content: var(--vz-glyph-check-off); }
+.vz-glyph--check-on::before { content: var(--vz-glyph-check-on); }
+.vz-glyph--radio-off::before { content: var(--vz-glyph-radio-off); }
+.vz-glyph--radio-on::before {
+  content: var(--vz-glyph-radio-on);
+  color: var(--vz-accent);
+}
+.vz-glyph--ok::before {
+  content: var(--vz-glyph-ok);
+  color: var(--vz-success);
+}
+.vz-glyph--err::before {
+  content: var(--vz-glyph-err);
+  color: var(--vz-danger);
+}
+.vz-glyph--warn::before {
+  content: var(--vz-glyph-warn);
+  color: var(--vz-warning);
+}
+
+.vz-cart-link__icon {
+  font-family: var(--vz-font-ui);
+  font-variant-emoji: text;
+  line-height: 1;
+}
+
+.vz-cart-link__icon::before {
+  content: var(--vz-glyph-cart);
 }
 
 /* --- AtomWordmark --- */

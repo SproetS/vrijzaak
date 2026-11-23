@@ -138,6 +138,8 @@ h6,
   color: var(--vz-rank-meta-color);
   letter-spacing: var(--vz-rank-meta-tracking);
   padding-inline-start: var(--vz-indent-2);
+  font-variant-caps: all-small-caps;
+  font-feature-settings: "smcp" 1, "c2sc" 1;
 }
 
 .vz-rank-active,

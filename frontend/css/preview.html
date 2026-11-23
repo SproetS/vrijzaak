@@ -170,6 +170,8 @@
         ? cssToken('--vz-progress-glyph-empty-alt', '_')
         : cssToken('--vz-progress-glyph-empty', '-');
       const head = cssToken('--vz-progress-glyph-head', '>');
+      const brL = cssToken('--vz-progress-glyph-brack-l', '[');
+      const brR = cssToken('--vz-progress-glyph-brack-r', ']');
       const filled = Math.round((pct / 100) * cols);
       const tip = pct > 0 && pct < 100 && variant !== 'hash' ? 1 : 0;
       const solid = Math.max(0, filled - tip);
@@ -181,11 +183,11 @@
       const meta = pct === 100 ? '100%' : pct + '%';
       el.innerHTML =
         '<span class="vz-progress__glyphs" aria-hidden="true">' +
-        '<span class="vz-progress__brack-ch">[</span>' +
+        '<span class="vz-progress__brack-ch">' + brL + '</span>' +
         '<span class="vz-progress__fill-ch">' + full.repeat(solid) + '</span>' +
         (tip ? '<span class="vz-progress__head-ch">' + head + '</span>' : '') +
         '<span class="vz-progress__rest-ch">' + empty.repeat(rest) + '</span>' +
-        '<span class="vz-progress__brack-ch">]</span>' +
+        '<span class="vz-progress__brack-ch">' + brR + '</span>' +
         '</span>' +
         '<span class="vz-progress__meta">' + meta + '</span>';
     }

@@ -204,6 +204,9 @@
   --vz-progress-glyph-head: "\25B8";   /* ▸ (▶ U+25B6 nog niet in Regular) */
   --vz-progress-glyph-full-alt: "\2588";  /* █ — ▓ nog niet getekend */
   --vz-progress-glyph-empty-alt: "\2591"; /* ░ */
+  /* Progress-haken: full line height (−250…750); ASCII [ ] te kort — volgt */
+  --vz-progress-glyph-brack-l: "[";
+  --vz-progress-glyph-brack-r: "]";
   --vz-progress-fill: var(--vz-accent);
   --vz-progress-rest: var(--vz-border);
   --vz-progress-frame: var(--vz-text-secondary);

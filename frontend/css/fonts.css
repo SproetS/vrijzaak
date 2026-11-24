@@ -1,8 +1,8 @@
 /**
  * Lokale webfonts voor ontwerp-preview (niet de Nuxt-productiebuild).
  *
- * Bestanden: frontend/fonts/GAP Code/*.woff2 (gitignored — lokaal houden).
- * Productie later: programmeur → public/fonts/ + licentie.
+ * Bestanden: frontend/fonts/GAP Code/*.woff2 (in git t.b.v. GitHub Pages).
+ * Overige formaten lokaal; productie shop: programmeur → public/fonts/.
  *
  * Open preview via: frontend/css/preview.html (relatieve paden).
  * Of: npx serve frontend  → http://localhost:…/css/preview.html

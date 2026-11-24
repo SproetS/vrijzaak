@@ -8,6 +8,17 @@ Markdown-ontwerp en draadmodellen. **Geen** Nuxt-app hier.
 
 Je kunt alles lezen op **GitHub.com** (links in de bestanden) en in **Obsidian** (dezelfde map als vault).
 
+## Ontwerp-preview (browser)
+
+Statische CSS/font-proef voor collega's (GitHub Pages):
+
+**https://sproets.github.io/vrijzaak/**
+
+- Start: [frontend/css/preview.html](./frontend/css/preview.html) (lokaal) of `/css/preview.html` online
+- Bevat font-grid, tokens, GAP Code UX-glyphs — **geen** live webshop of prijzen-als-productie
+
+Deploy: workflow `.github/workflows/pages.yml` bij push naar `main`.
+
 ## Voor collega's (delen via GitHub)
 
 1. Open de repo: https://github.com/SproetS/vrijzaak  

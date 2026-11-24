@@ -9,9 +9,14 @@
 .trash/
 *.tmp
 *~
-frontend/fonts/*
-!frontend/fonts/README.md
 node_modules/
 frontend/node_modules/
 .env
 .env.*
+
+# Fonts: alleen GAP Code WOFF2 in git (eigen werk; GitHub Pages preview)
+frontend/fonts/*
+!frontend/fonts/README.md
+!frontend/fonts/GAP Code/
+frontend/fonts/GAP Code/*
+!frontend/fonts/GAP Code/*.woff2

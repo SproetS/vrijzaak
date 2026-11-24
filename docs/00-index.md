@@ -3,6 +3,7 @@
 **Werknaam:** Vrijzaak  
 **URL:** https://vrijzaak.nl  
 **Ontwerprepo:** https://github.com/SproetS/vrijzaak (`docs/` + `frontend/`)  
+**CSS-preview (Pages):** https://sproets.github.io/vrijzaak/  
 **Bouwrepo (collega):** Gitea helling `Vrijzaak/Vrijzaak` — lokaal `03 - Bouw/webshop`
 
 Obsidian-vault = **repo-root**. Ook plain Markdown op GitHub/editor. Wikilinks wél; kern-docs houden relatieve links voor agents/GitHub.

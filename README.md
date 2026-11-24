@@ -17,7 +17,9 @@ Statische CSS/font-proef voor collega's (GitHub Pages):
 - Start: [frontend/css/preview.html](./frontend/css/preview.html) (lokaal) of `/css/preview.html` online
 - Bevat font-grid, tokens, GAP Code UX-glyphs — **geen** live webshop of prijzen-als-productie
 
-Deploy: workflow `.github/workflows/pages.yml` bij push naar `main`.
+Deploy: workflow `.github/workflows/pages.yml` bij push naar `main` (branch `gh-pages`).
+
+**Pages-instelling (eenmalig):** Settings → Pages → Build from branch → **gh-pages** / `/ (root)`.
 
 ## Voor collega's (delen via GitHub)
 

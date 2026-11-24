@@ -1,0 +1,272 @@
+/**
+ * Vrijzaak — font-grid typografie
+ * Vereist: tokens.css
+ *
+ * GRID = GAP Code (docs/00-font-grid.md)
+ * VERTICAAL: line-height 1.333 · baseline 1.333rem
+ * HORIZONTAAL: 1ch = mono-cel (0.6em)
+ * h1 = 2× body (size + glyph-breedte); h2/h3 = track 1ch; hiërarchie + kleur/weight
+ * debug: html.vz-baseline-debug · html.vz-cell-debug
+ */
+
+html {
+  font-size: 100%; /* user/browser → rem-grid schaalt mee */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--vz-font-ui);
+  font-size: var(--vz-text-body-size);
+  font-weight: var(--vz-text-body-weight);
+  line-height: var(--vz-text-body-leading);
+  color: var(--vz-text-primary);
+  background-color: var(--vz-bg-primary);
+}
+
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+table,
+figure {
+  margin-block: 0 var(--vz-stack-gap);
+  padding-inline-start: var(--vz-indent-2); /* 2ch — body-inspring */
+}
+
+p:last-child,
+ul:last-child,
+ol:last-child {
+  margin-block-end: 0;
+}
+
+/* Links in body (schets: cyaan/blauw functioneel) */
+p a,
+li a {
+  color: var(--vz-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+p a:hover,
+li a:hover {
+  color: var(--vz-link-bright);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Koppen — rank via size / tracking / kleur / weight                          */
+/* -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--vz-font-ui);
+  text-wrap: balance;
+  text-transform: none;
+  margin-block: var(--vz-heading-space-before) var(--vz-heading-space-after);
+  line-height: var(--vz-line);
+  padding-inline-start: var(--vz-indent-0);
+}
+
+/* Rank 1 — 2× body; box = 2 baselines */
+h1,
+.vz-rank-1 {
+  font-size: var(--vz-text-h1-size);
+  font-weight: var(--vz-rank-1-weight);
+  font-style: var(--vz-rank-1-style);
+  color: var(--vz-rank-1-color);
+  letter-spacing: var(--vz-rank-1-tracking);
+}
+
+/* Rank 2 — body-size, tracked, muted (schets WAT JIJ WIL) */
+h2,
+.vz-rank-2 {
+  font-size: var(--vz-text-h2-size);
+  font-weight: var(--vz-rank-2-weight);
+  font-style: var(--vz-rank-2-style);
+  color: var(--vz-rank-2-color);
+  letter-spacing: var(--vz-rank-2-tracking);
+}
+
+/* Rank 3 — body-size, tracked, warm accent (schets Heading 3) */
+h3,
+.vz-rank-3 {
+  font-size: var(--vz-text-h3-size);
+  font-weight: var(--vz-rank-3-weight);
+  font-style: var(--vz-rank-3-style);
+  color: var(--vz-rank-3-color);
+  letter-spacing: var(--vz-rank-3-tracking);
+}
+
+/* Rank 4 — body bold, strak op alinea */
+h4,
+.vz-rank-4 {
+  font-size: var(--vz-text-h4-size);
+  font-weight: var(--vz-rank-4-weight);
+  font-style: var(--vz-rank-4-style);
+  color: var(--vz-rank-4-color);
+  letter-spacing: var(--vz-rank-4-tracking);
+  margin-block-end: 0; /* plakt aan volgende p */
+  padding-inline-start: var(--vz-indent-1); /* 1ch — tussen h1–3 en body */
+}
+
+h4 + p {
+  margin-block-start: 0;
+}
+
+h5 {
+  font-size: var(--vz-text-h5-size);
+  font-weight: var(--vz-rank-4-weight);
+  font-style: normal;
+  color: var(--vz-rank-4-color);
+  letter-spacing: var(--vz-tracking-normal);
+}
+
+/* Meta / label-toon */
+h6,
+.vz-rank-meta,
+.vz-label-line {
+  font-size: var(--vz-text-h6-size);
+  font-weight: var(--vz-rank-meta-weight);
+  font-style: var(--vz-rank-meta-style);
+  color: var(--vz-rank-meta-color);
+  letter-spacing: var(--vz-rank-meta-tracking);
+  padding-inline-start: var(--vz-indent-2);
+  font-variant-caps: all-small-caps;
+  font-feature-settings: "smcp" 1, "c2sc" 1;
+}
+
+.vz-rank-active,
+h2.vz-rank-active,
+h3.vz-rank-active {
+  color: var(--vz-rank-active-color);
+}
+
+/*
+ * CLI-frame optioneel: - Titel -
+ * Labels in schets: "NAAM - LABEL" — liever copy dan pseudo op h2.
+ */
+.vz-h--cli {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0;
+}
+
+.vz-h--cli::before,
+.vz-h--cli::after {
+  content: "-";
+  color: var(--vz-text-secondary);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.vz-h--cli .vz-h__text {
+  padding-inline: 1ch;
+  color: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  letter-spacing: inherit;
+}
+
+h2.vz-h--cli:not(:has(.vz-h__text)),
+h3.vz-h--cli:not(:has(.vz-h__text)) {
+  column-gap: 1ch;
+}
+
+.vz-h__index {
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+  color: var(--vz-text-secondary);
+  margin-inline-end: 1ch;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Expliciete track-utility (= 1ch, zelfde als h2/h3) */
+.vz-track {
+  letter-spacing: var(--vz-tracking-display);
+}
+
+.vz-indent-0 { padding-inline-start: var(--vz-indent-0); }
+.vz-indent-1 { padding-inline-start: var(--vz-indent-1); }
+.vz-indent-2 { padding-inline-start: var(--vz-indent-2); }
+
+.vz-heading-flush {
+  margin-block-start: 0;
+}
+
+.vz-lead {
+  font-size: var(--vz-text-body-size);
+  line-height: var(--vz-line);
+  color: var(--vz-text-secondary);
+  letter-spacing: var(--vz-tracking-display);
+  margin-block-end: calc(var(--vz-baseline) * 2);
+}
+
+.vz-text-sm {
+  font-size: var(--vz-text-sm-size);
+  line-height: var(--vz-text-sm-leading);
+  color: var(--vz-text-secondary);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Debug — op .vz-shell (body-bg wordt door shell bedekt)                        */
+/* -------------------------------------------------------------------------- */
+
+html.vz-baseline-debug .vz-shell,
+html.vz-baseline-debug body:not(:has(.vz-shell)) {
+  background-color: var(--vz-bg-primary);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--vz-baseline) - 1px),
+    color-mix(in srgb, var(--vz-accent) 35%, transparent) calc(var(--vz-baseline) - 1px),
+    color-mix(in srgb, var(--vz-accent) 35%, transparent) var(--vz-baseline)
+  );
+  background-attachment: local;
+  background-origin: border-box;
+}
+
+/* Verticale strepen = mono-cellen (1ch) */
+html.vz-cell-debug .vz-shell,
+html.vz-cell-debug body:not(:has(.vz-shell)) {
+  background-color: var(--vz-bg-primary);
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(1ch - 1px),
+    color-mix(in srgb, var(--vz-accent-warm) 30%, transparent) calc(1ch - 1px),
+    color-mix(in srgb, var(--vz-accent-warm) 30%, transparent) 1ch
+  );
+  background-attachment: local;
+  background-origin: border-box;
+}
+
+html.vz-baseline-debug.vz-cell-debug .vz-shell,
+html.vz-baseline-debug.vz-cell-debug body:not(:has(.vz-shell)) {
+  background-color: var(--vz-bg-primary);
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--vz-baseline) - 1px),
+      color-mix(in srgb, var(--vz-accent) 30%, transparent) calc(var(--vz-baseline) - 1px),
+      color-mix(in srgb, var(--vz-accent) 30%, transparent) var(--vz-baseline)
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(1ch - 1px),
+      color-mix(in srgb, var(--vz-accent-warm) 25%, transparent) calc(1ch - 1px),
+      color-mix(in srgb, var(--vz-accent-warm) 25%, transparent) 1ch
+    );
+  background-attachment: local;
+}

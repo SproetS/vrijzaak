@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vrijzaak CSS preview — font-grid + glyphs</title>
+  <link rel="stylesheet" href="./main.css" />
+</head>
+<body>
+  <a class="vz-skip-link" href="#inhoud">Naar de inhoud</a>
+  <div class="vz-shell">
+    <header class="vz-site-header">
+      <a class="vz-wordmark" href="#">Vrijzaak*</a>
+      <nav class="vz-site-header__nav" aria-label="Hoofd">
+        <a class="vz-nav-item" href="#">Etalage</a>
+        <a class="vz-nav-item" href="#" aria-current="page">Magazijn</a>
+        <a class="vz-nav-item" href="#">Loods</a>
+      </nav>
+      <div class="vz-site-header__utils">
+        <div class="vz-switch" role="group" aria-label="Thema">
+          <button type="button" class="vz-switch__btn is-active" aria-pressed="true">Licht</button>
+          <button type="button" class="vz-switch__btn" aria-pressed="false">Donker</button>
+        </div>
+        <a class="vz-cart-link" href="#" aria-label="Winkelmand, 2 artikelen">
+          <span class="vz-cart-link__icon" aria-hidden="true"></span>
+          <span class="vz-cart-link__count">2</span>
+        </a>
+      </div>
+    </header>
+    <main id="inhoud" class="vz-main">
+      <h1 class="vz-heading-flush">Geen gesodemieters</h1>
+      <h2>Wat jij wil</h2>
+      <h3>Heading 3</h3>
+      <h4>Eerste heading 4</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
+        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+        erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
+        tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+        consequat. Duis autem vel eum iriure <a href="#">dolor</a> in hendrerit in
+        vulputate velit esse molestie consequat.
+      </p>
+
+      <h4>UX glyphs (GAP Code)</h4>
+      <p class="vz-label-line">Mand · checks · radio · status · box</p>
+      <p>
+        <span class="vz-glyph vz-glyph--cart" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--check-off" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--check-on" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--radio-off" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--radio-on" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--ok" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--err" aria-hidden="true"></span>
+        <span class="vz-glyph vz-glyph--warn" aria-hidden="true"></span>
+      </p>
+      <p class="vz-text-sm" id="glyph-box-sample" aria-hidden="true"></p>
+
+      <p class="vz-label-line">Voortgang - label</p>
+      <p>
+        <span
+          class="vz-progress"
+          data-vz-progress="30"
+          style="--vz-progress: 0.3"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="30"
+          aria-label="Voortgang"
+        ></span>
+      </p>
+      <p>
+        <span
+          class="vz-progress vz-progress--hash"
+          data-vz-progress="70"
+          data-vz-progress-variant="hash"
+          style="--vz-progress: 0.7"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="70"
+          aria-label="Voortgang hash"
+        ></span>
+      </p>
+      <p>
+        <span
+          class="vz-progress"
+          data-vz-progress="100"
+          style="--vz-progress: 1"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="100"
+          aria-label="Compleet"
+        ></span>
+      </p>
+
+      <div class="vz-field">
+        <label class="vz-label vz-label-line" for="naam">Naam - label</label>
+        <input class="vz-input" id="naam" value="Sjoerd Kaandorp" />
+      </div>
+      <div class="vz-field">
+        <label class="vz-label vz-label-line" for="mail">E-mailadres - label</label>
+        <input class="vz-input" id="mail" type="email" value="werk@sproets.nl" />
+      </div>
+
+      <h4>Heading 4</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
+        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+        erat volutpat.
+      </p>
+
+      <p>
+        <button type="button" class="vz-btn vz-btn--quiet">Terug naar winkel</button>
+        <button type="button" class="vz-btn">Ga naar kassa</button>
+      </p>
+
+      <p class="vz-text-sm">
+        Font-grid debug (hard-refresh na CSS-fix):
+        <button type="button" id="dbg-base" class="vz-btn vz-btn--ghost">baseline</button>
+        <button type="button" id="dbg-cell" class="vz-btn vz-btn--ghost">cellen</button>
+      </p>
+    </main>
+    <footer class="vz-site-footer">
+      <p>© Vrijzaak — font-grid preview (GAP Code glyphs)</p>
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('[aria-label="Thema"] .vz-switch__btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const dark = btn.textContent.trim() === 'Donker';
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        btn.parentElement.querySelectorAll('.vz-switch__btn').forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      });
+    });
+
+    function bindDebugToggle(id, className) {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.setAttribute('aria-pressed', 'false');
+      btn.addEventListener('click', () => {
+        const on = document.documentElement.classList.toggle(className);
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    bindDebugToggle('dbg-base', 'vz-baseline-debug');
+    bindDebugToggle('dbg-cell', 'vz-cell-debug');
+
+    /** Read CSS token string (unicode escapes resolved by browser). */
+    function cssToken(name, fallback) {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      if (!v) return fallback;
+      // strip quotes if present
+      return v.replace(/^["']|["']$/g, '') || fallback;
+    }
+
+    function renderProgress(el) {
+      const pct = Math.max(0, Math.min(100, Number(el.dataset.vzProgress || el.getAttribute('aria-valuenow') || 0)));
+      const cols = Number(cssToken('--vz-progress-cols', '20')) || 20;
+      const variant = el.dataset.vzProgressVariant || '';
+      const full = variant === 'hash'
+        ? cssToken('--vz-progress-glyph-full-alt', '#')
+        : cssToken('--vz-progress-glyph-full', '=');
+      const empty = variant === 'hash'
+        ? cssToken('--vz-progress-glyph-empty-alt', '_')
+        : cssToken('--vz-progress-glyph-empty', '-');
+      const head = cssToken('--vz-progress-glyph-head', '>');
+      const brL = cssToken('--vz-progress-glyph-brack-l', '[');
+      const brR = cssToken('--vz-progress-glyph-brack-r', ']');
+      const filled = Math.round((pct / 100) * cols);
+      const tip = pct > 0 && pct < 100 && variant !== 'hash' ? 1 : 0;
+      const solid = Math.max(0, filled - tip);
+      const rest = Math.max(0, cols - solid - tip);
+
+      el.style.setProperty('--vz-progress', String(pct / 100));
+      el.setAttribute('aria-valuenow', String(pct));
+
+      const meta = pct === 100 ? '100%' : pct + '%';
+      el.innerHTML =
+        '<span class="vz-progress__glyphs" aria-hidden="true">' +
+        '<span class="vz-progress__brack-ch">' + brL + '</span>' +
+        '<span class="vz-progress__fill-ch">' + full.repeat(solid) + '</span>' +
+        (tip ? '<span class="vz-progress__head-ch">' + head + '</span>' : '') +
+        '<span class="vz-progress__rest-ch">' + empty.repeat(rest) + '</span>' +
+        '<span class="vz-progress__brack-ch">' + brR + '</span>' +
+        '</span>' +
+        '<span class="vz-progress__meta">' + meta + '</span>';
+    }
+
+    document.querySelectorAll('.vz-progress[data-vz-progress]').forEach(renderProgress);
+
+    // box drawing sample
+    const box = document.getElementById('glyph-box-sample');
+    if (box) {
+      const ul = cssToken('--vz-glyph-box-ul', '+');
+      const ur = cssToken('--vz-glyph-box-ur', '+');
+      const ll = cssToken('--vz-glyph-box-ll', '+');
+      const lr = cssToken('--vz-glyph-box-lr', '+');
+      const h = cssToken('--vz-glyph-box-h', '-');
+      const v = cssToken('--vz-glyph-box-v', '|');
+      box.textContent = ul + h.repeat(6) + ur + '  ' + v + ' panel ' + v + '  ' + ll + h.repeat(6) + lr;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{"command":"style.update","params":{"style":"Type/H1","description":"type.css h1 40/40 GAP Code tracking 0","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":40,"lineHeight":{"value":40,"unit":"pixels"},"fill":"#202c27","letterSpacing":0}}}
+{"command":"style.update","params":{"style":"Type/H2","description":"type.css h2 32/40 tracking 0","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":32,"lineHeight":{"value":40,"unit":"pixels"},"fill":"#202c27","letterSpacing":0}}}
+{"command":"style.update","params":{"style":"Type/H3","description":"rank3 h3 24/40 italic","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":24,"lineHeight":{"value":40,"unit":"pixels"},"fill":"#202c27","letterSpacing":0,"fontStyle":"Italic"}}}
+{"command":"style.update","params":{"style":"Type/H4","description":"type.css h4 20/40","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":20,"lineHeight":{"value":40,"unit":"pixels"},"fill":"#202c27","letterSpacing":0}}}
+{"command":"style.update","params":{"style":"Type/H5","description":"type.css h5 18/20","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":18,"lineHeight":{"value":20,"unit":"pixels"},"fill":"#202c27","letterSpacing":0}}}
+{"command":"style.update","params":{"style":"Type/H6","description":"meta h6 italic no caps","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":16,"lineHeight":{"value":20,"unit":"pixels"},"fill":"#202c27","letterSpacing":0,"fontStyle":"Italic"}}}
+{"command":"style.update","params":{"style":"Type/Body","description":"type.css body 16/20","value":{"fontFamily":"GAP Code","fontWeight":400,"fontSize":16,"lineHeight":{"value":20,"unit":"pixels"},"fill":"#202c27","letterSpacing":0}}}
+{"command":"style.update","params":{"style":"Type/Muted","description":"type.css muted 16/20","value":{"fontFamily":"GAP Code","fontWeight":400,"fontSize":16,"lineHeight":{"value":20,"unit":"pixels"},"fill":"#58645d","letterSpacing":0}}}
+{"command":"style.update","params":{"style":"Type/Small","description":"type.css sm 14/20","value":{"fontFamily":"GAP Code","fontWeight":400,"fontSize":14,"lineHeight":{"value":20,"unit":"pixels"},"fill":"#58645d","letterSpacing":0}}}
+{"command":"style.update","params":{"style":"Type/Button","description":"atoms .vz-btn small caps tracking 0","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":16,"lineHeight":{"value":20,"unit":"pixels"},"fill":"#fffdf7","letterSpacing":0,"textCase":"SMALL_CAPS"}}}
+{"command":"style.update","params":{"style":"Type/ButtonGhost","description":"ghost button small caps tracking 0","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":16,"lineHeight":{"value":20,"unit":"pixels"},"fill":"#202c27","letterSpacing":0,"textCase":"SMALL_CAPS"}}}
+{"command":"style.update","params":{"style":"Type/Track","description":"CSS .vz-track display labels only","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":14,"lineHeight":{"value":20,"unit":"pixels"},"fill":"#58645d","letterSpacing":2.8,"textCase":"UPPER"}}}
+{"command":"style.update","params":{"style":"Type/H2Cli","description":"CLI - section - rank2","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":32,"lineHeight":{"value":40,"unit":"pixels"},"fill":"#202c27","letterSpacing":0}}}
+{"command":"style.update","params":{"style":"Type/H3Cli","description":"CLI - sub - rank3 italic","value":{"fontFamily":"GAP Code","fontWeight":700,"fontSize":24,"lineHeight":{"value":40,"unit":"pixels"},"fill":"#202c27","letterSpacing":0,"fontStyle":"Italic"}}}
+{"command":"style.update","params":{"style":"Color/paper","value":"#f5f2e9"}}
+{"command":"style.update","params":{"style":"Color/surface","value":"#fffdf7"}}
+{"command":"style.update","params":{"style":"Color/ink","value":"#202c27"}}
+{"command":"style.update","params":{"style":"Color/muted","value":"#58645d"}}
+{"command":"style.update","params":{"style":"Color/accent","value":"#245c43"}}
+{"command":"style.update","params":{"style":"Color/line","value":"#b7c2b5"}}
+{"command":"style.apply","params":{"ids":[4],"style":"Type/H1"}}
+{"command":"style.apply","params":{"ids":[5],"style":"Type/Muted"}}
+{"command":"style.apply","params":{"ids":[6,19,26],"style":"Type/H3"}}
+{"command":"style.apply","params":{"ids":[20],"style":"Type/H1"}}
+{"command":"style.apply","params":{"ids":[21],"style":"Type/H2"}}
+{"command":"style.apply","params":{"ids":[22],"style":"Type/H3"}}
+{"command":"style.apply","params":{"ids":[23],"style":"Type/H4"}}
+{"command":"style.apply","params":{"ids":[24],"style":"Type/Body"}}
+{"command":"style.apply","params":{"ids":[25],"style":"Type/Muted"}}
+{"command":"style.apply","params":{"ids":[8,10,12,14,16,18,31],"style":"Type/Small"}}
+{"command":"style.apply","params":{"ids":[28],"style":"Type/Button"}}
+{"command":"style.apply","params":{"ids":[30],"style":"Type/ButtonGhost"}}
+{"command":"style.apply","params":{"ids":[7],"style":"Color/paper","target":"fill"}}
+{"command":"style.apply","params":{"ids":[9],"style":"Color/surface","target":"fill"}}
+{"command":"style.apply","params":{"ids":[11],"style":"Color/ink","target":"fill"}}
+{"command":"style.apply","params":{"ids":[13],"style":"Color/muted","target":"fill"}}
+{"command":"style.apply","params":{"ids":[15],"style":"Color/accent","target":"fill"}}
+{"command":"style.apply","params":{"ids":[17],"style":"Color/line","target":"fill"}}
+{"command":"style.apply","params":{"ids":[3],"style":"Color/paper","target":"fill"}}
+{"command":"node.set","params":{"ids":[27,29],"cornerRadius":2}}
+{"command":"node.set","params":{"ids":[7,9,11,13,15,17],"cornerRadius":4}}
+{"command":"node.set","params":{"ids":[5],"characters":"Tokens = frontend/css \u00b7 CLI radius \u22644 \u00b7 tracking 0 \u00b7 Light/Dark"}}

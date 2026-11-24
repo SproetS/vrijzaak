@@ -1,0 +1,446 @@
+{
+  "styles": [
+    {
+      "description": "rank1 h1 40/40",
+      "id": "S:1",
+      "name": "Type/H1",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 40.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 40.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "rank2 h2 32/40",
+      "id": "S:2",
+      "name": "Type/H2",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 32.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 40.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "rank3 h3 24/40 italic",
+      "id": "S:3",
+      "name": "Type/H3",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 24.0,
+        "font_style": "Italic",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 40.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "rank4 h4 20/40",
+      "id": "S:4",
+      "name": "Type/H4",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 20.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 40.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "h5 18/20",
+      "id": "S:5",
+      "name": "Type/H5",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 18.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "meta h6 16/20 italic no caps",
+      "id": "S:6",
+      "name": "Type/H6",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 16.0,
+        "font_style": "Italic",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "body 16/20",
+      "id": "S:7",
+      "name": "Type/Body",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 16.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "muted 16/20",
+      "id": "S:8",
+      "name": "Type/Muted",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 16.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "sm 14/20",
+      "id": "S:9",
+      "name": "Type/Small",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 14.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "btn small caps tracking 0",
+      "id": "S:10",
+      "name": "Type/Button",
+      "style": {
+        "case": "smallCaps",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 16.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "",
+      "id": "S:11",
+      "name": "Color/paper",
+      "paints": [
+        {
+          "blend": "normal",
+          "color": {
+            "a": 1.0,
+            "b": 0.9137254953384399,
+            "g": 0.9490196108818054,
+            "r": 0.9607843160629272
+          },
+          "opacity": 1.0,
+          "type": "solid",
+          "visible": true
+        }
+      ],
+      "type": "paint"
+    },
+    {
+      "description": "",
+      "id": "S:12",
+      "name": "Color/surface",
+      "paints": [
+        {
+          "blend": "normal",
+          "color": {
+            "a": 1.0,
+            "b": 0.9686274528503418,
+            "g": 0.9921568632125854,
+            "r": 1.0
+          },
+          "opacity": 1.0,
+          "type": "solid",
+          "visible": true
+        }
+      ],
+      "type": "paint"
+    },
+    {
+      "description": "",
+      "id": "S:13",
+      "name": "Color/ink",
+      "paints": [
+        {
+          "blend": "normal",
+          "color": {
+            "a": 1.0,
+            "b": 0.15294118225574493,
+            "g": 0.1725490242242813,
+            "r": 0.125490203499794
+          },
+          "opacity": 1.0,
+          "type": "solid",
+          "visible": true
+        }
+      ],
+      "type": "paint"
+    },
+    {
+      "description": "",
+      "id": "S:14",
+      "name": "Color/muted",
+      "paints": [
+        {
+          "blend": "normal",
+          "color": {
+            "a": 1.0,
+            "b": 0.364705890417099,
+            "g": 0.3921568691730499,
+            "r": 0.3450980484485626
+          },
+          "opacity": 1.0,
+          "type": "solid",
+          "visible": true
+        }
+      ],
+      "type": "paint"
+    },
+    {
+      "description": "",
+      "id": "S:15",
+      "name": "Color/accent",
+      "paints": [
+        {
+          "blend": "normal",
+          "color": {
+            "a": 1.0,
+            "b": 0.26274511218070984,
+            "g": 0.3607843220233917,
+            "r": 0.1411764770746231
+          },
+          "opacity": 1.0,
+          "type": "solid",
+          "visible": true
+        }
+      ],
+      "type": "paint"
+    },
+    {
+      "description": "",
+      "id": "S:16",
+      "name": "Color/line",
+      "paints": [
+        {
+          "blend": "normal",
+          "color": {
+            "a": 1.0,
+            "b": 0.7098039388656616,
+            "g": 0.7607843279838562,
+            "r": 0.7176470756530762
+          },
+          "opacity": 1.0,
+          "type": "solid",
+          "visible": true
+        }
+      ],
+      "type": "paint"
+    },
+    {
+      "description": "ghost btn small caps",
+      "id": "S:17",
+      "name": "Type/ButtonGhost",
+      "style": {
+        "case": "smallCaps",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 16.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "track display",
+      "id": "S:29",
+      "name": "Type/Track",
+      "style": {
+        "case": "upper",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 14.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 2.8
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 20.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "CLI - section - rank2",
+      "id": "S:30",
+      "name": "Type/H2Cli",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 32.0,
+        "font_style": "Regular",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 40.0
+        },
+        "link": null
+      },
+      "type": "text"
+    },
+    {
+      "description": "CLI - sub - rank3 italic",
+      "id": "S:31",
+      "name": "Type/H3Cli",
+      "style": {
+        "case": "original",
+        "decoration": "none",
+        "fills": null,
+        "font_family": "GAP Code",
+        "font_size": 24.0,
+        "font_style": "Italic",
+        "letter_spacing": {
+          "unit": "pixels",
+          "value": 0.0
+        },
+        "line_height": {
+          "unit": "pixels",
+          "value": 40.0
+        },
+        "link": null
+      },
+      "type": "text"
+    }
+  ]
+}

@@ -1,0 +1,411 @@
+/**
+ * Vrijzaak — ontwerp-tokens (voorstel)
+ * Bron: docs/00-design-tokens.md
+ * Bouw-spiegel: shared/design/tokens.ts (--akws-*) in helling Nuxt-repo
+ * Dit bestand is GEEN live storefront-CSS.
+ *
+ * Thema: licht (default) + donker via data-theme / .theme-dark
+ * Taal (NL/EN) hoort bij i18n, niet bij dit bestand.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* Gedeeld (niet thema-afhankelijk)                                           */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  /* Typografie — ontwerp voorlopig GAP Code; bouw kan nog GAP Mono hebben */
+  /* Familie-naam moet matchen met fonts.css @font-face */
+  --vz-font-ui: "GAP Code", ui-monospace, "Courier New", monospace;
+  --vz-font-email-fallback: "Courier New", monospace;
+  --vz-measure: 76rem;
+
+  /*
+   * FONT-GRID (besluit 2026-11-18)
+   * GAP Code metrics → cel (0.6em). Interlinie UI: 1.333 (niet pure font 1.2 —
+   * iets lucht voor controls; ch-grid blijft strak).
+   * Zie docs/00-font-grid.md · schets illustrator-exports/
+   */
+  --vz-font-upem: 1000;
+  --vz-font-advance: 600; /* mono cel in font units */
+  --vz-cell-em: 0.6; /* advance/upem — 1ch */
+  --vz-line-font: 1.2; /* pure typo line uit font */
+  --vz-line: 1.333; /* UI baseline-factor ≈ 4/3 */
+
+  /* Root corps: 1rem = browser default; html font-size 100% */
+  --vz-font-size-root: 100%;
+  --vz-text-body-size: 1rem;
+  --vz-text-body-leading: var(--vz-line);
+  --vz-text-body-weight: 400;
+
+  /* 1 body-regel in rem */
+  --vz-baseline: 1.333rem;
+  --vz-cell: 0.6rem;
+
+  /*
+   * Type-ladder: h1 = 2× body; leading --vz-line → h1 box = 2.666rem = 2 baselines.
+   */
+  --vz-text-h1-size: 2rem;
+  --vz-text-h1-leading: var(--vz-line);
+  --vz-text-h1-weight: 700;
+
+  --vz-text-h2-size: 1rem;
+  --vz-text-h2-leading: var(--vz-line);
+  --vz-text-h2-weight: 400;
+
+  --vz-text-h3-size: 1rem;
+  --vz-text-h3-leading: var(--vz-line);
+  --vz-text-h3-weight: 400;
+
+  --vz-text-h4-size: 1rem;
+  --vz-text-h4-leading: var(--vz-line);
+  --vz-text-h4-weight: 700;
+
+  --vz-text-h5-size: 1rem;
+  --vz-text-h5-leading: var(--vz-line);
+  --vz-text-h5-weight: 700;
+
+  --vz-text-h6-size: 1rem;
+  --vz-text-h6-leading: var(--vz-line);
+  --vz-text-h6-weight: 400;
+
+  /* Meta/sm: blijf op body-corps (grid-puur); onderscheid via kleur/track */
+  --vz-text-sm-size: 1rem;
+  --vz-text-sm-leading: var(--vz-line);
+  --vz-text-lg-size: 1rem;
+  --vz-text-lg-leading: var(--vz-line);
+
+  /* Tracking: 1 mono-cel tussen glyphs (eert H-grid) */
+  --vz-tracking-normal: 0;
+  --vz-tracking-display: 1ch; /* h2/h3 / labels */
+
+  /* Inspring (schets): hiërarchie via ch, niet alleen size */
+  --vz-indent-0: 0;
+  --vz-indent-1: 1ch; /* h4 */
+  --vz-indent-2: 2ch; /* body p */
+
+  /*
+   * Controls (input/button) t.o.v. V-grid (horizontale baselijnen):
+   * Hoogte = 1 gridstap (= afstand tussen twee opeenvolgende lijnen = 1 baseline).
+   * Buitenrand op de lijnen: height = 1×baseline − 2×1px border.
+   * (Eerder 2 stappen — te hoog t.o.v. schets / “tussen twee lijnen”.)
+   */
+  --vz-control-lines: 1;
+  --vz-control-height: calc(var(--vz-control-lines) * var(--vz-baseline) - 2px);
+  --vz-control-pad-inline: 2ch;
+  --vz-control-pad-block: 0;
+
+  /*
+   * VERTICAAL = n × baseline (1.333rem)
+   * HORIZONTAAL = n × cel (ch) — strak; V iets ruimer dan pure font-line
+   */
+  --vz-heading-space-before: var(--vz-baseline);
+  --vz-heading-space-after: var(--vz-baseline);
+  --vz-stack-gap: var(--vz-baseline);
+  --vz-section-gap: calc(var(--vz-baseline) * 2);
+  --vz-section-gap-lg: calc(var(--vz-baseline) * 3);
+  --vz-block-pad-block: var(--vz-baseline);
+  --vz-block-pad-block-lg: calc(var(--vz-baseline) * 2);
+
+  --vz-space-y-1: var(--vz-baseline);
+  --vz-space-y-2: calc(var(--vz-baseline) * 2);
+  --vz-space-y-3: calc(var(--vz-baseline) * 3);
+  --vz-space-y-4: calc(var(--vz-baseline) * 4);
+  --vz-space-y-half: calc(var(--vz-baseline) * 0.5);
+
+  /* H-grid in ch (1ch = mono cel) */
+  --vz-grid-x: 1ch;
+  --vz-space-x-1: 1ch;
+  --vz-space-x-2: 2ch;
+  --vz-space-x-3: 3ch;
+  --vz-space-x-4: 4ch; /* anker */
+  --vz-space-x-5: 5ch;
+  --vz-space-x-6: 6ch;
+  --vz-space-x-7: 7ch;
+  --vz-space-x-8: 8ch; /* anker */
+  --vz-space-x-9: 9ch;
+  --vz-space-x-10: 10ch;
+  --vz-space-x-12: 12ch;
+  --vz-space-x-16: 16ch;
+
+  --vz-inline-gap-tight: 2ch;
+  --vz-inline-gap: 4ch;
+  --vz-inline-gap-loose: 8ch;
+  --vz-page-pad-inline: 8ch;
+  --vz-page-pad-inline-md: 12ch;
+  --vz-page-pad-inline-lg: 16ch;
+  --vz-block-pad-inline: 4ch;
+  --vz-block-pad-inline-lg: 8ch;
+
+  /* Legacy space-* → ch-grid */
+  --vz-space-1: var(--vz-space-x-1);
+  --vz-space-2: var(--vz-space-x-2);
+  --vz-space-3: var(--vz-space-x-3);
+  --vz-space-4: var(--vz-space-x-4);
+  --vz-space-5: var(--vz-space-x-5);
+  --vz-space-6: var(--vz-space-x-6);
+  --vz-space-7: var(--vz-space-x-7);
+  --vz-space-8: var(--vz-space-x-8);
+  --vz-space-9: var(--vz-space-x-9);
+  --vz-space-10: var(--vz-space-x-10);
+  --vz-space-12: var(--vz-space-x-12);
+  --vz-space-16: var(--vz-space-x-16);
+  --vz-space-half: var(--vz-space-x-2);
+
+  /*
+   * Radius: CLI, niet Bootstrap — hard maximum 4px.
+   * Forms/inputs: sm (0). Knoppen/chips: md (2). Cards/panels: lg (4).
+   * Zie docs/00-merk-toon-en-principes.md
+   */
+  --vz-radius-sm: 0;
+  --vz-radius-md: 2px;
+  --vz-radius-lg: 4px; /* maximum — niet aan ch koppelen */
+  --vz-radius-xl: 4px;
+
+  /*
+   * Rank — schets: size · tracking · kleur · weight (niet extreme schaal).
+   * h1 2rem · h2 track+muted · h3 track+warm · h4 bold body · meta muted
+   */
+  --vz-rank-1-weight: 700;
+  --vz-rank-1-style: normal;
+  --vz-rank-1-color: var(--vz-ink-strong, var(--vz-text-primary));
+  --vz-rank-1-tracking: var(--vz-tracking-normal);
+
+  --vz-rank-2-weight: 400;
+  --vz-rank-2-style: normal;
+  --vz-rank-2-color: var(--vz-text-secondary);
+  --vz-rank-2-tracking: var(--vz-tracking-display);
+
+  --vz-rank-3-weight: 400;
+  --vz-rank-3-style: normal;
+  --vz-rank-3-color: var(--vz-accent-warm);
+  --vz-rank-3-tracking: var(--vz-tracking-display);
+
+  --vz-rank-4-weight: 700;
+  --vz-rank-4-style: normal;
+  --vz-rank-4-color: var(--vz-ink-strong, var(--vz-text-primary));
+  --vz-rank-4-tracking: var(--vz-tracking-normal);
+
+  --vz-rank-meta-weight: 400;
+  --vz-rank-meta-style: normal;
+  --vz-rank-meta-color: var(--vz-text-secondary);
+  --vz-rank-meta-tracking: var(--vz-tracking-display);
+
+  --vz-rank-active-color: var(--vz-accent);
+
+  /*
+   * Progress + UX glyphs — GAP Code Regular (Bold volgt later).
+   * Export: frontend/fonts/GAP Code/
+   */
+  --vz-progress-cols: 20;
+  --vz-progress-glyph-full: "\2588";   /* █ */
+  --vz-progress-glyph-empty: "\2591";  /* ░ */
+  --vz-progress-glyph-head: "\25B8";   /* ▸ (▶ U+25B6 nog niet in Regular) */
+  --vz-progress-glyph-full-alt: "\2588";  /* █ — ▓ nog niet getekend */
+  --vz-progress-glyph-empty-alt: "\2591"; /* ░ */
+  /* Progress-haken: full line height (−250…750); ASCII [ ] te kort — volgt */
+  --vz-progress-glyph-brack-l: "[";
+  --vz-progress-glyph-brack-r: "]";
+  --vz-progress-fill: var(--vz-accent);
+  --vz-progress-rest: var(--vz-border);
+  --vz-progress-frame: var(--vz-text-secondary);
+  --vz-progress-meta: var(--vz-text-secondary);
+
+  /* UX chrome (Regular); content: via .vz-glyph-* */
+  --vz-glyph-cart: "\1F6D2";      /* 🛒 */
+  --vz-glyph-check-off: "\2610";  /* ☐ */
+  --vz-glyph-check-on: "\2611";   /* ☑ */
+  --vz-glyph-radio-off: "\25CB";  /* ○ */
+  --vz-glyph-radio-on: "\25CF";   /* ● */
+  --vz-glyph-ok: "\2713";         /* ✓ */
+  --vz-glyph-err: "\2717";        /* ✗ */
+  --vz-glyph-warn: "\26A0";       /* ⚠ */
+  --vz-glyph-box-ul: "\250C";     /* ┌ */
+  --vz-glyph-box-ur: "\2510";     /* ┐ */
+  --vz-glyph-box-ll: "\2514";     /* └ */
+  --vz-glyph-box-lr: "\2518";     /* ┘ */
+  --vz-glyph-box-h: "\2500";      /* ─ */
+  --vz-glyph-box-v: "\2502";      /* │ */
+
+  /* Tap = control-hoogte (1 gridstap); schaalt met font */
+  --vz-tap-min: calc(var(--vz-control-lines) * var(--vz-baseline));
+
+  /* Focus op 4px-grid */
+  --vz-focus-ring-width: 2px; /* uitzondering: 2px hairline ok */
+  --vz-focus-ring-offset: 0.25rem;
+
+  /*
+   * Licht — kleuren uit illustrator-exports/Typo - licht.svg (2026-11-18).
+   * Aliassen paper/surface/ink blijven (bouw-namen).
+   */
+  --vz-paper: #f2f2f2; /* pagina; artboard ≈ lichtgrijs */
+  --vz-surface: #e6e6e6; /* velden / vlakken */
+  --vz-ink: #666666; /* body dominant in SVG */
+  --vz-ink-strong: #4d4d4d; /* zwaardere koppen */
+  --vz-muted: #999999;
+  --vz-accent: #8cc63f; /* CTA groen */
+  --vz-accent-warm: #f15a24; /* h3 oranje */
+  --vz-link: #29abe2; /* tekstlinks / quiet */
+  --vz-link-bright: #3fa9f5;
+  --vz-line: #b3b3b3;
+
+  --vz-bg-primary: var(--vz-paper);
+  --vz-bg-secondary: var(--vz-surface);
+  --vz-bg-elevated: #ffffff;
+  --vz-text-primary: var(--vz-ink);
+  --vz-text-secondary: var(--vz-muted);
+  --vz-text-inverse: #1a1a1a;
+  --vz-border: var(--vz-line);
+  --vz-cta-bg: var(--vz-accent);
+  --vz-cta-text: #1a1a1a; /* op lime-groen */
+  --vz-danger: #c44;
+  --vz-success: var(--vz-accent);
+  --vz-warning: var(--vz-accent-warm);
+  --vz-focus-ring: var(--vz-link);
+
+  --vz-accent-soft-red: #f79c7c;
+  --vz-accent-soft-yellow: #e8e0a0;
+  --vz-accent-soft-blue: var(--vz-link);
+
+  /* Geen elevation: diepte = border + contrast (CLI) */
+  --vz-shadow-soft: none;
+
+  /* Logo: welk asset in welk thema (programmeur wisselt src/class) */
+  --vz-logo-on: var(--vz-ink);
+  --vz-logo-on-inverse: var(--vz-surface);
+
+  /* Bouw-aliassen (--akws-*): altijd de actieve thema-rollen */
+  --akws-paper: var(--vz-paper);
+  --akws-surface: var(--vz-surface);
+  --akws-ink: var(--vz-ink);
+  --akws-muted: var(--vz-muted);
+  --akws-accent: var(--vz-accent);
+  --akws-line: var(--vz-line);
+}
+
+/* Expliciet licht (toggle “Licht” / data-theme=light) */
+:root,
+[data-theme="light"],
+.theme-light {
+  color-scheme: light;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Donker                                                                      */
+/* -------------------------------------------------------------------------- */
+/*
+ * Activeren (bouw/ontwerp):
+ *   <html data-theme="dark">  of  class="theme-dark" op html/body
+ * Voorkeur opslaan naast taal-toggle (cookie/localStorage) — programmeur.
+ * Optioneel: prefers-color-scheme alleen als user nog geen expliciete keuze heeft.
+ */
+
+[data-theme="dark"],
+.theme-dark {
+  color-scheme: dark;
+
+  /* Donker — Typo - donker.svg */
+  --vz-paper: #3a3a3a;
+  --vz-surface: #4d4d4d;
+  --vz-ink: #cccccc;
+  --vz-ink-strong: #e6e6e6;
+  --vz-muted: #999999;
+  --vz-accent: #8cc63f;
+  --vz-accent-warm: #f47b50;
+  --vz-link: #29abe2;
+  --vz-link-bright: #3fa9f5;
+  --vz-line: #666666;
+
+  --vz-bg-primary: var(--vz-paper);
+  --vz-bg-secondary: var(--vz-surface);
+  --vz-bg-elevated: #5a5a5a;
+  --vz-text-primary: var(--vz-ink);
+  --vz-text-secondary: var(--vz-muted);
+  --vz-text-inverse: #1a1a1a;
+  --vz-border: var(--vz-line);
+  --vz-cta-bg: var(--vz-accent);
+  --vz-cta-text: #1a1a1a;
+  --vz-danger: #f79c7c;
+  --vz-success: var(--vz-accent);
+  --vz-warning: var(--vz-accent-warm);
+  --vz-focus-ring: var(--vz-link);
+
+  --vz-accent-soft-red: #f79c7c;
+  --vz-accent-soft-yellow: #5c5428;
+  --vz-accent-soft-blue: var(--vz-link);
+
+  --vz-shadow-soft: none;
+
+  --vz-logo-on: var(--vz-ink);
+  --vz-logo-on-inverse: var(--vz-paper);
+
+  --akws-paper: var(--vz-paper);
+  --akws-surface: var(--vz-surface);
+  --akws-ink: var(--vz-ink);
+  --akws-muted: var(--vz-muted);
+  --akws-accent: var(--vz-accent);
+  --akws-line: var(--vz-line);
+}
+
+/*
+ * Systeemvoorkeur alleen als er nog geen data-theme op <html> staat.
+ * Heeft de gebruiker gekozen (light|dark), wint data-theme altijd.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    color-scheme: dark;
+
+    --vz-paper: #3a3a3a;
+    --vz-surface: #4d4d4d;
+    --vz-ink: #cccccc;
+    --vz-ink-strong: #e6e6e6;
+    --vz-muted: #999999;
+    --vz-accent: #8cc63f;
+    --vz-accent-warm: #f47b50;
+    --vz-link: #29abe2;
+    --vz-link-bright: #3fa9f5;
+    --vz-line: #666666;
+
+    --vz-bg-primary: var(--vz-paper);
+    --vz-bg-secondary: var(--vz-surface);
+    --vz-bg-elevated: #5a5a5a;
+    --vz-text-primary: var(--vz-ink);
+    --vz-text-secondary: var(--vz-muted);
+    --vz-text-inverse: #1a1a1a;
+    --vz-border: var(--vz-line);
+    --vz-cta-bg: var(--vz-accent);
+    --vz-cta-text: #1a1a1a;
+    --vz-danger: #f79c7c;
+    --vz-success: var(--vz-accent);
+    --vz-warning: var(--vz-accent-warm);
+    --vz-focus-ring: var(--vz-link);
+
+    --vz-accent-soft-red: #f79c7c;
+    --vz-accent-soft-yellow: #5c5428;
+    --vz-accent-soft-blue: var(--vz-link);
+
+    --vz-shadow-soft: none;
+
+    --vz-logo-on: var(--vz-ink);
+    --vz-logo-on-inverse: var(--vz-paper);
+
+    --akws-paper: var(--vz-paper);
+    --akws-surface: var(--vz-surface);
+    --akws-ink: var(--vz-ink);
+    --akws-muted: var(--vz-muted);
+    --akws-accent: var(--vz-accent);
+    --akws-line: var(--vz-line);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Gebruik (notitie voor programmeur)                                         */
+/* -------------------------------------------------------------------------- */
+/*
+ * html[data-theme="light"|"dark"]  — expliciete toggle (aanbevolen)
+ * .theme-dark / .theme-light       — alternatief op html of body
+ *
+ * UI-molecuul: MolThemeSwitch (Licht/Donker · Light/Dark) naast MolLangSwitch.
+ * Mail: blijf lichte tokens of aparte mail-palette; dark mail is onbetrouwbaar.
+ */

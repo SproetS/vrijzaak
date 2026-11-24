@@ -1,0 +1,61 @@
+/**
+ * Layout — page shell (niet per molecule)
+ */
+
+.vz-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Kleur hier; debug-grid overschrijft background-image op .vz-shell */
+  background-color: var(--vz-bg-primary);
+  color: var(--vz-text-primary);
+}
+
+.vz-main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--vz-measure);
+  margin-inline: auto;
+  padding-block: var(--vz-space-y-2);
+  padding-inline: var(--vz-page-pad-inline);
+}
+
+.vz-main--flush {
+  padding-block: 0;
+  padding-inline: 0;
+  max-width: none;
+}
+
+/* Twee kolommen kassa: form | quote (desktop) */
+.vz-checkout-grid {
+  display: grid;
+  gap: var(--vz-section-gap);
+  padding-inline: var(--vz-page-pad-inline);
+  padding-block: var(--vz-space-y-1);
+}
+
+@media (min-width: 48rem) {
+  .vz-checkout-grid {
+    grid-template-columns: 1fr minmax(16rem, 22rem);
+    align-items: start;
+    padding-inline: var(--vz-page-pad-inline-md);
+  }
+
+  .vz-site-header,
+  .vz-checkout-header,
+  .vz-site-footer {
+    padding-inline: var(--vz-page-pad-inline-md);
+  }
+}
+
+@media (min-width: 64rem) {
+  .vz-site-header,
+  .vz-checkout-header,
+  .vz-site-footer,
+  .vz-checkout-grid,
+  .vz-cart,
+  .vz-catalogue,
+  .vz-hero {
+    padding-inline: var(--vz-page-pad-inline-lg);
+  }
+}
